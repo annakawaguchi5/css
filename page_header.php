@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -9,16 +9,25 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>コース希望</title>
+
+<!-- Bootstrap -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
- <link href="css/smoke.min.css" rel="stylesheet">
+<link href="css/smoke.min.css" rel="stylesheet">
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
-<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
-<!-- <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" >-->
+<!-- jQuery -->
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<link type="text/css"
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css"
+	rel="stylesheet" />
+<link href="jquery.flipcountdown.css" rel="stylesheet" type="text/css" />
+<script src="jquery.flipcountdown.js"></script>
 
 
 <!--[if lt IE 9]>
@@ -27,11 +36,11 @@ session_start();
     <![endif]-->
 </head>
 <body>
-<script>
+	<script>
   $(function() {
-    $("#datepicker").datepicker();
   });
 </script>
+
 <?php
 /////////////////////////
 include('menu.php'); //メニューバーを読み込む

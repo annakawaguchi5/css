@@ -1,7 +1,16 @@
-<h1 id="siteTitle">
+<h1 id="siteTitle" align="left">
 	<a href="index.php">コース分け希望調査システム</a>
 </h1>
 
+<!-- 現在時刻 -->
+<div align="right" width="50%" height="50%">
+<?php include('clock.html');?>
+</div>
+
+<!-- カウントダウン -->
+
+
+<!-- ナビバー -->
 <nav class="navbar navbar-inverse">
 <div class="container-fluid">
 	<div class="navbar-header">
@@ -30,10 +39,18 @@
  'コース決定'	=> 'cs_decide.php'
  ),
  9 => array(  //管理者メニュー
- 'アカウント登録'  => 'user_add.php' ,
- 'アカウント一覧'  => 'user_list.php' ,
- 'アカウント削除'  => 'user_delete.php' ,
- 'パスワード変更'  => 'user_passwd.php'
+ /*
+  'アカウント登録'  => 'user_add.php' ,
+  'アカウント一覧'  => 'user_list.php' ,
+  'アカウント削除'  => 'user_delete.php' ,
+  'パスワード変更'  => 'user_passwd.php',
+  */
+ //アカウント操作は一覧から
+ '年度一覧' => 'year.php',
+ 'アカウント登録'  => 'year.php' ,
+ 'アカウント一覧'  => 'year.php' ,
+ 'アカウント削除'  => 'year.php' ,
+ 'パスワード変更'  => 'year.php',
  )
  );
 
