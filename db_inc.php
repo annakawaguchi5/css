@@ -8,7 +8,7 @@
 }*/
 //css用
 if (isset($env) and $env==="run"){
-	$conn = mysql_connect("localhost","k14jk032","joho2016");
+	$conn = mysql_connect("localhost","k14jk037","joho2016");
 	mysql_select_db("css", $conn);
 }
 ////////////////////////////////////////////////

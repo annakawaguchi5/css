@@ -28,15 +28,17 @@
 	);
 	$menu = array(
 	1 => array(  //学生メニュー
- '成績確認'  => 'cs_grade.php'  ,
  '希望提出'  => 'cs_wish.php' ,
  '結果確認'  => 'cs_result.php' ,
-	),
-	2 => array(  //教員メニュー
- '希望一覧'  => 'cs_list.php' ,
+ 'コース説明'  => 'cs_explain.php',
+ 'メッセージ' => 'message.php'
+ ),
+ 2 => array(  //教員メニュー
+ //'希望一覧'  => 'cs_list.php' ,
  '未提出者'  => 'cs_noentry.php' ,
  '希望集計'  => 'cs_summary.php' ,
- 'コース決定'	=> 'cs_decide.php'
+ 'コース決定'	=> 'cs_decide.php',
+ 'メッセージ' => 'message.php'
  ),
  9 => array(  //管理者メニュー
  /*
@@ -46,11 +48,7 @@
   'パスワード変更'  => 'user_passwd.php',
   */
  //アカウント操作は一覧から
- '年度一覧' => 'year.php',
- 'アカウント登録'  => 'year.php' ,
- 'アカウント一覧'  => 'year.php' ,
- 'アカウント削除'  => 'year.php' ,
- 'パスワード変更'  => 'year.php',
+'メッセージ' => 'message.php'
  )
  );
 
