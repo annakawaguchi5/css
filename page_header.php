@@ -30,19 +30,22 @@ session_start();
 <script src="jquery.flipcountdown.js"></script>
 
 
+
+
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
-	<script>
-  $(function() {
-  });
-</script>
+
 
 <?php
+include('css.js');	//JavaScriptを読み込む
+include('stylesheet.css');	//CSSを読み込む
+
 /////////////////////////
 include('menu.php'); //メニューバーを読み込む
 ////////////////////////
+include('new_year.php');
 ?>

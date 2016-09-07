@@ -7,7 +7,7 @@ if ( isset($_SESSION['urole'])) {
 //	$uname = $_SESSION['uname']; // 認証済みのユーザ名
 //	echo '<h2 class="container col-xs-offset-1">こんにちは! '.$uname.'さん</h2>';
 	$urole = $_SESSION['urole']; //認証済みの権限
-	switch(true){
+	switch($urole){
 		case 1:
 			include('student_top.php');
 			break;
