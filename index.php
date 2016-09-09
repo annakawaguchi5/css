@@ -4,8 +4,6 @@ require_once('db_inc.php');  //データベース接続
 
 if ( isset($_SESSION['urole'])) {
 	//ログインしているなら
-//	$uname = $_SESSION['uname']; // 認証済みのユーザ名
-//	echo '<h2 class="container col-xs-offset-1">こんにちは! '.$uname.'さん</h2>';
 	$urole = $_SESSION['urole']; //認証済みの権限
 	switch($urole){
 		case 1:

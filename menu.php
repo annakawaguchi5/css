@@ -4,7 +4,7 @@
 
 <!-- 現在時刻 -->
 <div align="right" width="50%" height="50%">
-<?php include('clock.html');?>
+<?php include('clock.php');?>
 </div>
 
 <!-- カウントダウン -->

@@ -1,5 +1,5 @@
 <?php
-require_once('db_inc.php');  //データベース接続
+//require_once('db_inc.php');  //データベース接続
 ?>
 
 <div class="container">
@@ -17,12 +17,9 @@ echo $row['time']." ".$row['title'];
 <div col-xs-4>
 
 <!-- 年度の新規作成 -->
-
-<button class="btn btn-danger btn-lg" id="create-year">新規作成</button>
 <?php
 include('new_year.php');
 ?>
-
 <!-- 一覧 -->
 <?php
 /*

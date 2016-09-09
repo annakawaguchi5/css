@@ -1,11 +1,43 @@
-  <style>
-    label, input { display:block; }
-    input.text { margin-bottom:12px; width:95%; padding: .4em; }
-    fieldset { padding:0; border:0; margin-top:25px; }
-    h1 { font-size: 1.2em; margin: .6em 0; }
-    div#users-contain { width: 350px; margin: 20px 0; }
-    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
-    .ui-dialog .ui-state-error { padding: .3em; }
-    .validateTips { border: 1px solid transparent; padding: 0.3em; }
-  </style>
+<style>
+table.sample {
+	border: 1px solid #FDFEFE;
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells: show;
+}
+
+.sample th {
+	border-top: solid 1px #8DB9DB;
+	border-left: solid 1px #8DB9DB;
+	border-right: solid 1px #8DB9DB;
+	border-bottom: solid 1px #8DB9DB;
+	background-color: #85B5D9;
+	color: #FFFFFF;
+	padding: 0.3em 1em;
+	white-space: nowrap;
+	text-align: center;
+	font-weight: bold;
+}
+
+.sample td {
+	border-top: solid 1px #8DB9DB;
+	border-left: solid 1px #8DB9DB;
+	border-right: solid 1px #8DB9DB;
+	border-bottom: solid 1px #8DB9DB;
+	padding: 0.3em 1em;
+	white-space: nowrap;
+	text-align: left;
+}
+
+.sample td.header {
+	background-color: #E1EFFB;
+	color: #2E6E9E;
+	font-weight: bold;
+}
+
+.ui-datepicker-trigger {
+	width: 30px;
+	height: 30px;
+	margin: 0 0 0 10px;
+}
+</style>
