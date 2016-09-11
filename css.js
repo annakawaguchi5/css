@@ -3,6 +3,12 @@
  * ポップアップ
  */
 $(function() {
+	// 「新規作成」ボタンがクリックされたらダイアログを表示
+	$("#new").click(function() {
+		$("#dialog-form").dialog("open");
+		return false;
+	});
+
 	// 表示するフォームは 'dialog-form' という ID で定義します。
 	$("#dialog-form").dialog({
 		autoOpen: false,
@@ -11,8 +17,8 @@ $(function() {
 		modal: true,
 		buttons: {  // ダイアログに表示するボタンと処理
 			"新規作成": function() {
+				$(this).dialog("close");
 				$("#dialog-form-check").dialog("open");
-				return false;
 			},
 			"キャンセル": function() {
 
@@ -21,14 +27,26 @@ $(function() {
 		}
 	});
 
-	// 「新規作成」ボタンがクリックされたらダイアログを表示
-	$("#new").click(function() {
-		$("#dialog-form").dialog("open");
-		return false;
+	$("#dialog-form-check").dialog({
+		autoOpen: false,
+		height: 480,
+		width: 460,
+		modal: true,
+		buttons: {  // ダイアログに表示するボタンと処理
+			"新規作成": function() {
+				$(this).dialog("close");
+				return false;
+			},
+			"キャンセル": function() {
+				$(this).dialog("close");
+			}
+		}
 	});
+
+
 });
 
-// エラー表示
+//エラー表示
 function displayError(str) {
 	var msg = $(".messageBar");
 
@@ -40,7 +58,7 @@ function displayError(str) {
 	}, 500);
 }
 
-// メッセージ表示
+//メッセージ表示
 function displayMessage(str) {
 	var msg = $(".messageBar");
 
@@ -65,7 +83,7 @@ $(function(){
 		dateFormat: 'yy-mm-dd(D)', //年-月-日(曜日)
 		onSelect:function(date){
 			$.get("hoge.php",
-				{Id: $(this).attr("id"),
+					{Id: $(this).attr("id"),
 				Date: $(this).val()});
 		}
 	});

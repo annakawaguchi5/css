@@ -33,7 +33,7 @@
 <!-- #dialog-form-check  -->
 <div id="dialog-form-check" title="フォーム確認">
 	<form>
-		<table id="form-check" class="sample">
+		<table id="form2" class="sample">
 			<tr>
 				<td class="header">年度</td>
 				<td>year+年</td>
