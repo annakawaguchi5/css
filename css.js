@@ -8,6 +8,7 @@ $(function() {
 	/*year = $( "#year" ),
 	stime = $( "#stime" ),
 	ltime = $( "#ltime" );*/
+	echo #year;
 	allFields = $( [] ).add( year ).add( stime ).add( ltime );
 
 	// 「新規作成」ボタンがクリックされたらダイアログを表示
@@ -25,9 +26,11 @@ $(function() {
 		allFields.removeClass( "ui-state-error" );
 		if ( valid ) {
 
+
 			$("<td>"+$('#year').val()+"年度</td>").insertAfter('#form2 .year');
 			$("<td>"+$('#stime').val()+"</td>").insertAfter('#form2 .stime');
 			$("<td>"+$('#ltime').val()+"</td>").insertAfter('#form2 .ltime');
+
 			/*
 			$("<td>"+$('#year').val()+"年度</td>").replaceAll('#form2 .year');
 			$("<td>"+$('#stime').val()+"</td>").replaceAll('#form2 .stime');
