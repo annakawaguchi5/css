@@ -37,6 +37,8 @@ if ($row){ //問合せ結果がある場合、ログイン成功
 }else{
 	//ページヘッドを出力
 	include('page_header.php');
+	echo $p;
+	echo $sql;
 	echo '<h2>ログイン失敗！</h2>';
 	echo '<h2>ユーザIDもしくはパスワードが間違いました！</h2>';
 	echo '<a href="login.php">戻る</a>';

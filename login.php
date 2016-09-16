@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="uid" class="control-label col-sm-2">パスワード:</label>
+    <label for="pass" class="control-label col-sm-2">パスワード:</label>
     <div class="col-sm-10">
       <input type="password" name="pass" class="form-control">
     </div>
