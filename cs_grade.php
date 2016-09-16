@@ -13,29 +13,12 @@ WHERE uid = '$uid'";
 $rs = mysql_query($sql,$conn);
 if(!$rs)die('エラー： '.mysql_error());
 $row = mysql_fetch_array($rs);
-echo '氏名：'.$row['uname'];
-echo '<table border=2>';
-echo '<tr><th></th><th>修得単位数</th><th>ＧＰＡ</th></tr>';
-while($row){
-	//前期
-	echo '<td>前期</td>';
-	echo '<td>'.$row['halfgp'].'</td>';
-	echo '<td>'.$row['halfgpa'].'</td>';
-	echo'</tr>';
-	//後期
-	echo '<td>後期</td>';
-	echo '<td>'.$row['allgp'].'</td>';
-	echo '<td>'.$row['allgpa'].'</td>';
-	echo'</tr>';
-	//合計
-	$allgp = $row['halfgp']+$row['allgp'];
-	$allgpa = $row['halfgpa']+$row['allgpa'];
-	echo '<td>合計</td>';
-	echo '<td>'.$allgp.'</td>';
-	echo '<td>'.$allgpa.'</td>';
-	echo'</tr>';
-	$row=mysql_fetch_array($rs);
+echo '<table border=0 class="table table-hover">';
+echo '<tr class="info"><th></th><th>取得単位数</th><th>GPA</th></tr>';
+while ($row) {
+	echo '<tr><td>前期</td><td>'.$row['halfgp'].'</td><td>'.$row['halfgpa'].'</td></tr>';
+	echo '<tr><td>年間</td><td>'.$row['allgp'].'</td><td>'.$row['allgpa'].'</td></tr>';
+	$row = mysql_fetch_array($rs) ;
 }
 echo '</table>';
-include('page_footer.php');
 ?>
