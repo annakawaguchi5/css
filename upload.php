@@ -155,7 +155,7 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 					// sampleuser, sampleidテーブルの状況を検索する
 					//例)0年度　あとはyearをどこからかとってくる
 
-					 $year = 2016;
+					 $year = 2018;
 					 $sql ="SELECT * FROM tb_user natural join tb_gp WHERE uid='$uid'; ";
 					 $rs = mysql_query($sql, $conn);
 					 $row= mysql_fetch_array($rs);
