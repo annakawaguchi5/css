@@ -99,8 +99,17 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 					//echo
 
 
-						$element[$num] = $line[$num]."\n";
-						$element[$num] = mb_convert_encoding( $element[$num], "utf-8", "sjis" );
+						$element[$num] = $line[$num];//."\n";
+
+
+
+
+
+						$element[$num] = mb_convert_encoding( $element[$num], "UTF-8", "SJIS" );
+
+
+
+
 
 
 						//$element[$num] = "'".mb_convert_encoding( $ele, "utf-8", "sjis" )."'";
@@ -113,10 +122,10 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 
 
 
-					$uid=$element[0];
-					$uname=$element[1];
-					$gp=$element[2];
-					$gpa=$element[3];
+					echo $uid=$element[0];
+					echo $uname=$element[1];
+					echo $gp=$element[2];
+					echo $gpa=$element[3];
 					//$uname = mb_convert_encoding( $uname, "utf-8", "sjis" );
 					//echo $uid;
 					//echo $uname;
