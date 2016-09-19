@@ -3,7 +3,7 @@ if ( isset($_SESSION['urole']) and $_SESSION['urole']==1 ) {
 	//学生としてログインしているなら
 	$uid   = $_SESSION['uid'];   // 認証済みのユーザID
 	$uname = $_SESSION['uname']; // 認証済みのユーザ名
-	echo "<h2>成績確認</h2>";
+	echo "<h1>成績確認</h1>";
 	$sql="SELECT uname, halfgp, halfgpa, allgp, allgpa
 FROM tb_gp
 NATURAL JOIN tb_user

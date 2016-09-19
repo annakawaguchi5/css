@@ -12,6 +12,9 @@ if ( isset($_SESSION['urole'])) {
 		case 2:
 			include('teacher_top.php');
 			break;
+		case 3:
+			include('teacher_top.php');
+			break;
 		case 9:
 			include('admin_top.php');
 			break;

@@ -6,6 +6,11 @@ if ( isset($_SESSION['urole']) and $_SESSION['urole']==1 ) {
 }else { // その以外は
 	die('エラー：この機能を利用する権限がありません');
 }
+// 今日の日付を取得
+$now = new DateTime();
+$now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
+$now = $now->format('Y/m/d H時i分s秒');
+
 // ログイン中のユーザ($uid)の決定状況を検索する
 $sql = "SELECT * FROM tb_decide natural join tb_course WHERE uid = '$uid';";
 //テーブル作成後、変更あるえる
@@ -18,6 +23,7 @@ if (!$rs){
 echo '<div class="row">
 <div class="bg-warning">
 	<h1>決定結果</h1>
+	<p ><strong style="color:red;">'.$now.'</strong><strong> 現在</strong></p>
 	<h1 class="text-center">';
 	if($row){
 		echo '<small>おめでとうございます!<br>あなたは</small>'.$row['cname'].'<small>に決定しました。</small>';

@@ -1,15 +1,18 @@
-<h1 id="siteTitle" align="left">
-	<a href="index.php">コース分け希望調査システム</a>
-</h1>
+<div class="container">
+	<div class="row">
+		<h1 id="siteTitle" align="left">
+			<a href="index.php">コース分け希望調査システム</a>
+		</h1>
 
-<!-- 現在時刻 -->
-<div align="right" width="50%" height="50%">
-<?php include('clock.php');?>
+		<!-- 現在時刻 -->
+		<div align="right" width="30%" height="30%">
+		<?php include('clock.php');?>
+		</div>
+
+		<!-- カウントダウン -->
+
+	</div>
 </div>
-
-<!-- カウントダウン -->
-
-
 <!-- ナビバー -->
 <nav class="navbar navbar-inverse">
 <div class="container-fluid">
@@ -28,15 +31,21 @@
 	);
 	$menu = array(
 	1 => array(  //学生メニュー
+	'コース説明'  => 'cs_explain.php',
  '希望提出'  => 'cs_wish.php' ,
- '結果確認'  => 'cs_result.php' ,
- 'コース説明'  => 'cs_explain.php',
  'メッセージ' => 'message.php'
  ),
  2 => array(  //教員メニュー
- //'希望一覧'  => 'cs_list.php' ,
+ '希望一覧'  => 'cs_list.php' ,
  '未提出者'  => 'cs_noentry.php' ,
- '希望集計'  => 'cs_summary.php' ,
+ //'希望集計'  => 'cs_summary.php' ,
+ 'コース決定'	=> 'cs_decide.php',
+ 'メッセージ' => 'message.php'
+ ),
+  3 => array(  //教員メニュー
+ '希望一覧'  => 'cs_list.php' ,
+ '未提出者'  => 'cs_noentry.php' ,
+ //'希望集計'  => 'cs_summary.php' ,
  'コース決定'	=> 'cs_decide.php',
  'メッセージ' => 'message.php'
  ),
