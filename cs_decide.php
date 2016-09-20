@@ -9,10 +9,25 @@ $now = $now->format('Y/m/d H時i分s秒');
 $year = date('Y');
 
 echo "<h1>コース決定一覧</h1>";
+echo "<h2>応用コース希望</h2>";
 //学生情報を検索
-$sql = "select * from tb_user natural join tb_entry natural join tb_course natural join tb_gp where urole='1' and year=".$year.
-"union select * from tb_user natural join tb_course natural join tb_gp where urole='1' and year=".$year;
+$sql = "SELECT * FROM tb_user NATURAL JOIN tb_entry NATURAL JOIN tb_course NATURAL JOIN tb_gp WHERE urole='1' AND year='$year'".
+"UNION SELECT DISTINCT *
+FROM tb_user
+NATURAL JOIN tb_course
+NATURAL JOIN tb_gp
+WHERE uid NOT
+IN (
+
+SELECT DISTINCT uid
+FROM tb_entry
+WHERE tb_user.uid = tb_entry.uid
+)";
+
+
+//"union select * from tb_user natural join tb_entry natural join tb_course natural join tb_gp where urole='1' and year=".$year;
 $rs = mysql_query($sql, $conn);
+
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;
 
@@ -34,22 +49,110 @@ if($row['allgp']>=$row['gp'] && $row['allgpa']>=$row['gpa']){
 	$judge = "◯";
 }
 
-echo '<table border=0 class="table table-hover">';
+echo '<table border=0 class="table">';
 echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
 while ($row) {
-	if ($row3) {
+	$cname = $row['cname'];
+	$note = $row['note'];
+	//var_dump($row);
+
+
+	var_dump($row);
+	/*
+	 if ($row3) {
 		$cid = $row3['cid']; // 現在登録しているコースのID
 		$act = 'update';    // すでに登録したため「再登録」とする
-	}else{
+		}else{
 		$cid = $row3['cid'];
 		$act = 'insert';
-	}
+		}*/
 	echo '<tr>';
-	echo '<td><input type="checkbox" id="'.$row['cid'].'"></th>';
+	echo '<td><input type="checkbox"></th>';
 	echo '<td>' . $row['uid'] . '</td>';
 	echo '<td>' . $row['uname']. '</td>';
-	echo '<td>' . $row2['cname'] . '</td>';
-	echo '<td>' . $row2['note'] . '</td>';
+	echo '<td>' . $cname . '</td>';
+	echo '<td>' . $note . '</td>';
+	echo '<td>' . $row['allgp'] . '</td>';
+	echo '<td>' . $row['allgpa'] . '</td>';
+	echo '<td style="color:red">' . $judge . '</td>';
+	if ( isset($_SESSION['urole']) and $_SESSION['urole']==2 ) {
+		//教員（権限なし）としてログインしているなら
+		$disabled = "disabled";
+	}else{
+		$disabled = "";
+	}/*
+	if($row['uid']==$row2['uid']){
+	echo'<td>
+	<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
+	<input type="hidden" name="act" value="'.  $act .'">
+	<input type="hidden" name="uname" value="'.$row['uname'].'">
+	<button class="btn btn-default" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
+	<button class="btn btn-default" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
+	</form></td>';
+	$row2 = mysql_fetch_array($rs2) ;
+	}else{
+	if($row3['cid']==1){
+	echo'<td>
+	<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
+	<input type="hidden" name="act" value="'.  $act .'">
+	<input type="hidden" name="uname" value="'.$row['uname'].'">
+	<button class="btn btn-danger" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
+	<button class="btn btn-default" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
+	</form></td>';
+	$row3 = mysql_fetch_array($rs3) ;
+	}else if($row3['cid']==2){
+	echo'<td>
+	<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
+	<input type="hidden" name="act" value="'.  $act .'">
+	<input type="hidden" name="uname" value="'.$row['uname'].'">
+	<button class="btn btn-default" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
+	<button class="btn btn-primary" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
+	</form></td>';
+	$row3 = mysql_fetch_array($rs3) ;
+	}
+	}*/
+	echo '</tr>';
+	$row['cname'] = null;
+	$row['note'] = null;
+	$row = mysql_fetch_array($rs) ;
+
+}
+echo '</table>';
+
+
+echo'<h2>未提出者</h2>';
+$sql="SELECT DISTINCT uid, uname, allgp, allgpa,gp,gpa
+FROM tb_user
+NATURAL JOIN tb_course
+NATURAL JOIN tb_gp
+WHERE uid NOT
+IN (
+
+SELECT DISTINCT uid
+FROM tb_entry
+WHERE tb_user.uid = tb_entry.uid
+)";
+$rs = mysql_query($sql, $conn);
+if (!$rs) die ('エラー: ' . mysql_error());
+$row = mysql_fetch_array($rs) ;
+
+$act = 'insert';  //初回登録?（insert: 初回登録; update: 再登録）;
+
+if($row['allgp']>=$row['gp'] && $row['allgpa']>=$row['gpa']){
+	$judge = "◯";
+}
+
+$null = null;
+
+echo '<table border=0 class="table">';
+echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
+while ($row) {
+	echo '<tr>';
+	echo '<td><input type="checkbox"></th>';
+	echo '<td>' . $row['uid'] . '</td>';
+	echo '<td>' . $row['uname']. '</td>';
+	echo '<td>' . $null . '</td>';
+	echo '<td>' . "" . '</td>';
 	echo '<td>' . $row['allgp'] . '</td>';
 	echo '<td>' . $row['allgpa'] . '</td>';
 	echo '<td style="color:red">' . $judge . '</td>';
@@ -59,42 +162,10 @@ while ($row) {
 	}else{
 		$disabled = "";
 	}
-	if($row['uid']==$row2['uid']){
-		echo'<td>
-		<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
-		<input type="hidden" name="act" value="'.  $act .'">
-		<input type="hidden" name="uname" value="'.$row['uname'].'">
-		<button class="btn btn-default" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
-		<button class="btn btn-default" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
-		</form></td>';
-		$row2 = mysql_fetch_array($rs2) ;
-	}else{
-		if($row3['cid']==1){
-			echo'<td>
-			<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
-			<input type="hidden" name="act" value="'.  $act .'">
-			<input type="hidden" name="uname" value="'.$row['uname'].'">
-			<button class="btn btn-danger" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
-			<button class="btn btn-default" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
-			</form></td>';
-			$row3 = mysql_fetch_array($rs3) ;
-		}else if($row3['cid']==2){
-			echo'<td>
-			<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
-			<input type="hidden" name="act" value="'.  $act .'">
-			<input type="hidden" name="uname" value="'.$row['uname'].'">
-			<button class="btn btn-default" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
-			<button class="btn btn-primary" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
-			</form></td>';
-			$row3 = mysql_fetch_array($rs3) ;
-		}
-	}
 	echo '</tr>';
 	$row = mysql_fetch_array($rs) ;
-
 }
 echo '</table>';
-echo'';
 
 include('page_footer.php');  //画面出力終了
 ?>
