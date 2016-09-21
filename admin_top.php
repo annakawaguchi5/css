@@ -1,4 +1,9 @@
 <?php
+// 今日の日付を取得
+$now = new DateTime();
+$now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
+$now = $now->format('Y/m/d H時i分s秒');
+$year = date('Y');
 //require_once('db_inc.php');  //データベース接続
 ?>
 
@@ -22,13 +27,19 @@ include('new_year.php');
 ?>
 <!-- 一覧 -->
 <?php
-/*
+
+
 //テーブル名不明
-$sql = "select * from ";
+$sql = "select * from tb_course WHERE cid=1;";
 $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;
-*/
+while($row){
+echo $row['year']."\n";
+
+$row = mysql_fetch_array($rs) ;
+}
+
 ?>
 年度一覧
 
