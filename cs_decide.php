@@ -12,6 +12,7 @@ echo "<h1>コース決定一覧</h1>";
 echo "<h2>応用コース希望</h2>";
 //学生情報を検索
 $sql = "SELECT * FROM tb_user NATURAL JOIN tb_entry NATURAL JOIN tb_course NATURAL JOIN tb_gp WHERE urole='1' AND year='$year'".
+/*
 "UNION SELECT DISTINCT *
 FROM tb_user
 NATURAL JOIN tb_course
@@ -23,9 +24,9 @@ SELECT DISTINCT uid
 FROM tb_entry
 WHERE tb_user.uid = tb_entry.uid
 )";
+*/
 
-
-//"union select * from tb_user natural join tb_entry natural join tb_course natural join tb_gp where urole='1' and year=".$year;
+"union select * from tb_user natural join tb_entry natural join tb_course natural join tb_gp where urole='1' and year=".$year;
 $rs = mysql_query($sql, $conn);
 
 if (!$rs) die ('エラー: ' . mysql_error());
@@ -57,7 +58,7 @@ while ($row) {
 	//var_dump($row);
 
 
-	var_dump($row);
+	//var_dump($row);
 	/*
 	 if ($row3) {
 		$cid = $row3['cid']; // 現在登録しているコースのID
@@ -151,7 +152,7 @@ while ($row) {
 	echo '<td><input type="checkbox"></th>';
 	echo '<td>' . $row['uid'] . '</td>';
 	echo '<td>' . $row['uname']. '</td>';
-	echo '<td>' . $null . '</td>';
+	echo '<td>' . $null. '</td>';
 	echo '<td>' . "" . '</td>';
 	echo '<td>' . $row['allgp'] . '</td>';
 	echo '<td>' . $row['allgpa'] . '</td>';
