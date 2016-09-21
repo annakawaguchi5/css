@@ -9,19 +9,30 @@ $now = $now->format('Y/m/d H時i分s秒');
 $year = date('Y');
 
 echo "<h1>コース決定一覧</h1>";
+//コース情報を検索
+$sql="select * from tb_course where year=".$year;
+$rs = mysql_query($sql, $conn);
+if (!$rs) die ('エラー: ' . mysql_error());
+$row = mysql_fetch_array($rs) ;
+$gp = $row['gp'];
+$gpa = $row['gpa'];
+
 //学生情報を検索
-$sql = "select * from tb_user natural join tb_entry natural join tb_course natural join tb_gp where urole='1' and year=".$year.
-"union select * from tb_user natural join tb_course natural join tb_gp where urole='1' and year=".$year;
+//$sql = "select * from tb_user natural join tb_entry natural join tb_course natural join tb_gp where urole='1' and year=".$year;
+$sql = "select * from tb_user natural join tb_gp where urole='1' and year=".$year;
 $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;
 
+
+/*
 //希望提出済みコース未決定の学生情報を検索
-$sql2 = "select * from tb_entry natural join tb_user natural join tb_course where year=".$year." and uid not in(select uid from tb_decide)";//検索条件を適用したSQL文を作成
+//$sql2 = "select * from tb_entry natural join tb_user natural join tb_course where year=".$year." and uid not in(select uid from tb_decide)";//検索条件を適用したSQL文を作成
+//$sql2 = "select * from tb_entry natural join tb_user natural join tb_course where year=".$year." and uid=".$row['uid'];
 $rs2 = mysql_query($sql2, $conn);
 if (!$rs2) die ('エラー: ' . mysql_error());
 $row2 = mysql_fetch_array($rs2) ;
-
+*/
 //コース決定済みの学生情報を検索
 $sql3 = "select * from tb_decide natural join tb_user natural join tb_course where urole='1' and year=".$year;
 $rs3 = mysql_query($sql3, $conn);
@@ -30,7 +41,7 @@ $row3 = mysql_fetch_array($rs3) ;
 
 $act = 'insert';  //初回登録?（insert: 初回登録; update: 再登録）;
 
-if($row['allgp']>=$row['gp'] && $row['allgpa']>=$row['gpa']){
+if($row['allgp']>=$gp && $row['allgpa']>=$gpa){
 	$judge = "◯";
 }
 
@@ -45,11 +56,11 @@ while ($row) {
 		$act = 'insert';
 	}
 	echo '<tr>';
-	echo '<td><input type="checkbox" id="'.$row['cid'].'"></th>';
+	echo '<td><input type="checkbox"></th>';
 	echo '<td>' . $row['uid'] . '</td>';
 	echo '<td>' . $row['uname']. '</td>';
-	echo '<td>' . $row2['cname'] . '</td>';
-	echo '<td>' . $row2['note'] . '</td>';
+	echo '<td>' . $row['cname'] . '</td>';
+	echo '<td>' . $row['note'] . '</td>';
 	echo '<td>' . $row['allgp'] . '</td>';
 	echo '<td>' . $row['allgpa'] . '</td>';
 	echo '<td style="color:red">' . $judge . '</td>';
@@ -58,7 +69,7 @@ while ($row) {
 		$disabled = "disabled";
 	}else{
 		$disabled = "";
-	}
+	}/*
 	if($row['uid']==$row2['uid']){
 		echo'<td>
 		<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
@@ -88,12 +99,13 @@ while ($row) {
 			</form></td>';
 			$row3 = mysql_fetch_array($rs3) ;
 		}
-	}
+	}*/
 	echo '</tr>';
 	$row = mysql_fetch_array($rs) ;
 
 }
 echo '</table>';
+
 echo'';
 
 include('page_footer.php');  //画面出力終了
