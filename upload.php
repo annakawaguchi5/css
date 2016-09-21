@@ -118,7 +118,6 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 				//var_dump($values);
 				// sampleuser, sampleidテーブルの状況を検索する
 				//例)0年度　あとはyearをどこからかとってくる
-
 				$state=1;//前期0,年間1
 				$year = 2020;
 				$sql ="SELECT * FROM tb_user natural join tb_gp WHERE uid='$uid'; ";
