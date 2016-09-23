@@ -1,3 +1,6 @@
+<?php
+include('page_header.php');
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="ja">
@@ -31,29 +34,22 @@
     <![endif]-->
 <head>
 <title>CSVダウンロード画面作成</title>
-<script type="text/javascript">
-function conf01(){
-	if(window.confirm('コース選択結果をダウンロードしますか？')){
 
-	document.forms[0].submit();
 
-	}else{
-
-	window.alert('キャンセルされました。');
-	}
-
-}
-</script>
 </head>
 
 <body>
-CSVダウンロードを行う。
+コース結果のデータを出力する。
 <form method="post" action='export_csv.php'>
 <input type="hidden" value="csv1" name="csv01">
-<input type="submit" value ="CSVダウンロード" onClick="conf01()">
+<input type="submit" value ="ダウンロード" onClick="conf01()">
 </form>
 
 </body>
 
 </html>
 
+
+
+<?php include('page_footer.php');
+?>
