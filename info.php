@@ -1,0 +1,76 @@
+<?php
+require_once('db_inc.php');  //データベース接続
+include 'page_header.php';
+?>
+
+<form class="form-horizontal" id="info" action="info.php" method="post"
+	onsubmit="doSomething();return false;">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h5 class="panel-title">通知作成</h5>
+		</div>
+		<div class="panel-body">
+			<label>項目を埋め、「送信」ボタンを押してください。<br> </label>
+			<div class="form-group">
+				<label for="title" class="control-label col-sm-1">タイトル:</label>
+				<div class="col-sm-11">
+					<input type="text" id="title" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="detail" class="control-label col-sm-1">詳細:</label>
+				<div class="col-sm-11">
+					<textarea id="detail" class="form-control" row="4" cols="30"></textarea>
+				</div>
+			</div>
+			<div class="col-sm-offset-1">
+				<div class="form-group">
+				<?php
+				/*
+				$sql="SELECT * FROM tb_user GROUP BY urole";
+				$rs = mysql_query($sql, $conn);
+				if (!$rs) die ('エラー: ' . mysql_error());
+				$row = mysql_fetch_array($rs);
+*/
+					$roles = array(
+				"1" => "学生",
+				"2" => "教員(権限なし)",
+				"3" => "教員(権限あり)",
+				"9" => "管理者");
+
+					foreach($roles as $urole => $rolename){
+						if($urole==9){
+							echo '<label class="checkbox-inline"><input type="checkbox" disabled="disabled" checked="checked" name="'.$urole.'">'.$rolename.'</label>';
+						}else{
+					echo '<label class="checkbox-inline"><input type="checkbox" name="'.$urole.'">'.$rolename.'</label>';
+					}
+					}
+
+				 ?>
+				</div>
+
+				<input type="submit" value="送信"><input type="reset" value="リセット">
+			</div>
+		</div>
+	</div>
+</form>
+
+<script type="text/javascript">
+$('#info').on('submit', function(event) {
+  event.preventDefault(); // 本来のPOSTを打ち消すおまじない
+  $.post(
+    $(this).attr('action'),
+    $(this).serializeArray(),
+    function(result) {
+      alert('ｻｲﾀﾏ-----(・∀・)-----!!!');
+    },
+    'json'
+  );
+});
+</script>
+
+
+				 <?php
+				 include('admin_top.php');
+				 include('page_footer.php');
+				 ?>
