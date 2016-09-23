@@ -1,4 +1,4 @@
-<button class="btn btn-danger btn-lg" id="new">新規作成</button>
+<button class="btn btn-danger btn-block btn-lg" id="new">新規作成</button>
 
 <!-- #dialog-form  -->
 <div id="dialog-form" title="新規作成" style="display: none;">

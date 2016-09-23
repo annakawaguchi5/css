@@ -2,10 +2,11 @@
 require_once('db_inc.php');  //データベース接続
 include 'page_header.php';
 ?>
+<!-- 無遷移送信がまだ -->
 
 <form class="form-horizontal" id="info" action="info.php" method="post"
 	onsubmit="doSomething();return false;">
-	<div class="panel panel-info">
+	<div class="panel panel-success">
 		<div class="panel-heading">
 			<h5 class="panel-title">通知作成</h5>
 		</div>
@@ -54,20 +55,6 @@ include 'page_header.php';
 		</div>
 	</div>
 </form>
-
-<script type="text/javascript">
-$('#info').on('submit', function(event) {
-  event.preventDefault(); // 本来のPOSTを打ち消すおまじない
-  $.post(
-    $(this).attr('action'),
-    $(this).serializeArray(),
-    function(result) {
-      alert('ｻｲﾀﾏ-----(・∀・)-----!!!');
-    },
-    'json'
-  );
-});
-</script>
 
 
 				 <?php

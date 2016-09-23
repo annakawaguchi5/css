@@ -12,12 +12,7 @@ $year = date('Y');
 	<!-- 更新情報 -->
 	<div class="bg-danger">
 	<?php
-	$sql = "SELECT * FROM tb_info ORDER BY time";	//where関数で年度指定
-	$rs = mysql_query($sql, $conn);
-	if (!$rs) die ('エラー: ' . mysql_error());
-	$row = mysql_fetch_array($rs);
-
-	echo $row['time']." ".$row['title'];
+		include('receive_info.php');
 	?>
 	</div>
 
@@ -25,44 +20,50 @@ $year = date('Y');
 	<div class="col-xs-4">
 
 		<!-- 年度の新規作成 -->
-		<div class="bg-info">
-		<?php
-		include('new_year.php');
-		?>
-		</div>
+	<?php
+	include('new_year.php');
+	?>
+		<br>
+
 
 		<!-- 年度一覧 -->
-		<div class="bg-primary">
 		<?php
-		//テーブル名不明
-		$sql = "select * from tb_course GROUP BY year";
+		$sql = "select * from tb_course GROUP BY year ORDER BY year DESC";
 		$rs = mysql_query($sql, $conn);
 		if (!$rs) die ('エラー: ' . mysql_error());
 		$row = mysql_fetch_array($rs) ;
+		echo '<div class="panel panel-info">
+				<div class="panel-heading">
+					年度一覧
+				</div>
+				<div class="list-group">';
 		while($row){
-			echo $row['year']."年度<br>";
+			echo '<a class="list-group-item" href="index.php?year='.$row['year'].'">'.$row['year'].'年度</a>';
 			$row = mysql_fetch_array($rs) ;
 		}
+		echo '</div></div>';
 		?>
-		</div>
 
 		<!-- 通知作成 -->
-		<div class="bg-success">
 		<?php //include("info.php");?>
-		</div>
+
 	</div>
+	<!-- 4グリッド終わり -->
 
 	<!-- 8グリッドを割り当て -->
 	<!-- 年度詳細 -->
 	<div class="col-xs-8">
 	<?php
-	//最新年を検索
-	$sql = "SELECT MAX(year) FROM tb_limit";
-	$rs = mysql_query($sql, $conn);
-	if (!$rs) die ('エラー: ' . mysql_error());
-	$row = mysql_fetch_array($rs) ;
-	$dispyear = $row['MAX(year)'];
-
+	if(isset($_GET['year'])){
+		$dispyear = $_GET['year'];
+	}else{
+		//最新年を検索
+		$sql = "SELECT MAX(year) FROM tb_limit";
+		$rs = mysql_query($sql, $conn);
+		if (!$rs) die ('エラー: ' . mysql_error());
+		$row = mysql_fetch_array($rs) ;
+		$dispyear = $row['MAX(year)'];
+	}
 	echo '<h1>'.$dispyear.'年度</h1>';
 
 	//最新年のデータを表示
@@ -87,5 +88,6 @@ $year = date('Y');
 	?>
 
 	</div>
+	<!-- 8グリッド終わり -->
 </div>
 
