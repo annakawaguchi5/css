@@ -7,9 +7,7 @@ session_start();
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>コース希望</title>
-
 <!-- Bootstrap -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
@@ -41,7 +39,6 @@ include('css.js');	//JavaScriptを読み込む
     <![endif]-->
 </head>
 <body>
-
 <?php
 /////////////////////////
 include('menu.php'); //メニューバーを読み込む
