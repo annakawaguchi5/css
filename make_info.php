@@ -1,9 +1,10 @@
 <?php
+/*
 require_once('db_inc.php');  //データベース接続
 include 'page_header.php';
+*/
 ?>
 <!-- 無遷移送信がまだ -->
-
 <form class="form-horizontal" id="info" action="info.php" method="post"
 	onsubmit="doSomething();return false;">
 	<div class="panel panel-success">
@@ -13,14 +14,14 @@ include 'page_header.php';
 		<div class="panel-body">
 			<label>項目を埋め、「送信」ボタンを押してください。<br> </label>
 			<div class="form-group">
-				<label for="title" class="control-label col-sm-1">タイトル:</label>
-				<div class="col-sm-11">
+				<label for="title" class="control-label ">タイトル:</label>
+				<div class="">
 					<input type="text" id="title" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="detail" class="control-label col-sm-1">詳細:</label>
-				<div class="col-sm-11">
+				<label for="message" class="control-label">詳細:</label>
+				<div class="">
 					<textarea id="detail" class="form-control" row="4" cols="30"></textarea>
 				</div>
 			</div>
@@ -41,9 +42,9 @@ include 'page_header.php';
 
 					foreach($roles as $urole => $rolename){
 						if($urole==9){
-							echo '<label class="checkbox-inline"><input type="checkbox" disabled="disabled" checked="checked" name="'.$urole.'">'.$rolename.'</label>';
+							echo '<label class="checkbox"><input type="checkbox" disabled="disabled" checked="checked" name="'.$urole.'">'.$rolename.'</label>';
 						}else{
-					echo '<label class="checkbox-inline"><input type="checkbox" name="'.$urole.'">'.$rolename.'</label>';
+					echo '<label class="checkbox"><input type="checkbox" name="'.$urole.'">'.$rolename.'</label>';
 					}
 					}
 
@@ -58,6 +59,5 @@ include 'page_header.php';
 
 
 				 <?php
-				 include('admin_top.php');
 				 include('page_footer.php');
 				 ?>

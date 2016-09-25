@@ -9,8 +9,9 @@ if ( isset($_SESSION['uid'])) {	//uidを取得
 
 	<!-- お知らせ -->
 	<div class="row bg-success">
-		<h1>お知らせ</h1>
-		2016.09.13 成績情報をアップロードしました。<br> 2016.09.10 2016年度のコース希望調査システムを開設しました。
+			<?php
+		include('receive_info.php');
+	?>
 	</div>
 
 

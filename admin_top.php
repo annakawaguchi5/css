@@ -45,7 +45,7 @@ $year = date('Y');
 		?>
 
 		<!-- 通知作成 -->
-		<?php //include("info.php");?>
+		<?php include("make_info.php");?>
 
 	</div>
 	<!-- 4グリッド終わり -->
