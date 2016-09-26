@@ -1,20 +1,28 @@
 <div class="container">
 	<div class="row">
-		<h1 id="siteTitle" align="left">
+		<img scr="" alt="" align="left">
+		<h3 id="siteTitle">
 			<a href="index.php">コース分け希望調査システム</a>
-		</h1>
+		</h3>
+		<br>
 
 		<!-- 現在時刻 -->
+		<!--
 		<div align="right" width="30%" height="30%">
-		<?php include('clock.php');?>
-		</div>
+		-->
+		<?php //include('clock.php');?>
+		<!-- </div> -->
 
 		<!-- カウントダウン -->
 
+		<!-- お問い合わせフォーム -->
+		<a href="./goikenbako.php"> <image
+				src="./FSV001BT005_5/button05_toiawase_05.jpg" alt="toiawase"
+				align="right"> </image> </a> <br clear="left">
 	</div>
 </div>
 <!-- ナビバー -->
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
 <div class="container-fluid">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed"
@@ -42,7 +50,7 @@
  'コース決定'	=> 'cs_decide.php',
  'メッセージ' => 'message.php'
  ),
-  3 => array(  //教員メニュー
+ 3 => array(  //教員メニュー
  '希望一覧'  => 'cs_list.php' ,
  '未提出者'  => 'cs_noentry.php' ,
  //'希望集計'  => 'cs_summary.php' ,
@@ -57,7 +65,7 @@
   'パスワード変更'  => 'user_passwd.php',
   */
  //アカウント操作は一覧から
-'メッセージ' => 'message.php'
+'メッセージ' => 'goikenbako.php'
  )
  );
 

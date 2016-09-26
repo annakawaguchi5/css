@@ -2,7 +2,7 @@
 include('page_header.php');
 
 ?>
-<h2>ご意見箱</h2>
+<h2>お問い合せフォーム</h2>
 <FORM method="POST" action="goikenbako_do.php">
 <p>エラー・バグ報告・感想・要望などがあれば、
 ここから記入してください。
@@ -15,7 +15,7 @@ include('page_header.php');
    <TD bgcolor="" height="">■メッセージ</TD>
    <TR>
 
-      <TD width="1 height="1">
+      <TD width="1" height="1">
          <TEXTAREA name="body" cols="60" rows="10"></TEXTAREA>
       </TD>
   </TR>

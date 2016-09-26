@@ -12,7 +12,7 @@ $year = date('Y');
 	<!-- 更新情報 -->
 	<div class="bg-danger">
 	<?php
-		include('receive_info.php');
+	include('receive_info.php');
 	?>
 	</div>
 
@@ -72,6 +72,7 @@ $year = date('Y');
 	if (!$rs) die ('エラー: ' . mysql_error());
 	$row = mysql_fetch_array($rs) ;
 
+	echo '<div class="table-responsive">';
 	echo '<table border=0 class="table table-striped table-hover table-bordered">';
 	echo '<tr class="info"><th>ユーザID</th><th>氏名</th><th>前期修得単位数</th><th>前期GPA</th><th>後期修得単位数</th><th>後期GPA</th></tr>';
 	while($row){
@@ -86,8 +87,8 @@ $year = date('Y');
 		$row = mysql_fetch_array($rs);
 	}
 	?>
-
 	</div>
-	<!-- 8グリッド終わり -->
+</div>
+<!-- 8グリッド終わり -->
 </div>
 

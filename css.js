@@ -5,10 +5,10 @@
 $(function() {
 	var dialog, form,
 
-	/*year = $( "#year" ),
+	year = $( "#year" ),
 	stime = $( "#stime" ),
-	ltime = $( "#ltime" );*/
-	echo #year;
+	ltime = $( "#ltime" );
+	//echo year;
 	allFields = $( [] ).add( year ).add( stime ).add( ltime );
 
 	// 「新規作成」ボタンがクリックされたらダイアログを表示
