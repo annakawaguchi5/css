@@ -1,22 +1,18 @@
 <?php
 include('page_header.php');
 
-$i=0;
+
 
 ?>
-
+<style>
+.button_wall { text-align : center ; }
+</style>
 <script>
-function add()
-{
 
-    var div_element = document.createElement("div");
-    div_element.innerHTML = '<FORM method="POST" action="goikenbako_do.php"><TABLE><TR><TD bgcolor="">■コース名<INPUT type="text" size="0" name="name"></TD></TR><TD bgcolor="" height="">■詳細</TD><TR><TD width="1" height="1"><TEXTAREA name="body" cols="60" rows="10"></TEXTAREA></TD></TR><TR><TD bgcolor="" height="">■要件</TD><TR><TD width="1" height="1"><TEXTAREA name="body" cols="60" rows="10"></TEXTAREA></TD></TR><TR><TD colspan="30" align="right" width="30"></form></TD></TR></TABLE></form>';
-	var parent_object = document.getElementById("piyo");
-    parent_object.appendChild(div_element);
-}
+
 
 $(function () {
-	$('#list5').addInputArea({
+	$('#list6').addInputArea({
 		  maximum : 2
 		});
 });
@@ -24,22 +20,61 @@ $(function () {
 
 </script>
 <script src="//cdn.jsdelivr.net/jquery.add-input-area/4.8.0/jquery.add-input-area.min.js"></script>
-<ol id="list5">
-  <li class="list5_var">
-    <input type="text" size="40" name="list1_0" id="list5_0">
-    <button class="list1_del">Delete</button>
-  </li>
-</ol>
-<input type="button" value="Add" class="list5_add">
+
 <h2>コース名変更フォーム</h2>
-<p>エラー・バグ報告・感想・要望などがあれば、
-ここから記入してください。
-要望などは今後の参考にさせていただきます。</p>
-<p>送信内容の一部または全部を引用してサイト上に
-掲載する可能性があります。
-<p>都合が悪ければその旨を記載しておいてください。</p>
+<p>コース名の変更、または詳細を変更する場合
+ここから記入してください。</p>
+<FORM method="POST" action="coursechange_do.php">
+<div id="list6">
+            <div class="list6_var">
+              <table class="table table-bordered">
+              <thead>
+              	<tr>
+              	<th>項目</th>
+              	<th>内容</th>
+              	</tr>
+              </thead>
+                <tbody>
+                  <tr><td>コース名</td><td><input type="text" name="list6_0_0"></td></tr>
+                  <tr><td>単位数</td><td><input type="text" name="list6_1_0"></td></tr>
+                  <tr><td>GPA</td><td><input type="text" name="list6_2_0"></td></tr>
+                  <tr><td>コース説明</td><td><textarea name="list6_3_0"  cols="60" rows="10"></textarea></td></tr>
+                  <tr><td>要件</td><td>
+                    <input type="radio" name="list6_4_0" value="要件あり" >要件あり
+                    <input type="radio" name="list6_4_0" value="要件なし" >要件なし
+                  </td></tr>
+
+            </tbody></table>
+              <button type="button" class="list6_del" style="display: inline-block;">削除</button>
+            <input type="button" value="追加" class="list6_add">
+
+            </div>
 
 
+
+</div>
+
+<br>
+<br>
+
+<div class="button_wall">
+<input type="submit"  value="内容確認"  >
+</div>
+
+
+</FORM>
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <div>
 <button onclick="add();">入力フォームを追加する</button>
 
@@ -79,6 +114,6 @@ $(function () {
 
 </TABLE>
 </Form>
-
+-->
 <?php
 include('page_footer.php');
