@@ -23,14 +23,79 @@
 	position: absolute;
 	right: 30px;
 }
+
+/*ダイアログ内のフォントまわり*/
+#dialog p,span{ font-size:12px; }
+#dialog span{ font-weight:bold; }
 </style>
+
+<script type="text/javascript">
+$(function(){
+
+    // jQuery UI ダイアログの設定
+    $('#dialog').dialog({
+        autoOpen: false,
+        width: 400,
+        modal: true,
+        resizable: true,
+        buttons: {
+            "送信する": function() {
+                //送信を実行
+                document.form.submit();
+            },
+            "キャンセル": function() {
+                //ダイアログを閉じる
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    //送信ボタンが押されたときに呼び出される
+    $('form').submit(function(e){
+        e.preventDefault();
+        var noneStr = '未入力';
+
+        //各項目を取得してダイアログ内に追加
+        if ( $("input#namae").val() != "" ){
+            $("span#namae").html( $("input#namae").val() );
+        }
+        else{
+            $("span#namae").html(noneStr);
+        }
+
+        if ( $("input#email").val() != "" ){
+            $("span#email").html( $("input#email").val() );
+        }
+        else{
+            $("span#email").html(noneStr);
+        }
+
+        if ( $("textarea").val() != "" ){
+            $("span#comment").html( $("textarea").val() );
+        }
+        else{
+            $("span#comment").html(noneStr);
+        }
+
+        //ダイアログを開く
+        $('#dialog').dialog('open');
+    });
+
+});
+</script>
+
+
+
 <div id="body-inner">
-	<div id="header">
-		<h1>大見出し</h1>
-	</div>
-	<div>（コンテンツの内容）</div>
 	<div class="page-back">
-		<a href="#header"><img src="./FSV001BT005_5/button05_seikyu_05.jpg" />
-		</a>
+	<input type="image" src="./FSV001BT005_5/button05_seikyu_05.jpg" name="delete" value="delete" alt="削除">
+	<input type="image" src="./FSV001BT005_5/button05_koudoku_05.jpg" name="change" value="change" alt="変更">
 	</div>
 </div>
+
+<!--▼ ui-dialog ▼-->
+<div id="dialog" title="送信内容の確認">
+	<p class="item">ユーザID</p>
+	<span id="uid"></span>
+</div>
+<!--▲ ui-dialog ▲-->

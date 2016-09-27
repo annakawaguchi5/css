@@ -7,9 +7,9 @@ require_once('db_inc.php');  //データベース接続
 	<div class="col-xs-4">
 
 		<!-- 年度の新規作成 -->
-	<?php
-	include('new_year.php');
-	?>
+
+	<a href="new_year.php"><button class="btn btn-danger btn-block btn-lg" id="new">新規作成</button></a>
+
 		<br>
 
 
@@ -56,6 +56,7 @@ require_once('db_inc.php');  //データベース接続
 	if (!$rs) die ('エラー: ' . mysql_error());
 	$row = mysql_fetch_array($rs) ;
 
+	echo '<FORM method="POST" action="change_do.php" id="list">';
 	echo '<div class="table-responsive">';
 	echo '<table border=0 class="table table-striped table-hover table-bordered">';
 	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th>

@@ -1,8 +1,13 @@
-<button class="btn btn-danger btn-block btn-lg" id="new">新規作成</button>
+<?php
+include('page_header.php');  //画面出力開始
+require_once('db_inc.php');  //データベース接続
+?>
 
-<!-- #dialog-form  -->
-<div id="dialog-form" title="新規作成" style="display: none;">
-<p><b>Results:</b> <span id="results"></span></p>
+<!-- 新規登録画面 -->
+<!-- コース名、要件 -->
+
+
+<div id="dialog-form" title="新規作成">
 	<form>
 		<table id="form1" class="sample">
 			<tr>
@@ -23,18 +28,19 @@
 			<tr>
 				<td class="header">学生アカウント追加<br>※CSVファイルのみ</td>
 				<!-- ファイル選択 include -->
-				<td>C:abc.csv<br> <input type="checkbox" id="noupload"
-					name="noupload" value="reset">今回は追加しない。</td>
+				<td><?php include('importCsv_do.php');?> <br> <input type="checkbox"
+					id="noupload" name="noupload" value="reset">今回は追加しない。</td>
 			</tr>
 
 		</table>
 	</form>
 </div>
-<!-- end of #dialog-form -->
 
 <!-- #dialog-form-check  -->
 <div id="dialog-form-check" title="フォーム確認" style="display: none;">
-<p><b>Results:</b> <span id="results"></span></p>
+	<p>
+		<b>Results:</b> <span id="results"></span>
+	</p>
 	<form>
 		<table id="form2" class="sample">
 			<tr>
@@ -59,18 +65,11 @@
 				<td>upload file name.csv<br> <input type="checkbox" id="noupload"
 					name="noupload" value="reset">今回は追加しない。</td>
 			</tr>
-			<!--
-						    <thead>
-      <tr class="ui-widget-header">
-        <th>年度</th>
-        <th>調査開始時刻</th>
-        <th>調査終了時刻</th>
-        <th>学生アカウント追加</th>
-      </tr>
-    </thead>-->
-			<tbody>
-			</tbody>
 		</table>
 	</form>
 </div>
 <!-- end of #dialog-form-check -->
+
+<?php
+include('page_footer.php');
+?>

@@ -10,7 +10,7 @@ $title = $_POST['title'];
 $message = $_POST['message'];
 $urole = $_POST['urole'];
 $year = $_POST['year'];
-var_dump($urole);
+
 $irole = "";
 foreach($urole as $u){
 	$irole=$irole.$u;

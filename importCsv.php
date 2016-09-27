@@ -1,9 +1,8 @@
 <?php
-include('page_header.php');
-include_once('db_inc.php');
-
     // ファイル取得
-
+/**
+ * yearの追加、テーブル名の変更
+ **/
     $file = new SplFileObject('test.csv');
 
     $file->setFlags(SplFileObject::READ_CSV);
@@ -55,12 +54,6 @@ include_once('db_inc.php');
 	die('エラー: ' . mysql_error());
 	}
 	//$row= mysql_fetch_array($rs);
-
-
     }
-
-
-
-
 ?>
 

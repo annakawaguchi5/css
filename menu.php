@@ -41,7 +41,8 @@
 	1 => array(  //学生メニュー
 	'コース説明'  => 'cs_explain.php',
  '希望提出'  => 'cs_wish.php' ,
- 'メッセージ' => 'message.php'
+ 'メッセージ' => 'message.php',
+	'パスワード変更' => 'user_passwd_change.php'
  ),
  2 => array(  //教員メニュー
  '希望一覧'  => 'cs_list.php' ,

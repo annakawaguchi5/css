@@ -1,7 +1,5 @@
-<?php include('page_header.php'); ?>
 <form id='csv' class="form-horizontal" action="importCsv_do.php">
     <div class="form-group">
-        <label class="col-md-2 control-label" for="file_input">取込ファイル</label>
         <div class="col-md-6">
             <input id="fake_input_file" onclick="$('#file_input').click();"
                 readonly="readonly" type="text" value="" class="form-control input-sm"

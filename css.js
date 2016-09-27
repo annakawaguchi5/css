@@ -11,16 +11,6 @@ $(function() {
 	//echo year;
 	allFields = $( [] ).add( year ).add( stime ).add( ltime );
 
-	// 「新規作成」ボタンがクリックされたらダイアログを表示
-
-
-	$( "#new" ).button().on( "click", function() {
-		$('#year').val('');
-		$('#stime').val('');
-		$('#ltime').val('');
-		dialog.dialog( "open" );
-	});
-
 	function addYear() {
 		var valid = true;
 		allFields.removeClass( "ui-state-error" );
@@ -43,25 +33,7 @@ $(function() {
 		//allFields.detach('year');
 	}
 
-	// 表示するフォームは 'dialog-form' という ID で定義します。
-	dialog = $("#dialog-form").dialog({
-		autoOpen: false,
-		height: 480,
-		width: 460,
-		modal: true,
-		buttons: {  // ダイアログに表示するボタンと処理
-			"新規作成": function(year, stime, ltime) {
-				$(this).dialog("close");
-				$("#dialog-form-check").dialog("open");
-				addYear();
-			},
-			"キャンセル": function() {
-				$(this).dialog("close");
-				Close();
-			}
-		}
 
-	});
 
 	form = dialog.find( "form2" ).on( "submit", function( event ) {
 		event.preventDefault();
