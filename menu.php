@@ -64,7 +64,7 @@
   'アカウント削除'  => 'user_delete.php' ,
   'パスワード変更'  => 'user_passwd.php',
   */
- //アカウント操作は一覧から
+'年度一覧' => 'year.php',
 'メッセージ' => 'goikenbako.php'
  )
  );

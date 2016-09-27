@@ -4,9 +4,8 @@ require_once('db_inc.php');  //データベース接続
 include 'page_header.php';
 */
 ?>
-<!-- 無遷移送信がまだ -->
-<form class="form-horizontal" id="info" action="info.php" method="post"
-	onsubmit="doSomething();return false;">
+
+<form class="form-horizontal" action="send_info.php" method="POST">
 	<div class="panel panel-success">
 		<div class="panel-heading">
 			<h5 class="panel-title">通知作成</h5>
@@ -14,26 +13,20 @@ include 'page_header.php';
 		<div class="panel-body">
 			<label>項目を埋め、「送信」ボタンを押してください。<br> </label>
 			<div class="form-group">
-				<label for="title" class="control-label ">タイトル:</label>
-				<div class="">
-					<input type="text" id="title" class="form-control">
+				<label for="title" class="control-label col-xs-2">タイトル:</label>
+				<div class="col-xs-10">
+					<input type="text" name="title" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="message" class="control-label">詳細:</label>
-				<div class="">
-					<textarea id="detail" class="form-control" row="4" cols="30"></textarea>
+				<label for="message" class="control-label col-xs-2">メッセージ:</label>
+				<div class="col-xs-10">
+					<textarea name="message" class="form-control" row="4" cols="30"></textarea>
 				</div>
 			</div>
 			<div class="col-sm-offset-1">
 				<div class="form-group">
 				<?php
-				/*
-				$sql="SELECT * FROM tb_user GROUP BY urole";
-				$rs = mysql_query($sql, $conn);
-				if (!$rs) die ('エラー: ' . mysql_error());
-				$row = mysql_fetch_array($rs);
-*/
 					$roles = array(
 				"1" => "学生",
 				"2" => "教員(権限なし)",
@@ -42,11 +35,15 @@ include 'page_header.php';
 
 					foreach($roles as $urole => $rolename){
 						if($urole==9){
-							echo '<label class="checkbox"><input type="checkbox" disabled="disabled" checked="checked" name="'.$urole.'">'.$rolename.'</label>';
+							echo '<label class="checkbox-inline">
+							<input type="hidden" name="urole[]" value="'.$urole.'">
+							<input type="checkbox" disabled checked>'.$rolename.'</label>';
 						}else{
-					echo '<label class="checkbox"><input type="checkbox" name="'.$urole.'">'.$rolename.'</label>';
+					echo '<label class="checkbox-inline"><input type="checkbox" name="urole[]" value="'.$urole.'">'.$rolename.'</label>';
 					}
 					}
+					//iyearは後に指定
+					echo '<INPUT type="hidden" name="year" value="'.$_SESSION['year'].'">';
 
 				 ?>
 				</div>
