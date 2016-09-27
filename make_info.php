@@ -1,9 +1,4 @@
-<?php
-/*
-require_once('db_inc.php');  //データベース接続
-include 'page_header.php';
-*/
-?>
+<!-- 年度指定をどうするか -->
 
 <form class="form-horizontal" action="send_info.php" method="POST">
 	<div class="panel panel-success">
@@ -53,8 +48,3 @@ include 'page_header.php';
 		</div>
 	</div>
 </form>
-
-
-				 <?php
-				 include('page_footer.php');
-				 ?>

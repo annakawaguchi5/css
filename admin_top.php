@@ -4,7 +4,6 @@ $now = new DateTime();
 $now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 $now = $now->format('Y/m/d H時i分s秒');
 $year = date('Y');
-//require_once('db_inc.php');  //データベース接続
 ?>
 
 <div class="container">
@@ -24,10 +23,4 @@ $year = date('Y');
 	<div class="col-sm-5">
 	<?php include("make_info.php");?>
 	</div>
-
-
-
 </div>
-
-
-

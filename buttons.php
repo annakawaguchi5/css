@@ -1,7 +1,3 @@
-<?php
-include('page_header.php');
-?>
-
 <style>
 .page-back {
 	position: fixed;
@@ -38,10 +34,3 @@ include('page_header.php');
 		</a>
 	</div>
 </div>
-
-
-
-
-<?php
-include ('page_footer.php');
-?>

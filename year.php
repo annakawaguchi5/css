@@ -74,7 +74,7 @@ require_once('db_inc.php');  //データベース接続
 		$row = mysql_fetch_array($rs);
 	}
 
-	//include ('buttons.php');	//右下固定ボタン(削除、変更)
+	include ('buttons.php');	//右下固定ボタン(削除、変更)
 	?>
 	</div>
 </div>

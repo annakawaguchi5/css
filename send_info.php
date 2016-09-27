@@ -2,6 +2,7 @@
 include_once('db_inc.php');
 ?>
 
+<!-- 年度指定をどうするか -->
 
 
 <?php

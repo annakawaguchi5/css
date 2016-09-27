@@ -1,10 +1,3 @@
-<?php
-/*
- require_once('db_inc.php');  //データベース接続
- include 'page_header.php';
- */
-?>
-
 <h1>お知らせ</h1>
 
 <?php
@@ -26,8 +19,4 @@ if(isset($_SESSION['urole'])){
 }else{
 	die('この機能は使用できません!');
 }
-?>
-
-<?php
-include('page_footer.php');
 ?>
