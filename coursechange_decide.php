@@ -19,7 +19,7 @@ if(isset($_POST['コース名'])){
 		$youken=2;
 	}
 
-	$sql ="UPDATE sample_course SET year='$year', cid='$youken', cname='$course', detail='$detail', gp='$gp', gpa='$gpa' WHERE cid='$youken'" ;
+	$sql ="UPDATE tb_course SET year='$year', cid='$youken', cname='$course', detail='$detail', gp='$gp', gpa='$gpa' WHERE cid='$youken'" ;
 	$res = mysql_query( $sql, $conn );
 
 }
@@ -39,7 +39,7 @@ if(isset($_POST['コース名1'])){
 		$youken1=2;
 	}
 
-	$sql ="UPDATE sample_course SET year='$year', cid='$youken1', cname='$course1', detail='$detail1', gp='$gp1', gpa='$gpa1' WHERE cid='$youken1'";
+	$sql ="UPDATE tb_course SET year='$year', cid='$youken1', cname='$course1', detail='$detail1', gp='$gp1', gpa='$gpa1' WHERE cid='$youken1'";
 	$res = mysql_query( $sql, $conn );
 
 }
