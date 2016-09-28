@@ -47,7 +47,7 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 				if($line[0]==null){
 					$line[0] = "";
 					//		echo 'null';
-				}
+			}
 				// 配列の値がすべて空か判定
 
 

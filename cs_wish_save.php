@@ -1,3 +1,4 @@
+<!-- UI要検討 -->
 <?php
 include('page_header.php');
 require_once ('db_inc.php');  // データベース接続
@@ -37,10 +38,8 @@ if ( !isset($_SESSION['urole']) || $_SESSION['urole']!=1 ) {
 		}
 	}else{ //エラーを表示
 		echo '<h2>エラー：希望コースが選択されていません</h2>';
-		//echo '<p>戻る</p>';
-		echo '<button class="btn btn-primary btn-block">
-		<a href="entry_input.php">戻る</a></button>';
 	}
+			echo '<a href="cs_wish.php"><button class="btn btn-primary">戻る</button></a>';
 }
 include('page_footer.php');
 ?>

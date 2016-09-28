@@ -54,6 +54,6 @@ type: \'error\'
 });
 </script>';
 
-echo '<a href="user_list.php">戻る</a>';
+echo '<a href="user_passwd_change.php"><button class="btn btn-primary">戻る</button></a>';
 include('page_footer.php');
 ?>

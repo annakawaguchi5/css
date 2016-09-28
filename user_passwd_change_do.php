@@ -1,3 +1,4 @@
+<!-- 戻るのUI変更 戻る画面はホームか同じ場所か -->
 <?php
 include('page_header.php');
 require_once ('db_inc.php');  // データベース接続
@@ -13,13 +14,14 @@ if (isset($_GET['uid'])){
   $rs = mysql_query($sql, $conn);
 
   echo '<h2>' . $uid. 'のパスワードを' . $pass . 'に変更しました。</h2>';
-  echo '<a href="user_list.php">戻る</a>';
+
   }else{
-  	echo 'パスワードが違います。';
+  	echo 'パスワードが違います。<br>';
   }
 }else{
   echo '<h2>削除するユーザIDが与えられていません</h2>';
-  echo '<a href="user_list.php">戻る</a>';
+
 }
+echo '<a href="user_passwd_change.php"><button class="btn btn-primary">戻る</button></a>';
 include('page_footer.php');
 ?>

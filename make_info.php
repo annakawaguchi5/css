@@ -8,7 +8,23 @@
 		<div class="panel-body">
 			<label>項目を埋め、「送信」ボタンを押してください。<br> </label>
 			<?php
-				//年度一覧チェックボックスで
+			//学生のいる年度を検索
+			$sql="SELECT year FROM tb_user WHERE urole=1 GROUP BY year";
+			$rs = mysql_query($sql, $conn);
+			if (!$rs) die ('エラー: ' . mysql_error());
+			$row = mysql_fetch_array($rs) ;
+echo '<div class="col-sm-offset-1">';
+			echo '<div class="form-group">';
+
+					while($row){
+					echo '<div class="col-xs-10">';
+					echo '<label class="checkbox" ><input type="checkbox" name="year[]" value="'.$row['year'].'">'.$row['year'].'年度</label>';
+					echo '</div>';
+					$row = mysql_fetch_array($rs) ;
+					}
+echo '</div>';
+			echo '</div>';
+
 			?>
 			<div class="form-group">
 				<label for="title" class="control-label col-xs-2">タイトル:</label>
@@ -25,25 +41,25 @@
 			<div class="col-sm-offset-1">
 				<div class="form-group">
 				<?php
-					$roles = array(
+				$roles = array(
 				"1" => "学生",
 				"2" => "教員(権限なし)",
 				"3" => "教員(権限あり)",
 				"9" => "管理者");
 
-					foreach($roles as $urole => $rolename){
-						if($urole==9){
-							echo '<label class="checkbox-inline">
+				foreach($roles as $urole => $rolename){
+					if($urole==9){
+						echo '<label class="checkbox-inline">
 							<input type="hidden" name="urole[]" value="'.$urole.'">
 							<input type="checkbox" disabled checked>'.$rolename.'</label>';
-						}else{
-					echo '<label class="checkbox-inline"><input type="checkbox" name="urole[]" value="'.$urole.'">'.$rolename.'</label>';
+					}else{
+						echo '<label class="checkbox-inline"><input type="checkbox" name="urole[]" value="'.$urole.'">'.$rolename.'</label>';
 					}
-					}
-					//iyearは後に指定
-					echo '<INPUT type="hidden" name="year" value="'.$_SESSION['year'].'">';
+				}
+				//iyearは後に指定
+				//echo '<INPUT type="hidden" name="year" value="'.$_SESSION['year'].'">';
 
-				 ?>
+				?>
 				</div>
 
 				<input type="submit" value="送信"><input type="reset" value="リセット">

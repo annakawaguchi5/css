@@ -5,20 +5,28 @@ $now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 $now = $now->format('Y/m/d H時i分s秒');
 $year = date('Y');
 
+
 echo "<h1>希望状況</h1>";
 echo "<p ><strong style='color:red;'>".$now."</strong>
 <strong> 現在</strong></p>";
 
+		//最新年を検索
+		$sql = "SELECT MAX(year) FROM tb_limit";
+		$rs = mysql_query($sql, $conn);
+		if (!$rs) die ('エラー: ' . mysql_error());
+		$row = mysql_fetch_array($rs) ;
+		$dispyear = $row['MAX(year)'];
 
+		echo '<h3>'.$dispyear.'年度</h3>';
 $sql = "SELECT cname, COUNT( * ) AS 人数
 FROM tb_entry
 NATURAL JOIN tb_course
-WHERE year=".$year."
+WHERE year=".$dispyear."
 GROUP BY tb_course.cid
 UNION
 SELECT cname, 0
 FROM tb_course
-WHERE year=".$year." and cid NOT
+WHERE year=".$dispyear." and cid NOT
 IN (
 SELECT cid
 FROM tb_entry
@@ -40,7 +48,7 @@ while ($row) {
  $row = mysql_fetch_array($rs) ;
 }
 //未提出者数
-$sql = "select count(*) from tb_user where urole='1' and year=".$year." and uid not in(select uid from tb_entry)";
+$sql = "select count(*) from tb_user where urole='1' and year=".$dispyear." and uid not in(select uid from tb_entry)";
 $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs);

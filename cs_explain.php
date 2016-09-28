@@ -3,7 +3,7 @@ include('page_header.php');
 require_once ('db_inc.php');  // データベース接続
 
 ?>
-
+<!-- phpでDBから要件の値を取得する -->
 <div class="container">
 	<div class="col-md-6">
 		<strong><h1>総合コース要件</h1></strong>
@@ -34,7 +34,7 @@ while ($row){
 	$myclass=$class[$cid];
 	echo '<div class="col-md-6">';
 	echo '<h3 class="bg-'.$myclass.'"
-	style="text-align: middle; width:500px; height:150px; border-radius: 30px;">
+	style="text-align: middle; width:450px; height:150px; border-radius: 30px;">
 	<strong>'.$row['cname'].'</strong><br>'. $row['detail'].'</h3>';
 	$row = mysql_fetch_array($rs) ;
 	echo'</div>';
