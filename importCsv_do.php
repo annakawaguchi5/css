@@ -1,6 +1,6 @@
 <form id='csv' class="form-horizontal" action="importCsv_do.php">
     <div class="form-group">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <input id="fake_input_file" onclick="$('#file_input').click();"
                 readonly="readonly" type="text" value="" class="form-control input-sm"
                 maxlength="12" >
@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-2 col-md-push-8">
+        <div class="col-md-2">
             <input type="button" class="btn btn-primary btn-sm btn-block import_csv"
                 value="取 込" id="import_csv">
         </div>

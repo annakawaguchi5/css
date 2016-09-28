@@ -1,46 +1,51 @@
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <style>
-      body, select { font-size:12px; }
-      form { margin:5px; }
-      p { color:red; margin:5px; }
-      b { color:blue; }
-      </style>
-      <script src="http://code.jquery.com/jquery-latest.js"></script>
-    </head>
-    <body>
-      <p><b>Results:</b> <span id="results"></span></p>
-      <form>
-        <select name="single">
-          <option>Single</option>
-          <option>Single2</option>
-        </select>
-        <select name="multiple" multiple="multiple">
-          <option selected="selected">Multiple</option>
-          <option>Multiple2</option>
-          <option selected="selected">Multiple3</option>
-        </select><br/>
-        <input type="checkbox" name="check" value="check1" id="ch1"/>
-        <label for="ch1">check1</label>
-        <input type="checkbox" name="check" value="check2" checked="checked" id="ch2"/>
-        <label for="ch2">check2</label>
-        <input type="radio" name="radio" value="radio1" checked="checked" id="r1"/>
-        <label for="r1">radio1</label>
-        <input type="radio" name="radio" value="radio2" id="r2"/>
-        <label for="r2">radio2</label>
-      </form>
-    <script>
-      function showValues() {
-        var fields = $(":input").serializeArray();
-        $("#results").empty();
-        jQuery.each(fields, function(i, field){
-          $("#results").append(field.value + " ");
-        });
-      }
-      $(":checkbox, :radio").click(showValues);
-      $("select").change(showValues);
-      showValues();
-    </script>
-    </body>
-    </html>
+<?php
+include('page_header.php');  //画面出力開始
+require_once('db_inc.php');  //データベース接続
+?>
+<!-- Bootstrap stylesheet -->
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+<!-- ClockPicker Stylesheet -->
+<link rel="stylesheet" type="text/css" href="dist/bootstrap-clockpicker.min.css">
+
+<!-- Input group, just add class 'clockpicker', and optional data-*
+<div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+    <input type="text" class="form-control" value="13:14">
+    <span class="input-group-addon">
+        <span class="glyphicon glyphicon-time"></span>
+    </span>
+</div>-->
+
+<!-- Or just a input -->
+<input id="demo-input" />
+
+<!-- jQuery and Bootstrap scripts -->
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
+<!-- ClockPicker script -->
+<script type="text/javascript" src="dist/bootstrap-clockpicker.min.js"></script>
+
+<script type="text/javascript">
+$('.clockpicker').clockpicker()
+	.find('input').change(function(){
+		// TODO: time changed
+		console.log(this.value);
+	});
+$('#demo-input').clockpicker({
+	autoclose: true
+});
+
+if (something) {
+	// Manual operations (after clockpicker is initialized).
+	$('#demo-input').clockpicker('show') // Or hide, remove ...
+			.clockpicker('toggleView', 'minutes');
+}
+</script>
+
+
+
+
+<?php
+include('page_footer.php');
+?>

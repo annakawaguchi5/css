@@ -28,7 +28,12 @@ session_start();
     <!-- jQuery-UI-datepicker -->
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/cupertino/jquery-ui.css" >
+	    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datetimepicker-ja.min.js"></script>
+	    <!-- datetimepicker -->
 
+	    <script src="./clockpicker-gh-pages/gulpfile.js"></script>
+
+</body>
 <?php
 include('stylesheet.css');	//CSSを読み込む
 include('css.js');	//JavaScriptを読み込む

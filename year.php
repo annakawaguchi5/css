@@ -9,7 +9,6 @@ require_once('db_inc.php');  //データベース接続
 		<!-- 年度の新規作成 -->
 
 	<a href="new_year.php"><button class="btn btn-danger btn-block btn-lg" id="new">新規作成</button></a>
-
 		<br>
 
 

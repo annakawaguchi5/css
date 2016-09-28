@@ -7,34 +7,44 @@ require_once('db_inc.php');  //データベース接続
 <!-- コース名、要件 -->
 
 
-<div id="dialog-form" title="新規作成">
-	<form>
-		<table id="form1" class="sample">
-			<tr>
-				<td class="header">年度</td>
-				<td><input type="text" id="year" name="year" value="" size="2"
-					maxlength="2">年</td>
-			</tr>
-			<tr>
-				<td class="header">調査開始時刻</td>
-				<td><input type="text" class="hoge" id="stime" name="stime" value=""
-					size="20" maxlength="50" /></td>
-			</tr>
-			<tr>
-				<td class="header">調査終了時刻</td>
-				<td><input type="text" class="hoge" id="ltime" name="ltime" value=""
-					size="20" maxlength="50"></td>
-			</tr>
-			<tr>
-				<td class="header">学生アカウント追加<br>※CSVファイルのみ</td>
-				<!-- ファイル選択 include -->
-				<td><?php include('importCsv_do.php');?> <br> <input type="checkbox"
-					id="noupload" name="noupload" value="reset">今回は追加しない。</td>
-			</tr>
+<div class="container">
+<form class="form-horizontal">
+	<table id="form1" class="table table-hover">
+		<tr>
+			<td class="header info">年度</td>
 
-		</table>
-	</form>
+			<?php
+			// 今日の日付を取得
+$now = new DateTime();
+$now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
+$now = $now->format('Y/m/d H時i分s秒');
+$year = date('Y');
+
+echo '<td><input type="text" id="year" name="year" value="'.$year.'" size="20"
+				maxlength="20">年度</td>';
+			?>
+		</tr>
+		<tr>
+			<td class="header info">調査開始時刻</td>
+			<td><input type="text" class="hoge" id="stime" name="stime" value=""
+				size="20" maxlength="50" /></td>
+		</tr>
+		<tr>
+			<td class="header info">調査終了時刻</td>
+			<td><input type="text" class="hoge" id="ltime" name="ltime" value=""
+				size="20" maxlength="50"></td>
+		</tr>
+		<tr>
+			<td class="header info">学生アカウント追加<br>※CSVファイルのみ</td>
+			<!-- ファイル選択 include -->
+			<td><?php include('importCsv_do.php');?> <br> <input type="checkbox"
+				id="noupload" name="noupload" value="reset">今回は追加しない。</td>
+		</tr>
+
+	</table>
+</form>
 </div>
+
 
 <!-- #dialog-form-check  -->
 <div id="dialog-form-check" title="フォーム確認" style="display: none;">

@@ -7,6 +7,9 @@
 		</div>
 		<div class="panel-body">
 			<label>項目を埋め、「送信」ボタンを押してください。<br> </label>
+			<?php
+				//年度一覧チェックボックスで
+			?>
 			<div class="form-group">
 				<label for="title" class="control-label col-xs-2">タイトル:</label>
 				<div class="col-xs-10">
