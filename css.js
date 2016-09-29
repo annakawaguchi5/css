@@ -142,7 +142,7 @@ $(function(){
 		changeMonth: true,
 		showMonthAfterYear: true,
 		yearRange:'<?= date("Y") ?>:<?= date("Y")+1 ?>',
-		dateFormat: 'yy-mm-dd(D)', //年-月-日(曜日)
+		dateFormat: 'yy-mm-dd', //年-月-日
 		onSelect:function(date){
 			$.get("hoge.php",
 					{Id: $(this).attr("id"),
