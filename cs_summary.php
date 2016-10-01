@@ -10,7 +10,7 @@ echo "<h1>希望状況</h1>";
 echo "<p ><strong style='color:red;'>".$now."</strong>
 <strong> 現在</strong></p>";
 
-		//最新年を検索
+		//最新年を検索 MAX(year)
 		$sql = "SELECT MAX(year) FROM tb_limit";
 		$rs = mysql_query($sql, $conn);
 		if (!$rs) die ('エラー: ' . mysql_error());

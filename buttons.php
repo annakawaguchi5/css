@@ -51,7 +51,8 @@ $(function(){
     });
 
     //送信ボタンが押されたときに呼び出される
-    $('form').submit(function(e){
+    /*
+    $('page-back').submit(function(e){
         e.preventDefault();
         var noneStr = '未入力';
 
@@ -80,6 +81,7 @@ $(function(){
         //ダイアログを開く
         $('#dialog').dialog('open');
     });
+    */
 
 });
 </script>
