@@ -1,10 +1,11 @@
 <?php include('page_header.php');
 include_once('db_inc.php');
 
-
+	$year=$_POST['year'];
+	$urole=$_POST['urole'];
 	$goiken=$_POST['body'];
 
-	$sql ="insert into goiken_info(note,timestamp) value('$goiken',now())";
+	$sql ="insert into goiken_info(year, urole, note, timestamp) values ('$year','$urole','$goiken',now())";
 
 	$res = mysql_query( $sql, $conn );
 

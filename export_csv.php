@@ -5,18 +5,29 @@ include_once('db_inc.php');
 //submitボタンが押され、hiddenで持たせた値がPOSTされたら処理が始まります。
 //if(isset($_POST['csv01'])){
 	// ファイル名
+	$year=$_GET['year'];
 	$file_path = 'export.csv';
-
+//'.$year.'
 	// CSVに出力するタイトル行
 	$export_csv_title = array( "学籍番号", "氏名", "選択コース", );
 
 	// CSVに出力する内容
-	$sql ="SELECT uid, uname, cname
+$sql ="SELECT uid, uname, cname
 FROM tb_user
 NATURAL JOIN tb_decide
 NATURAL JOIN tb_course
-WHERE urole =  '1'
-AND tb_user.uid = tb_decide.uid ";
+WHERE urole ='1'
+AND YEAR ='$year'
+AND tb_user.uid = tb_decide.uid
+UNION
+SELECT uid, uname, '未決定'
+FROM tb_user
+WHERE urole='1'
+AND year='$year'
+AND uid NOT IN(
+SELECT uid
+FROM tb_decide
+)";
 	$res = mysql_query( $sql, $conn );
 
 	// if( touch($file_path) ){
@@ -49,7 +60,7 @@ AND tb_user.uid = tb_decide.uid ";
 	header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 	header("Cache-Control: private",false); // required for certain browsers
 	header("Content-Type: application/force-download");
-	header("Content-Disposition: attachment; filename=\"".basename($file_path)."\";" );
+	header("Content-Disposition: attachment; filename=\"".$year.basename($file_path)."\";" );
 	header("Content-Transfer-Encoding: binary");
 	readfile("$file_path");
 	fclose($file);
@@ -60,9 +71,9 @@ AND tb_user.uid = tb_decide.uid ";
 	}else{
 	fclose($file);
 	echo "ダウンロードしました";
-
+*/
 	//unlink("$file_path");
-	}*/
+	//}*/
 //}else{
 //	include "export_csv.html";
 //}

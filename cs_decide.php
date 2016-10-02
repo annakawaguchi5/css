@@ -26,9 +26,16 @@ echo '<select name="list6_4_0">';
 		$row = mysql_fetch_array($rs) ;
 	}
 	?>
-	<option value="c">未提出者</option>
+	<option value="noentry">未提出者</option>
 </select>
 <?php
+echo '<h2>'.$cname.'</h2>';
+
+$sql = "";
+$rs = mysql_query($sql, $conn);
+	if (!$rs) die ('エラー: ' . mysql_error());
+	$row = mysql_fetch_array($rs2) ;
+
 /*
 while($row){
 	echo "<h2>".$row['cname']."希望</h2>";

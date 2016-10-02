@@ -48,7 +48,7 @@ require_once('db_inc.php');  //データベース接続
 		$dispyear = $row['MAX(year)'];
 	}
 	echo '<h1>'.$dispyear.'年度</h1>';
-
+	include('export_main.php');
 	//最新年のデータを表示
 	$sql = "SELECT * FROM tb_user NATURAL JOIN tb_gp WHERE year=".$dispyear;
 	$rs = mysql_query($sql, $conn);
