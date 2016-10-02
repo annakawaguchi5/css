@@ -14,7 +14,6 @@ if(isset($_POST['year'])){	//新規作成
 	$sql = "INSERT INTO tb_limit VALUES (".$year.",'".$stime." 00:00:00','".$ltime." 00:00:00',now())";
 	$rs = mysql_query($sql, $conn);
 	if (!$rs) die ('エラー: ' . mysql_error());
-	echo $sql;
 
 	//tb_courseにデータを追加
 	/**
@@ -25,6 +24,14 @@ if(isset($_POST['year'])){	//新規作成
 	$rs = mysql_query($sql, $conn);
 	if (!$rs) die ('エラー: ' . mysql_error());
 	*/
+
+	//開設メッセージの通知登録
+	$title=$year."年度のコース希望調査システムを開設しました。";
+	$message=$title."<br>ご自身のデータが正しいことをご確認下さい。<br>もし不具合やご不明な点等ありましたら、画面右上にあります「お問合せ」よりメッセージをお送りください。";
+	$sql = "INSERT INTO tb_info VALUES ('$title', '$message', 1239, '$year', now())";
+	$rs = mysql_query($sql, $conn);
+	if (!$rs) die ('エラー: ' . mysql_error());
+
 	//例)0年度
 	$state=0;//前期0,年間1
 
@@ -240,10 +247,10 @@ if(isset($_POST['year'])){	//新規作成
 				echo $err_msg;
 			}
 		}
-	}else {
+	}/*else {
 		$err_msg = "ファイルが選択されていません。";
 		echo $err_msg;
-	}
+	}*/
 }
 
 include('page_footer.php');
