@@ -151,5 +151,30 @@ $(function(){
 	});
 });
 
+$(function () {
+
+	  $('.date').datetimepicker({
+			locale: 'ja',
+		    sideBySide: true,
+	    format : 'YYYY-MM-DD HH:mm:ss'
+	  });
+/*
+$('#stime').datetimepicker({
+	locale: 'ja',
+    sideBySide: true
+});
+$('#ltime').datetimepicker({
+    useCurrent: false //Important! See issue #1075
+	locale: 'ja',
+    sideBySide: true
+});
+/*
+$("#stime").on("dp.change", function (e) {
+    $('#ltime').data("DateTimePicker").minDate(e.date);
+});
+$("#ltime").on("dp.change", function (e) {
+    $('#stime').data("DateTimePicker").maxDate(e.date);
+});*/
+});
 
 </script>

@@ -1,24 +1,15 @@
 <h1>お知らせ</h1>
 
   <script type="text/javascript">
-  $( function() {
-	  $("#info-check").button().on("click", function(){
-	  $("#dialog").dialog("open");
-	  }
-
-    $( "#dialog" ).dialog({
-    	autoOpen: false,
-      modal: true,
-      buttons: {
-        "OK": function() {
-          $( "#dialog" ).dialog( "close" );
-        }
-      }
-    });
+//すぐにダイアログが開かないようにautoOpen:falseを指定
+  $( "#detail" ).dialog({ autoOpen: false });
+  //ボタンがクリックされたらダイアログを開く
+  $( "#check" ).click(function() {
+      $( "#detail" ).dialog( "open" );
   });
   </script>
 
-<div id="dialog" title="コメントの投稿ありがとうございます" style="display: none;">
+<div id="detail" title="コメントの投稿ありがとうございます" style="display: none;">
 <p>コメントを受け付けました。<br />コメントは管理人の承認後、表示されます。</p>
 </div>
 
@@ -44,7 +35,7 @@ if(isset($_SESSION['urole'])){
 		while($row){
 			echo '<div id="detail" title="more-info"><a>';
 			echo $row['time']." ".$row['title'].'<br>';
-			echo '</a>';
+			echo '</a></div>';
 			$row = mysql_fetch_array($rs);
 		}
 	}else{
