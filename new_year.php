@@ -36,17 +36,19 @@ require_once('db_inc.php');  //データベース接続
 			</tr>
 			<tr>
 			<!-- 欄の増設可に -->
-
+<!--
 				<td class="header info">コース名・登録要件</td>
+
 				<td></td>
 			</tr>
+			-->
 			<tr>
 				<td class="header info">学生アカウント追加<br>※CSVファイルのみ</td>
 				<!-- ファイル選択 include -->
 				<td><input type="file" name="csvfile" size="30" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="登録" />
+		<input type="submit" value="次へ進む" />
 	</form>
 </div>
 

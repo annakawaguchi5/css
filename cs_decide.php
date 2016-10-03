@@ -31,10 +31,18 @@ echo '<select name="list6_4_0">';
 <?php
 echo '<h2>'.$cname.'</h2>';
 
-$sql = "";
+$sql = "SELECT uid, uname, allgp, allgpa
+FROM tb_user
+NATURAL JOIN tb_gp
+WHERE year='$year'
+AND uid NOT
+IN (
+SELECT uid
+FROM tb_entry
+)";
 $rs = mysql_query($sql, $conn);
 	if (!$rs) die ('エラー: ' . mysql_error());
-	$row = mysql_fetch_array($rs2) ;
+	$row = mysql_fetch_array($rs) ;
 
 /*
 while($row){
