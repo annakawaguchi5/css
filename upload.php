@@ -1,32 +1,41 @@
 <?php
 include('page_header.php');
 include_once('db_inc.php');
+
+/**
+ * 成功時のメッセージ表示
+ * csvミスのとき上のSQLが動く←再度入れられない
+ */
+
 if(isset($_POST['year'])){	//新規作成
 	$year = $_POST['year'];
 	$stime = $_POST['stime'];
 	$ltime = $_POST['ltime'];
+
+	//年度がないか確認
+	$sql = "SELECT * FROM tb_limit WHERE year=".$year;
+
+	$rs = mysql_query($sql, $conn);
+	if (!$rs) die ('エラー: ' . mysql_error());
+	$row = mysql_fetch_array($rs);
+
+	if(!$row){	//同じ年度が存在しないとき
 	//tb_limitにデータを追加
-	/**
-	 * timepicker追加次第、変更
-	 **/
 	$sql = "INSERT INTO tb_limit VALUES ('$year', '$stime','$ltime',now())";
 	$rs = mysql_query($sql, $conn);
 	if (!$rs) die ('エラー: ' . mysql_error());
-	//tb_courseにデータを追加
-	/**
-	 * 欄追加後、修正
-	 */
-	/*
-	$sql = "";
-	$rs = mysql_query($sql, $conn);
-	if (!$rs) die ('エラー: ' . mysql_error());
-	*/
+
 	//開設メッセージの通知登録
 	$title=$year."年度のコース希望調査システムを開設しました。";
 	$message=$title."<br>ご自身のデータが正しいことをご確認下さい。<br>もし不具合やご不明な点等ありましたら、画面右上にあります「お問合せ」よりメッセージをお送りください。";
 	$sql = "INSERT INTO tb_info VALUES ('$title', '$message', 1239, '$year', now())";
 	$rs = mysql_query($sql, $conn);
 	if (!$rs) die ('エラー: ' . mysql_error());
+	}else{
+		echo '指定された年度は存在します。<br>';
+		echo '再度、新規作成する際は<a href="new_year.php">こちら</a>へ<br>';
+		echo '年度一覧へは<a href="year.php">こちら</a>へ';
+	}
 	//例)0年度
 	$state=0;//前期0,年間1
 	/////CSVファイルインポート/////
@@ -131,7 +140,7 @@ if(isset($_POST['year'])){	//新規作成
 					//前期　作成AND更新
 					if($state==0){
 						if(!$row){//新規作成
-							$sql = "INSERT INTO tb_gp( year,uid, halfgp, halfgpa,allgp,allgpa) VALUES ('$year','$uid','$gp','$gpa',0,0)";
+							$sql = "INSERT INTO tb_gp( year,uid, halfgp, halfgpa,allgp,allgpa) VALUES ('$year','$uid','$gp','$gpa',NULL,NULL)";
 							$rs = mysql_query($sql, $conn);
 							echo $sql."<br>";
 							$sql="INSERT INTO tb_user( year, uid, uname, upass, urole) VALUES ('$year','$uid','$uname','abcd',1)";

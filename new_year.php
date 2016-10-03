@@ -4,11 +4,13 @@ require_once('db_inc.php');  //データベース接続
 ?>
 
 <!-- 新規登録画面 -->
+<!-- 日付空白のとき警告 -->
 <!-- コース名、要件 -->
 
 <div class="container" id="newyear" title="新規作成">
 	<form class="form-horizontal" action="upload.php" method="post"
-		enctype="multipart/form-data">
+		onSubmit="return check(this)" enctype="multipart/form-data"
+		name="newyear">
 		<table id="form1" class="table table-hover">
 			<tr>
 				<td class="header info">年度</td>
@@ -27,40 +29,25 @@ require_once('db_inc.php');  //データベース接続
 			<tr>
 				<td class="header info">調査開始時刻</td>
 				<td>
-					<div class="input-group" id="stime">
-						<input type="text" class="form-control date" id="stime"
-							name="stime" /> <span class="input-group-addon"><span
-							class="glyphicon glyphicon-calendar"></span> </span>
+					<div class='input-group date' id='stime'>
+						<span class="input-group-addon"> <span
+							class="glyphicon glyphicon-calendar"></span> </span> <input
+							type='text' class="form-control" name="stime" />
+
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<td class="header info">調査終了時刻</td>
 				<td>
-					<div class="input-group" id="ltime">
-						<input type="text" class="form-control date" id="ltime"
-							name="ltime" /> <span class="input-group-addon"><span
-							class="glyphicon glyphicon-calendar"></span> </span>
+					<div class='input-group date' id='ltime'>
+						<span class="input-group-addon"> <span
+							class="glyphicon glyphicon-calendar"></span> </span> <input
+							type='text' class="form-control" name="ltime" />
 					</div>
 				</td>
 			</tr>
-			<!--
-			<tr>
-				<td class="header info">調査開始時刻</td>
-				<td><input type="text" class="hoge" id="stime" name="stime" value=""
-					size="20" maxlength="50" /></td>
-			</tr>
-			<tr>
-				<td class="header info">調査終了時刻</td>
-				<td><input type="text" class="hoge" id="ltime" name="ltime" value=""
-					size="20" maxlength="50"></td>
-			</tr>-->
-			<tr>
-				<!-- 欄の増設可に -->
 
-				<td class="header info">コース名・登録要件</td>
-				<td></td>
-			</tr>
 			<tr>
 				<td class="header info">学生アカウント追加<br>※CSVファイルのみ</td>
 				<!-- ファイル選択 include -->

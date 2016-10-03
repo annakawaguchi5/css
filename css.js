@@ -97,16 +97,16 @@ $(function() {
 	}
 });
 function showValues() {
-    var fields = $(":input").serializeArray();
-    $("#results").empty();
-    jQuery.each(fields, function(i, field){
-      $("#results").append(field.value + " ");
-    });
-  }
-  $(":checkbox, :radio").click(showValues);
-  $("#text").click(showValues);
-  $("select").change(showValues);
-  showValues();
+	var fields = $(":input").serializeArray();
+	$("#results").empty();
+	jQuery.each(fields, function(i, field){
+		$("#results").append(field.value + " ");
+	});
+}
+$(":checkbox, :radio").click(showValues);
+$("#text").click(showValues);
+$("select").change(showValues);
+showValues();
 
 //エラー表示
 function displayError(str) {
@@ -134,47 +134,48 @@ function displayMessage(str) {
 /**
  * 日付入力
  */
-$(function(){
-	//datepicker
-	$('.hoge').datepicker({
-		minDate: 0,
-		changeYear: true,
-		changeMonth: true,
-		showMonthAfterYear: true,
-		yearRange:'<?= date("Y") ?>:<?= date("Y")+1 ?>',
-		dateFormat: 'yy-mm-dd', //年-月-日
-		onSelect:function(date){
-			$.get("hoge.php",
-					{Id: $(this).attr("id"),
-				Date: $(this).val()});
-		}
+$(function () {
+	$('#stime').datetimepicker({
+		locale: 'ja',
+		sideBySide: true,
+		viewMode: 'years',
+		format : 'YYYY-MM-DD HH:mm:ss'
+	});
+	$('#ltime').datetimepicker({
+		locale: 'ja',
+		sideBySide: true,
+		viewMode: 'years',
+		format : 'YYYY-MM-DD HH:mm:ss',
+		useCurrent: false //Important! See issue #1075
+	});
+	$("#stime").on("dp.change", function (e) {
+		$('#ltime').data("DateTimePicker").minDate(e.date);
+	});
+	$("#ltime").on("dp.change", function (e) {
+		$('#stime').data("DateTimePicker").maxDate(e.date);
 	});
 });
 
-$(function () {
+<!--
+function check(time){
+	if(time.elements['stime'].value!="" || time.elements['ltime'].value!=""){
+		var stime = time.elements['stime'].value;
+		var ltime = time.elements['ltime'].value;
+		if(stime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && ltime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/)){
+			return true;
+		}else if(stime==""){
+			alert('開始時刻を入力して下さい。');
+			return false;
+		}else if(ltime==""){
+			alert('終了時刻を入力して下さい。');
+			return false;
+		}
 
-	  $('.date').datetimepicker({
-			locale: 'ja',
-		    sideBySide: true,
-	    format : 'YYYY-MM-DD HH:mm:ss'
-	  });
-/*
-$('#stime').datetimepicker({
-	locale: 'ja',
-    sideBySide: true
-});
-$('#ltime').datetimepicker({
-    useCurrent: false //Important! See issue #1075
-	locale: 'ja',
-    sideBySide: true
-});
-/*
-$("#stime").on("dp.change", function (e) {
-    $('#ltime').data("DateTimePicker").minDate(e.date);
-});
-$("#ltime").on("dp.change", function (e) {
-    $('#stime').data("DateTimePicker").maxDate(e.date);
-});*/
-});
+	}else{
+		alert('項目を正確に埋めてください。');
+		return false;
+	}
+}
 
+//-->
 </script>

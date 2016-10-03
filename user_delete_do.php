@@ -2,10 +2,10 @@
 include('page_header.php');
 include ('db_inc.php');
 
-if (isset($_GET['id'])){
-  $uid = $_GET['id'];
+if (isset($_POST['delete'])){
+  $uid = $_POST['delete'];
   foreach($uid as $u){
-  $sql = "DELETE FROM tb_user WHERE uid='{$u}'";
+  $sql = "DELETE FROM tb_user NATURAL JOIN tb_gp NATURAL JOIN tb_entry NATURAL JOIN tb_decide WHERE uid='{$u}'";
   $id = "";
   $id=$id.$u.'<br>';
   $rs = mysql_query($sql, $conn);

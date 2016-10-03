@@ -14,7 +14,7 @@ require_once('db_inc.php');  //データベース接続
 
 		<!-- 年度一覧 -->
 		<?php
-		$sql = "select * from tb_course GROUP BY year ORDER BY year DESC";
+		$sql = "select * from tb_limit GROUP BY year ORDER BY year DESC";
 		$rs = mysql_query($sql, $conn);
 		if (!$rs) die ('エラー: ' . mysql_error());
 		$row = mysql_fetch_array($rs) ;

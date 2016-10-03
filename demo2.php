@@ -12,7 +12,7 @@
     </div>
     <div class='col-md-5'>
         <div class="form-group">
-            <div class='input-group date' id='datetimepicker7'>
+            <div class='input-group date' id='ltime'>
                 <input type='text' class="form-control" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
@@ -24,13 +24,13 @@
 <script type="text/javascript">
     $(function () {
         $('#stime').datetimepicker();
-        $('#datetimepicker7').datetimepicker({
+        $('#ltime').datetimepicker({
             useCurrent: false //Important! See issue #1075
         });
         $("#stime").on("dp.change", function (e) {
-            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+            $('#ltime').data("DateTimePicker").minDate(e.date);
         });
-        $("#datetimepicker7").on("dp.change", function (e) {
+        $("#ltime").on("dp.change", function (e) {
             $('#stime').data("DateTimePicker").maxDate(e.date);
         });
     });
