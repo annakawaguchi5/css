@@ -19,9 +19,9 @@ require_once('db_inc.php');  //データベース接続
 				$now = new DateTime();
 				$now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 				$now = $now->format('Y/m/d H時i分s秒');
-				$year = date('Y');
+				$y = date('Y');
 
-				echo '<td><input type="text" id="year" name="year" value="'.$year.'" size="20"
+				echo '<td><input type="text" id="year" name="year" value="'.$y.'" size="20"
 				maxlength="20">年度</td>';
 				?>
 			</tr>
@@ -51,7 +51,8 @@ require_once('db_inc.php');  //データベース接続
 				<td><?php include('coursechange.php');?></td>
 			</tr>
 		</table>
-		<input type="submit" value="次へ進む" />
+		<input type="hidden" name="act" value="insert">
+		<input type="submit" value="登録" />
 	</form>
 </div>
 
