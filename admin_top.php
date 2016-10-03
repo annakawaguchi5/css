@@ -15,7 +15,8 @@ $year = date('Y');
 	include('receive_info.php');
 	?>
 	</div>
-	<br>
+
+
 
 
 
