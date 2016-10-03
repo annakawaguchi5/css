@@ -1,65 +1,30 @@
 <?php
-include('page_header.php');
-
-
-
+//include('page_header.php');
 ?>
-<style>
-.button_wall { text-align : center ; }
-</style>
+
 <script>
-
-
-
 $(function () {
 	$('#list6').addInputArea({
 		  maximum : 2
 		});
 });
-
-
 </script>
-<script src="//cdn.jsdelivr.net/jquery.add-input-area/4.8.0/jquery.add-input-area.min.js"></script>
+<script
+	src="//cdn.jsdelivr.net/jquery.add-input-area/4.8.0/jquery.add-input-area.min.js"></script>
 
-<h2>コース名変更フォーム</h2>
-<p>コース名の変更、または詳細を変更する場合
-ここから記入してください。</p>
-<!--<FORM method="POST" action="coursechange_do.php">-->
 <div id="list6">
-            <div class="list6_var">
-              <table class="table table-bordered">
-              <thead>
-              	<tr>
-              	<th>項目</th>
-              	<th>内容</th>
-              	</tr>
-              </thead>
-                <tbody>
-                  <tr><td>コース名</td><td><input type="text" name="list6_0_0"></td></tr>
-                  <tr><td>単位数</td><td><input type="text" name="list6_1_0"></td></tr>
-                  <tr><td>GPA</td><td><input type="text" name="list6_2_0"></td></tr>
-                  <tr><td>コース説明</td><td><textarea name="list6_3_0"  cols="60" rows="10"></textarea></td></tr>
-                  <tr><td>要件</td><td>
-                    <input type="radio" name="list6_4_0" value="要件あり" >要件あり
-                    <input type="radio" name="list6_4_0" value="要件なし" >要件なし
-                  </td></tr>
+	<div class="list6_var">
+		コース名<input type="text" name="list6_0_0"> 単位数<input type="text"
+			name="list6_1_0"> GPA<input type="text" name="list6_2_0"><br>
+		コース説明<br><textarea name="list6_3_0" cols="100" rows="2"></textarea><br>
+		要件<input type="radio" name="list6_4_0" value="要件あり">要件あり <input
+			type="radio" name="list6_4_0" value="要件なし">要件なし<br>
+		<button type="button" class="list6_del" style="display: inline-block;">削除</button>
+		<input type="button" value="追加" class="list6_add">
 
-            </tbody></table>
-              <button type="button" class="list6_del" style="display: inline-block;">削除</button>
-            <input type="button" value="追加" class="list6_add">
-
-            </div>
-
-
-
+	</div>
 </div>
 
-<br>
-<br>
-
-<div class="button_wall">
-<input type="submit"  value="内容確認"  >
-</div>
 
 
 <!-- </FORM>-->
@@ -116,4 +81,4 @@ $(function () {
 </Form>
 -->
 <?php
-include('page_footer.php');
+//include('page_footer.php');

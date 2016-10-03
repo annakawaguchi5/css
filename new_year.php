@@ -4,14 +4,13 @@ require_once('db_inc.php');  //データベース接続
 ?>
 
 <!-- 新規登録画面 -->
-<!-- 日付空白のとき警告 -->
 <!-- コース名、要件 -->
 
 <div class="container" id="newyear" title="新規作成">
-	<form class="form-horizontal" action="upload.php" method="post"
-		onSubmit="return check(this)" enctype="multipart/form-data"
-		name="newyear">
-		<table id="form1" class="table table-hover">
+	<form class="form-horizontal" action="coursechange_do.php"
+		method="post" onSubmit="return check(this)"
+		enctype="multipart/form-data" name="newyear">
+		<table id="form1" class="table table-bordered">
 			<tr>
 				<td class="header info">年度</td>
 
@@ -47,38 +46,9 @@ require_once('db_inc.php');  //データベース接続
 					</div>
 				</td>
 			</tr>
-<<<<<<< HEAD
-
-=======
-			<!--
 			<tr>
-				<td class="header info">調査開始時刻</td>
-				<td><input type="text" class="hoge" id="stime" name="stime" value=""
-					size="20" maxlength="50" /></td>
-			</tr>
-			<tr>
-				<td class="header info">調査終了時刻</td>
-				<td><input type="text" class="hoge" id="ltime" name="ltime" value=""
-					size="20" maxlength="50"></td>
-			</tr>-->
-			<tr>
-<<<<<<< HEAD
-			<!-- 欄の増設可に -->
-<!--
-=======
-				<!-- 欄の増設可に -->
-
->>>>>>> 3eff64da258a6b60e25bc158f2d0025eb40f85ae
-				<td class="header info">コース名・登録要件</td>
-
-				<td></td>
-			</tr>
-			-->
->>>>>>> e6e1ddca72fa571635a97a7f8c5ef4422ff31439
-			<tr>
-				<td class="header info">学生アカウント追加<br>※CSVファイルのみ</td>
-				<!-- ファイル選択 include -->
-				<td><input type="file" name="csvfile" size="30" /></td>
+				<td class="header info">コース</td>
+				<td><?php include('coursechange.php');?></td>
 			</tr>
 		</table>
 		<input type="submit" value="次へ進む" />
@@ -86,7 +56,7 @@ require_once('db_inc.php');  //データベース接続
 </div>
 
 
-<!-- #dialog-form-check  -->
+<!-- #dialog-form-check -->
 <div id="dialog-form-check" title="フォーム確認" style="display: none;">
 	<p>
 		<b>Results:</b> <span id="results"></span>
@@ -107,13 +77,6 @@ require_once('db_inc.php');  //データベース接続
 				<!--  <td>調査終了時刻</td>
 				<td class="ltime"></td> -->
 				<td class="header ltime">調査終了時刻</td>
-			</tr>
-			<tr>
-				<td class="header">学生アカウント追加<br>※CSVファイルのみ</td>
-				<!-- ファイル選択 include -->
-
-				<td>upload file name.csv<br> <input type="checkbox" id="noupload"
-					name="noupload" value="reset">今回は追加しない。</td>
 			</tr>
 		</table>
 	</form>
