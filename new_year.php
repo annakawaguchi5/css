@@ -47,14 +47,41 @@ require_once('db_inc.php');  //データベース接続
 					</div>
 				</td>
 			</tr>
+<<<<<<< HEAD
 
+=======
+			<!--
+			<tr>
+				<td class="header info">調査開始時刻</td>
+				<td><input type="text" class="hoge" id="stime" name="stime" value=""
+					size="20" maxlength="50" /></td>
+			</tr>
+			<tr>
+				<td class="header info">調査終了時刻</td>
+				<td><input type="text" class="hoge" id="ltime" name="ltime" value=""
+					size="20" maxlength="50"></td>
+			</tr>-->
+			<tr>
+<<<<<<< HEAD
+			<!-- 欄の増設可に -->
+<!--
+=======
+				<!-- 欄の増設可に -->
+
+>>>>>>> 3eff64da258a6b60e25bc158f2d0025eb40f85ae
+				<td class="header info">コース名・登録要件</td>
+
+				<td></td>
+			</tr>
+			-->
+>>>>>>> e6e1ddca72fa571635a97a7f8c5ef4422ff31439
 			<tr>
 				<td class="header info">学生アカウント追加<br>※CSVファイルのみ</td>
 				<!-- ファイル選択 include -->
 				<td><input type="file" name="csvfile" size="30" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="登録" />
+		<input type="submit" value="次へ進む" />
 	</form>
 </div>
 

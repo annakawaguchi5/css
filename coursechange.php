@@ -24,7 +24,7 @@ $(function () {
 <h2>コース名変更フォーム</h2>
 <p>コース名の変更、または詳細を変更する場合
 ここから記入してください。</p>
-<FORM method="POST" action="coursechange_do.php">
+<!--<FORM method="POST" action="coursechange_do.php">-->
 <div id="list6">
             <div class="list6_var">
               <table class="table table-bordered">
@@ -62,7 +62,7 @@ $(function () {
 </div>
 
 
-</FORM>
+<!-- </FORM>-->
 
 
 
