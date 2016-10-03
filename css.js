@@ -158,11 +158,15 @@ $(function () {
 
 <!--
 function check(time){
-	if(time.elements['stime'].value!="" || time.elements['ltime'].value!=""){
+	if(time.elements['year'].value!="" || time.elements['stime'].value!="" || time.elements['ltime'].value!=""){
+		var year = time.elements['year'].value;
 		var stime = time.elements['stime'].value;
 		var ltime = time.elements['ltime'].value;
-		if(stime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && ltime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/)){
+		if(year.match(/^\d{4}$/) && stime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && ltime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/)){
 			return true;
+		}else if(year==""){
+			alert('年度を入力して下さい。');
+			return false;
 		}else if(stime==""){
 			alert('開始時刻を入力して下さい。');
 			return false;
@@ -170,7 +174,6 @@ function check(time){
 			alert('終了時刻を入力して下さい。');
 			return false;
 		}
-
 	}else{
 		alert('項目を正確に埋めてください。');
 		return false;

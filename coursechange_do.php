@@ -21,80 +21,149 @@ if(isset($_POST['list6_0_1'])){
 ?>
 
 <style>
-.button_wall { text-align : center ; }
+.button_wall {
+	text-align: center;
+}
 </style>
 
-<h3>内容確認</h3>
-<FORM method="POST" action="coursechange_decide.php">
-<?php if(isset($_POST['list6_0_0'])){ ?>
-<table class="table table-bordered" width="100%">
-<thead>
-              	<tr>
-              	<tr class="active">
-              	<th width="30%">項目</th>
-              	<th width="70%">内容</th>
-              	</tr>
-</thead>
- <tbody>
-<tr><td>コース名 </td><td><?php echo $course; ?></td></tr>
-<input type="hidden" name="コース名" value="<?php echo $course; ?>">
+<div class="container">
+	<h1>内容確認</h1>
+	<h3>基本情報</h3>
+	<FORM method="POST" action="upload.php">
+	<?php
+	//new_year.phpからのデータを取得
+	$year=$_POST['year'];
+	$stime=$_POST['stime'];
+	$ltime=$_POST['ltime'];
 
-<tr><td>単位数</td><td><?php echo $gp; ?></td></tr>
-<input type="hidden" name="単位数" value="<?php echo $gp; ?>">
+	echo '<input type="hidden" name="year" value="'.$year.'">';
+	echo '<input type="hidden" name="stime" value="'.$stime.'">';
+	echo '<input type="hidden" name="ltime" value="'.$ltime.'">';
+	?>
+		<table class="table table-bordered" width="100%">
+			<thead>
+				<tr class="active info">
+					<th width="30%">項目</th>
+					<th width="70%">内容</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>年度</td>
+					<td><?php echo $year; ?></td>
+				</tr>
+				<input type="hidden" name="year" value="<?php echo $year; ?>">
+				<tr>
+					<td>調査開始時刻</td>
+					<td><?php echo $stime; ?></td>
+				</tr>
+				<input type="hidden" name="stime" value="<?php echo $stime; ?>">
+				<tr>
+					<td>調査終了時刻</td>
+					<td><?php echo $ltime; ?></td>
+				</tr>
+				<input type="hidden" name="ltime" value="<?php echo $ltime; ?>">
+			</tbody>
+		</table>
 
-<tr><td>GPA</td><td><?php echo $gpa; ?></td></tr>
-<input type="hidden" name="GPA" value="<?php echo $gpa; ?>">
 
-<tr><td>コース説明</td><td><?php echo $detail; ?></td></tr>
-<input type="hidden" name="コース説明" value="<?php echo $detail; ?>">
+		<h3>コース情報</h3>
+		<?php
+		if(isset($_POST['list6_0_0'])){ ?>
+		<table class="table table-bordered" width="100%">
+			<thead>
+				<tr class="active success">
+					<th width="30%">項目</th>
+					<th width="70%">内容</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>コース名</td>
+					<td><?php echo $course; ?></td>
+				</tr>
+				<input type="hidden" name="コース名" value="<?php echo $course; ?>">
 
-<tr><td>要件</td><td><?php echo $youken ;?></td></tr>
-<input type="hidden" name="要件" value="<?php echo $youken; ?>">
+				<tr>
+					<td>単位数</td>
+					<td><?php echo $gp; ?></td>
+				</tr>
+				<input type="hidden" name="単位数" value="<?php echo $gp; ?>">
 
-</tbody>
-</table>
-<table>
-</table>
-<?php }?>
-<?php if(isset($_POST['list6_0_1'])){?>
-<table class="table table-bordered" width="100%">
-<thead>
-              	<tr>
-              	<tr class="active">
-              	<th width="30%">項目</th>
-              	<th width="70%">内容</th>
-              	</tr>
-</thead>
- <tbody>
-<tr><td>コース名 </td><td><?php echo $course1; ?></td></tr>
-<input type="hidden" name="コース名1" value="<?php echo $course1; ?>">
+				<tr>
+					<td>GPA</td>
+					<td><?php echo $gpa; ?></td>
+				</tr>
+				<input type="hidden" name="GPA" value="<?php echo $gpa; ?>">
 
-<tr><td>単位数</td><td><?php echo $gp1; ?></td></tr>
-<input type="hidden" name="単位数1" value="<?php echo $gp1; ?>">
+				<tr>
+					<td>コース説明</td>
+					<td><?php echo $detail; ?></td>
+				</tr>
+				<input type="hidden" name="コース説明" value="<?php echo $detail; ?>">
 
-<tr><td>GPA</td><td><?php echo $gpa1; ?></td></tr>
-<input type="hidden" name="GPA1" value="<?php echo $gpa1; ?>">
+				<tr>
+					<td>要件</td>
+					<td><?php echo $youken ;?></td>
+				</tr>
+				<input type="hidden" name="要件" value="<?php echo $youken; ?>">
 
-<tr><td>コース説明</td><td><?php echo $detail1; ?></td></tr>
-<input type="hidden" name="コース説明1" value="<?php echo $detail1; ?>">
+			</tbody>
+		</table>
 
-<tr><td>要件</td><td><?php echo $youken1; ?></td></tr>
-<input type="hidden" name="要件1" value="<?php echo $youken1; ?>">
+		<?php }?>
+		<?php if(isset($_POST['list6_0_1'])){?>
+		<table class="table table-bordered" width="100%">
+			<thead>
+				<tr class="active success">
+					<th width="30%">項目</th>
+					<th width="70%">内容</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>コース名</td>
+					<td><?php echo $course1; ?></td>
+				</tr>
+				<input type="hidden" name="コース名1" value="<?php echo $course1; ?>">
 
-</tbody>
-</table>
-<table>
-</table>
-<?php }?>
-<p>
-以上が記入された内容となります。</p>
-<p>全て記入されており、正しければ決定を押してください。</p>
-<div class="button_wall">
-<input type="submit"  value="決定する" >
+				<tr>
+					<td>単位数</td>
+					<td><?php echo $gp1; ?></td>
+				</tr>
+				<input type="hidden" name="単位数1" value="<?php echo $gp1; ?>">
+
+				<tr>
+					<td>GPA</td>
+					<td><?php echo $gpa1; ?></td>
+				</tr>
+				<input type="hidden" name="GPA1" value="<?php echo $gpa1; ?>">
+
+				<tr>
+					<td>コース説明</td>
+					<td><?php echo $detail1; ?></td>
+				</tr>
+				<input type="hidden" name="コース説明1" value="<?php echo $detail1; ?>">
+
+				<tr>
+					<td>要件</td>
+					<td><?php echo $youken1; ?></td>
+				</tr>
+				<input type="hidden" name="要件1" value="<?php echo $youken1; ?>">
+
+			</tbody>
+		</table>
+		<?php }?>
+		<p>以上が記入された内容となります。</p>
+		<p>全て記入されており、正しければ決定を押してください。</p>
+		<div class="button_wall">
+			<input type="submit" value="決定する">
+		</div>
+	</FORM>
+
 </div>
-</FORM>
 
 
-<?php include('page_footer.php');?>
+		<?php include('page_footer.php');?>
 
 

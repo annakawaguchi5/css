@@ -20,22 +20,68 @@ if(isset($_POST['year'])){	//新規作成
 	$row = mysql_fetch_array($rs);
 
 	if(!$row){	//同じ年度が存在しないとき
-	//tb_limitにデータを追加
-	$sql = "INSERT INTO tb_limit VALUES ('$year', '$stime','$ltime',now())";
-	$rs = mysql_query($sql, $conn);
-	if (!$rs) die ('エラー: ' . mysql_error());
+		//tb_limitにデータを追加
+		$sql = "INSERT INTO tb_limit VALUES ('$year', '$stime','$ltime',now())";
+		$rs = mysql_query($sql, $conn);
+		if (!$rs) die ('エラー: ' . mysql_error());
 
-	//開設メッセージの通知登録
-	$title=$year."年度のコース希望調査システムを開設しました。";
-	$message=$title."<br>ご自身のデータが正しいことをご確認下さい。<br>もし不具合やご不明な点等ありましたら、画面右上にあります「お問合せ」よりメッセージをお送りください。";
-	$sql = "INSERT INTO tb_info VALUES ('$title', '$message', 1239, '$year', now())";
-	$rs = mysql_query($sql, $conn);
-	if (!$rs) die ('エラー: ' . mysql_error());
+		//開設メッセージの通知登録
+		$title=$year."年度のコース希望調査システムを開設しました。";
+		$message=$title."<br>ご自身のデータが正しいことをご確認下さい。<br>もし不具合やご不明な点等ありましたら、画面右上にあります「お問合せ」よりメッセージをお送りください。";
+		$sql = "INSERT INTO tb_info VALUES ('$title', '$message', 1239, '$year', now())";
+		$rs = mysql_query($sql, $conn);
+		if (!$rs) die ('エラー: ' . mysql_error());
 	}else{
 		echo '指定された年度は存在します。<br>';
 		echo '再度、新規作成する際は<a href="new_year.php">こちら</a>へ<br>';
 		echo '年度一覧へは<a href="year.php">こちら</a>へ';
 	}
+
+	/**
+	 * コース名を決定
+	 */
+	$course=$_POST['コース名'];
+	$gp=$_POST['単位数'];
+	$gpa=$_POST['GPA'];
+	$detail=$_POST['コース説明'];
+	$youken=$_POST['要件'];
+	if($youken=="要件なし"){
+		$youken=1;
+		$gp=NULL;
+		$gpa=NULL;
+	}else if($youken=="要件あり"){
+		$youken=2;
+	}
+
+	$sql ="UPDATE tb_course SET year='$year', cid='$youken', cname='$course', detail='$detail', gp='$gp', gpa='$gpa' WHERE cid='$youken'" ;
+	$res = mysql_query( $sql, $conn );
+
+
+	if(isset($_POST['コース名1'])){
+		$course1=$_POST['コース名1'];
+		$gp1=$_POST['単位数1'];
+		$gpa1=$_POST['GPA1'];
+		$detail1=$_POST['コース説明1'];
+		$youken1=$_POST['要件1'];
+		if($youken1=="要件なし"){
+			$youken1=1;
+			$gp1=NULL;
+			$gpa1=NULL;
+		}else if($youken=="要件あり"){
+			$youken1=2;
+		}
+
+		$sql ="UPDATE tb_course SET year='$year', cid='$youken1', cname='$course1', detail='$detail1', gp='$gp1', gpa='$gpa1' WHERE cid='$youken1'";
+		$res = mysql_query( $sql, $conn );
+	}
+
+	if (!$res) {
+		echo "決定に失敗しました。";
+		die('エラー: ' . mysql_error());
+	}else{
+		echo "決定しました。";
+	}
+
 	//例)0年度
 	$state=0;//前期0,年間1
 	/////CSVファイルインポート/////
@@ -213,10 +259,7 @@ if(isset($_POST['year'])){	//新規作成
 				echo $err_msg;
 			}
 		}
-	}/*else {
-		$err_msg = "ファイルが選択されていません。";
-		echo $err_msg;
-	}*/
+	}
 }
-include('page_footer.php');
-?>
+	include('page_footer.php');
+	?>
