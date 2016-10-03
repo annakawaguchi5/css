@@ -1,6 +1,16 @@
 <?php
 include('page_header.php');
 require_once ('db_inc.php');  // データベース接続
+//今年の年を取るのかlimitの年からとるのか
+if ( isset($_SESSION['year'])) {	//uidを取得
+	$year = $_SESSION['year'];
+}
+
+$sql = "SELECT gp, gpa FROM tb_course where cid=2 AND year='$year'";
+$rs = mysql_query($sql, $conn);
+$row = mysql_fetch_array($rs) ;
+$row['gp'];
+sprintf("%.1f",$row['gpa']);
 
 ?>
 <!-- phpでDBから要件の値を取得する -->
@@ -10,8 +20,8 @@ require_once ('db_inc.php');  // データベース接続
 		<h2>
 			情報科学総合コースに登録するには、１年次終了までに、次の各号に掲げる要件を満たさなければならない。<br>
 			<ol>
-				<li>1年次に配当されている授業科目を38単位以上修得していること。</li>
-				<li>GPAが2.0以上であること。</li>
+				<li>1年次に配当されている授業科目を<?php echo $row['gp'] ?>単位以上修得していること。</li>
+				<li>GPAが<?php echo sprintf("%.1f",$row['gpa']); ?>以上であること。</li>
 			</ol>
 		</h2>
 		詳細はこちら→
@@ -22,6 +32,7 @@ require_once ('db_inc.php');  // データベース接続
 		</div>
 </div>
 <?php
+
 $class=array(1=>'danger', 2=>'info');
 
 $sql = "SELECT cid, cname, detail FROM tb_course ORDER BY cid";
