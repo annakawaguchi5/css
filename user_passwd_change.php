@@ -15,21 +15,21 @@ echo
 <div class="container bg-info">
 	<form class="form-horizontal" method="post" action="user_passwd_change_do.php?uid='.$uid.'"'.'>
 			<div class="form-group">
-			<label for="nowpw" class="control-label col-sm-2" value="nowpw">現在のパスワード: </label>
-			<div class="col-sm-10">
+			<label for="nowpw" class="control-label col-sm-3" value="nowpw">現在のパスワード:   </label>
+			<div class="col-sm-9">
 				<label for="nowpw" class="control-label" value="nowpw">'.$row['upass'].'</label>
 
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="pass" class="control-label col-sm-2" value="pass">新しいパスワード: </label>
-			<div class="col-sm-10">
+			<label for="pass" class="control-label col-sm-3" value="pass">新しいパスワード: </label>
+			<div class="col-sm-9">
 				<input type="password" name="pass" class="form-control" smk-type="pass">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="pass2" class="control-label col-sm-2 has-error" value="pass2">新しいパスワード(確認)： </label>
-			<div class="col-sm-10">
+			<label for="pass2" class="control-label col-sm-3 has-error" value="pass2">新しいパスワード(確認)： </label>
+			<div class="col-sm-9">
 				<input type="password" name="pass2" class="form-control" smk-type="pass2">
 			</div>
 		</div>
