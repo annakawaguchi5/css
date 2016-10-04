@@ -51,19 +51,19 @@ $(function(){
     });
 
     //送信ボタンが押されたときに呼び出される
-    /*
+
     $('page-back').submit(function(e){
         e.preventDefault();
         var noneStr = '未入力';
 
         //各項目を取得してダイアログ内に追加
-        if ( $("input#namae").val() != "" ){
-            $("span#namae").html( $("input#namae").val() );
+        if ( $("input#student").val() != "" ){
+            $("span#student").html( $("input#student").val() );
         }
         else{
-            $("span#namae").html(noneStr);
+            $("span#student").html(noneStr);
         }
-
+/*
         if ( $("input#email").val() != "" ){
             $("span#email").html( $("input#email").val() );
         }
@@ -76,12 +76,12 @@ $(function(){
         }
         else{
             $("span#comment").html(noneStr);
-        }
+        }*/
 
         //ダイアログを開く
         $('#dialog').dialog('open');
     });
-    */
+
 
 });
 </script>

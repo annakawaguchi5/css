@@ -14,6 +14,7 @@ $year=$_GET['year'];
 			value="登録" />
 	</form>
 </div>
+
 <?php
 include('page_footer.php');
 ?>
