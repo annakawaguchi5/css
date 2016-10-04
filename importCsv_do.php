@@ -6,8 +6,9 @@ include_once('db_inc.php');
 if(isset($_GET['year'])){
 	$year=$_GET['year'];
 }
-
-$state=0;//前期0,年間1
+if(isset($_POST['data'])){
+	$state=$_POST['data'];//前期0,年間1
+}
 /////CSVファイルインポート/////
 $num=0;
 if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {

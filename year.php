@@ -2,38 +2,39 @@
 include('page_header.php');  //画面出力開始
 require_once('db_inc.php');  //データベース接続
 ?>
-<div class="container">
-<!-- 4グリッドを割り当て -->
+<div
+	class="container">
+	<!-- 4グリッドを割り当て -->
 	<div class="col-xs-4">
 
 		<!-- 年度の新規作成 -->
 
-	<a href="new_year.php"><button class="btn btn-danger btn-block btn-lg" id="new">新規作成</button></a>
-		<br>
+		<a href="new_year.php"><button class="btn btn-danger btn-block btn-lg"
+				id="new">新規作成</button> </a> <br>
 
 
 		<!-- 年度一覧 -->
-		<?php
-		$sql = "select * from tb_limit GROUP BY year ORDER BY year DESC";
-		$rs = mysql_query($sql, $conn);
-		if (!$rs) die ('エラー: ' . mysql_error());
-		$row = mysql_fetch_array($rs) ;
-		echo '<div class="panel panel-info">
+				<?php
+				$sql = "select * from tb_limit GROUP BY year ORDER BY year DESC";
+				$rs = mysql_query($sql, $conn);
+				if (!$rs) die ('エラー: ' . mysql_error());
+				$row = mysql_fetch_array($rs) ;
+				echo '<div class="panel panel-info">
 				<div class="panel-heading">
 					年度一覧
 				</div>
 				<div class="list-group">';
-		while($row){
-			echo '<a class="list-group-item" href="year.php?year='.$row['year'].'">'.$row['year'].'年度</a>';
-			$row = mysql_fetch_array($rs) ;
-		}
-		echo '</div></div>';
-		?>
-			</div>
+				while($row){
+					echo '<a class="list-group-item" href="year.php?year='.$row['year'].'">'.$row['year'].'年度</a>';
+					$row = mysql_fetch_array($rs) ;
+				}
+				echo '</div></div>';
+				?>
+	</div>
 	<!-- 4グリッド終わり -->
 
 
-<!-- 8グリッドを割り当て -->
+	<!-- 8グリッドを割り当て -->
 	<!-- 年度詳細 -->
 	<div class="col-xs-8">
 	<?php
@@ -47,8 +48,15 @@ require_once('db_inc.php');  //データベース接続
 		$row = mysql_fetch_array($rs) ;
 		$dispyear = $row['MAX(year)'];
 	}
+
 	echo '<h1>'.$dispyear.'年度</h1>';
+
+	//ユーザ登録
+	echo '<a href="importCsv.php?year='.$dispyear.'"><input type="image" src="./FSV001BT005_5/button05_touroku_05.jpg" alt="登録"></a>';
+	//ダウンロード
 	include('export_main.php');
+
+
 	//最新年のデータを表示
 	$sql = "SELECT * FROM tb_user NATURAL JOIN tb_gp WHERE year=".$dispyear;
 	$rs = mysql_query($sql, $conn);
@@ -80,6 +88,6 @@ require_once('db_inc.php');  //データベース接続
 </div>
 <!-- 8グリッド終わり -->
 
-<?php
-include('page_footer.php');
+	<?php
+	include('page_footer.php');
 ?>
