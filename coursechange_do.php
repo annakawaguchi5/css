@@ -1,13 +1,20 @@
 <?php include('page_header.php');
 
-
-
+if(isset($_GET['year'])){	//更新
+	$year=$_GET['year'];
+	$act="update";
+}else if(isset($_POST['year'])){	//新規作成
+	$year=$_POST['year'];
+	$stime=$_POST['stime'];
+	$ltime=$_POST['ltime'];
+	$act=$_POST['act'];
+}
 if(isset($_POST['list6_0_0'])){
 	$course=$_POST['list6_0_0'];
 	$gp=$_POST['list6_1_0'];
 	$gpa=$_POST['list6_2_0'];
 	$detail=$_POST['list6_3_0'];
-	$youken=$_POST['list6_4_0'];
+	$cid=1;
 }else{
 	echo "記入されていません";
 }
@@ -16,8 +23,9 @@ if(isset($_POST['list6_0_1'])){
 	$gp1=$_POST['list6_1_1'];
 	$gpa1=$_POST['list6_2_1'];
 	$detail1=$_POST['list6_3_1'];
-	$youken1=$_POST['list6_4_1'];
+	$cid1=2;
 }
+
 ?>
 
 <style>
@@ -31,14 +39,16 @@ if(isset($_POST['list6_0_1'])){
 	<h3>基本情報</h3>
 	<FORM method="POST" action="upload.php">
 	<?php
-	//new_year.phpからのデータを取得
-	$year=$_POST['year'];
-	$stime=$_POST['stime'];
-	$ltime=$_POST['ltime'];
+
 
 	echo '<input type="hidden" name="year" value="'.$year.'">';
 	echo '<input type="hidden" name="stime" value="'.$stime.'">';
 	echo '<input type="hidden" name="ltime" value="'.$ltime.'">';
+
+	echo '<input type="hidden" name="cid" value="'.$cid.'">';
+	echo '<input type="hidden" name="cid1" value="'.$cid1.'">';
+
+	echo '<input type="hidden" name="act" value="'.$act.'">';
 	?>
 		<table class="table table-bordered" width="100%">
 			<thead>
@@ -101,13 +111,6 @@ if(isset($_POST['list6_0_1'])){
 					<td><?php echo $detail; ?></td>
 				</tr>
 				<input type="hidden" name="コース説明" value="<?php echo $detail; ?>">
-
-				<tr>
-					<td>要件</td>
-					<td><?php echo $youken ;?></td>
-				</tr>
-				<input type="hidden" name="要件" value="<?php echo $youken; ?>">
-
 			</tbody>
 		</table>
 
@@ -144,13 +147,6 @@ if(isset($_POST['list6_0_1'])){
 					<td><?php echo $detail1; ?></td>
 				</tr>
 				<input type="hidden" name="コース説明1" value="<?php echo $detail1; ?>">
-
-				<tr>
-					<td>要件</td>
-					<td><?php echo $youken1; ?></td>
-				</tr>
-				<input type="hidden" name="要件1" value="<?php echo $youken1; ?>">
-
 			</tbody>
 		</table>
 		<?php }?>
@@ -160,10 +156,6 @@ if(isset($_POST['list6_0_1'])){
 			<input type="submit" value="決定する">
 		</div>
 	</FORM>
-
 </div>
 
-
 		<?php include('page_footer.php');?>
-
-
