@@ -29,10 +29,87 @@ echo "<h1>コース決定一覧</h1>";
 }
 </style>
 
+<script type="text/javascript">
+
+    // 引数 bool flg
+    //   →チェックをonにするならtrue、offにするならfalse
+	function checkbox_changer_sougo( flg ) {
+
+        var obj = document.frmPeropero_sougo.elements['chk_sougo[]'];
+        var len = obj.length;
+
+        if( !len ) {
+            // checkboxが一つしかないときはこちらの処理
+            if( !obj.disabled ) {
+                // 有効なcheckboxだけチェックする
+                obj.checked = flg;
+            }
+        }
+        else {
+            // checkboxが複数あるときはこちらの処理
+            for( i=0; i < len; i++ ) {
+                if( !obj[i].disabled ) {
+                    // 有効なcheckboxだけチェックする
+                    obj[i].checked = flg;
+                }
+            }
+        }
+
+    }
+
+    function checkbox_changer_ouyo( flg ) {
+
+        var obj = document.frmPeropero_ouyo.elements['chk_ouyo[]'];
+        var len = obj.length;
+
+        if( !len ) {
+            // checkboxが一つしかないときはこちらの処理
+            if( !obj.disabled ) {
+                // 有効なcheckboxだけチェックする
+                obj.checked = flg;
+            }
+        }
+        else {
+            // checkboxが複数あるときはこちらの処理
+            for( i=0; i < len; i++ ) {
+                if( !obj[i].disabled ) {
+                    // 有効なcheckboxだけチェックする
+                    obj[i].checked = flg;
+                }
+            }
+        }
+
+    }
+
+    function checkbox_changer_mitei( flg ) {
+
+        var obj = document.frmPeropero_mitei.elements['chk_mitei[]'];
+        var len = obj.length;
+
+        if( !len ) {
+            // checkboxが一つしかないときはこちらの処理
+            if( !obj.disabled ) {
+                // 有効なcheckboxだけチェックする
+                obj.checked = flg;
+            }
+        }
+        else {
+            // checkboxが複数あるときはこちらの処理
+            for( i=0; i < len; i++ ) {
+                if( !obj[i].disabled ) {
+                    // 有効なcheckboxだけチェックする
+                    obj[i].checked = flg;
+                }
+            }
+        }
+
+    }
+
+</script>
+
 
 
 <?php
-
 
 
 
@@ -62,27 +139,33 @@ $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;
 
+?>
 
+
+
+
+<form action="cs_decide_do.php" name="frmPeropero_sougo" class="form-horizontal" method="POST">
+<?php
 echo '<table border=0 class="table table-striped table-hover table-bordered">';
 echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
 
-
-
 //決定済み確認用////////////////////
 /*
-$sql_decide = "SELECT uid
-FROM tb_decide
-NATURAL JOIN tb_user
-WHERE YEAR ='$year'
-";
-$rs_decide = mysql_query($sql_decide, $conn);
-if (!$rs_decide) die ('エラー: ' . mysql_error());
-$row_decide = mysql_fetch_array($rs_decide) ;
-*/
+ $sql_decide = "SELECT uid
+ FROM tb_decide
+ NATURAL JOIN tb_user
+ WHERE YEAR ='$year'
+ ";
+ $rs_decide = mysql_query($sql_decide, $conn);
+ if (!$rs_decide) die ('エラー: ' . mysql_error());
+ $row_decide = mysql_fetch_array($rs_decide) ;
+ */
 //////////////////////////////////////
 
-
 while($row){
+
+
+
 
 	//学生情報を検索
 
@@ -99,14 +182,14 @@ while($row){
 
 
 	//決定されてるかどうか判別
-$sql_decide = "SELECT uid,cid
+	$sql_decide = "SELECT uid,cid
 FROM tb_decide
 NATURAL JOIN tb_user
 WHERE YEAR ='$year'
 ";
-$rs_decide = mysql_query($sql_decide, $conn);
-if (!$rs_decide) die ('エラー: ' . mysql_error());
-$row_decide = mysql_fetch_array($rs_decide) ;
+	$rs_decide = mysql_query($sql_decide, $conn);
+	if (!$rs_decide) die ('エラー: ' . mysql_error());
+	$row_decide = mysql_fetch_array($rs_decide) ;
 
 
 
@@ -125,13 +208,23 @@ $row_decide = mysql_fetch_array($rs_decide) ;
 
 		}
 
-	$row_decide = mysql_fetch_array($rs_decide) ;
+		$row_decide = mysql_fetch_array($rs_decide) ;
 	}
+	$act;
+	$uid=$row['uid'];
+	$uname=$row['uname'];
+	?>
+
+
+	<input type="hidden" name="act" value="<?php echo $act;?>">
+	<td><input type="checkbox" name="chk_sougo[]" value="<?php echo $uid; ?>"></td>
 
 
 
-	echo '<tr>';
-	echo '<td><input type="checkbox" name=check[]></th>';
+
+	<?php
+
+
 	echo '<td>' . $row['uid'] . '</td>';
 	echo '<td>' . $row['uname']. '</td>';
 	echo '<td>' . $row['cname'] . '</td>';
@@ -145,21 +238,32 @@ $row_decide = mysql_fetch_array($rs_decide) ;
 	}else{
 		$disabled = "";
 	}
-		echo'<td>
-		<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
+	echo'<td>
+	<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
+		<input type="hidden" name="uid" value="'.$row['uid'].'">
 		<input type="hidden" name="act" value="'.  $act .'">
 		<input type="hidden" name="uname" value="'.$row['uname'].'">
 		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
 		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
 		</form></td>';
-		echo '</tr>';
+	echo '</tr>';
+
 
 	$row = mysql_fetch_array($rs) ;
 }echo '</table>';
 
+?>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" <?php $disabled ?> >応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" <?php $disabled ?> >総合</button>
+		<a href="javascript:void(0)"
+		onClick="checkbox_changer_sougo(true); return false;">全てチェック</a>| <a
+		href="javascript:void(0)"
+		onClick="checkbox_changer_sougo(false); return false;">全てのチェックを外す</a><br />
+
+	</form>
+
+<?php
 ///////////////////////////////////////////////////////////////////////////
-
-
 
 //応用コース
 
@@ -187,6 +291,16 @@ $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;
 
+
+
+?>
+
+<form action="cs_decide_do.php" name="frmPeropero_ouyo" class="form-horizontal" method="POST">
+
+
+
+
+<?php
 echo '<table border=0 class="table table-striped table-hover table-bordered">';
 echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
 
@@ -204,7 +318,7 @@ while($row){
 	if($row['allgp']>=$gp && $row['allgpa']>=$gpa){
 		$judge = "◯";
 	}else{
-		$judge = "✕";
+		$judge = "?";
 	}
 
 	//希望提出済みコース未決定の学生情報を検索
@@ -215,14 +329,14 @@ while($row){
 	$class2 = "default";
 
 
-$sql_decide = "SELECT uid,cid
+	$sql_decide = "SELECT uid,cid
 FROM tb_decide
 NATURAL JOIN tb_user
 WHERE YEAR ='$year'
 ";
-$rs_decide = mysql_query($sql_decide, $conn);
-if (!$rs_decide) die ('エラー: ' . mysql_error());
-$row_decide = mysql_fetch_array($rs_decide) ;
+	$rs_decide = mysql_query($sql_decide, $conn);
+	if (!$rs_decide) die ('エラー: ' . mysql_error());
+	$row_decide = mysql_fetch_array($rs_decide) ;
 
 
 
@@ -241,14 +355,18 @@ $row_decide = mysql_fetch_array($rs_decide) ;
 
 		}
 
-	$row_decide = mysql_fetch_array($rs_decide) ;
+		$row_decide = mysql_fetch_array($rs_decide) ;
 	}
 
 
-
-
-	echo '<tr>';
-	echo '<td><input type="checkbox" name=check[]></th>';
+	$act;
+	$uid=$row['uid'];
+	$uname=$row['uname'];
+	echo '<tr>'?>
+	<input type="hidden" name="act" value="<?php echo $act;?>">
+	<td><input type="checkbox" name="chk_ouyo[]" value="<?php echo $uid; ?>"></td>
+	</form>
+	<?php
 	echo '<td>' . $row['uid'] . '</td>';
 	echo '<td>' . $row['uname']. '</td>';
 	echo '<td>' . $row['cname'] . '</td>';
@@ -262,20 +380,29 @@ $row_decide = mysql_fetch_array($rs_decide) ;
 	}else{
 		$disabled = "";
 	}
-		echo'<td>
-		<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
+	echo'<td>
+	<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
+		<input type="hidden" name="uid" value="'.$row['uid'].'">
 		<input type="hidden" name="act" value="'.  $act .'">
 		<input type="hidden" name="uname" value="'.$row['uname'].'">
 		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
 		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
 		</form></td>';
-
-		echo '</tr>';
+	echo '</tr>';
 
 
 	$row = mysql_fetch_array($rs) ;
 }echo '</table>';
+?>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" <?php $disabled ?> >応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" <?php $disabled ?> >総合</button>
+		<a href="javascript:void(0)"
+		onClick="checkbox_changer_ouyo(true); return false;">全てチェック</a>| <a
+		href="javascript:void(0)"
+		onClick="checkbox_changer_ouyo(false); return false;">全てのチェックを外す</a><br />
 
+	</form>
+<?php
 
 
 //未提出/////////////////////////////////////////////////////////////////////////////
@@ -294,6 +421,13 @@ $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;
 
+?>
+
+<form action="cs_decide_do.php" name="frmPeropero_mitei" class="form-horizontal" method="POST">
+
+
+
+<?php
 echo '<table border=0 class="table table-striped table-hover table-bordered">';
 echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
 
@@ -310,7 +444,7 @@ while ($row) {
 	if($row['allgp']>=$gp && $row['allgpa']>=$gpa){
 		$judge = "◯";
 	}else{
-		$judge = "✕";
+		$judge = "?";
 	}
 	//希望提出済みコース未決定の学生情報を検索
 
@@ -323,15 +457,15 @@ while ($row) {
 
 
 
-//決定済み確認用////////////////////
-$sql_decide = "SELECT uid,cid
+	//決定済み確認用////////////////////
+	$sql_decide = "SELECT uid,cid
 FROM tb_decide
 NATURAL JOIN tb_user
 WHERE YEAR ='$year'
 ";
-$rs_decide = mysql_query($sql_decide, $conn);
-if (!$rs_decide) die ('エラー: ' . mysql_error());
-$row_decide = mysql_fetch_array($rs_decide) ;
+	$rs_decide = mysql_query($sql_decide, $conn);
+	if (!$rs_decide) die ('エラー: ' . mysql_error());
+	$row_decide = mysql_fetch_array($rs_decide) ;
 
 
 
@@ -350,15 +484,20 @@ $row_decide = mysql_fetch_array($rs_decide) ;
 
 		}
 
-	$row_decide = mysql_fetch_array($rs_decide) ;
+		$row_decide = mysql_fetch_array($rs_decide) ;
 	}
 
 
 
 
+	$uid=$row['uid'];
+	$uname=$row['uname'];
+	echo '<tr>'?>
 
-	echo '<tr>';
-	echo '<td><input type="checkbox" name=check[]></th>';
+	<input type="hidden" name="act" value="<?php echo $act;?>">
+	<td><input type="checkbox" name="chk_mitei[]" value="<?php echo $uid; ?>"></td>
+	</form>
+	<?php
 	echo '<td>' . $row['uid'] . '</td>';
 	echo '<td>' . $row['uname']. '</td>';
 	echo '<td>' . "" . '</td>';
@@ -373,7 +512,8 @@ $row_decide = mysql_fetch_array($rs_decide) ;
 		$disabled = "";
 	}
 	echo'<td>
-		<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
+	<form action="cs_decide_do.php?uid='.$row['uid'].'" class="form-horizontal" method="post">
+		<input type="hidden" name="uid" value="'.$row['uid'].'">
 		<input type="hidden" name="act" value="'.  $act .'">
 		<input type="hidden" name="uname" value="'.$row['uname'].'">
 		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
@@ -383,6 +523,17 @@ $row_decide = mysql_fetch_array($rs_decide) ;
 	$row = mysql_fetch_array($rs) ;
 }
 echo '</table>';
+?>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" <?php $disabled ?> >応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" <?php $disabled ?> >総合</button>
+		<a href="javascript:void(0)"
+		onClick="checkbox_changer_mitei(true); return false;">全てチェック</a>| <a
+		href="javascript:void(0)"
+		onClick="checkbox_changer_mitei(false); return false;">全てのチェックを外す</a><br />
+
+	</form>
+<?php
+
 
 include('page_footer.php');  //画面出力終了
 ?>
