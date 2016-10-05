@@ -30,7 +30,7 @@ $ltime=$row['ltime'];
 					<div class='input-group date' id='stime'>
 						<span class="input-group-addon"> <span
 							class="glyphicon glyphicon-calendar"></span> </span>
-							<?php '<input
+							<?php echo '<input
 							type="text" class="form-control" name="stime" value="'.$stime.'"/>';?>
 					</div>
 				</td>
@@ -40,7 +40,8 @@ $ltime=$row['ltime'];
 				<td>
 					<div class='input-group date' id='ltime'>
 						<span class="input-group-addon"> <span
-							class="glyphicon glyphicon-calendar"></span> </span> <?php '<input
+							class="glyphicon glyphicon-calendar"></span> </span>
+							<?php echo '<input
 							type="text" class="form-control" name="ltime" value="'.$ltime.'"/>';?>
 					</div>
 				</td>
@@ -51,7 +52,7 @@ $ltime=$row['ltime'];
 				<td><?php include('coursechange.php');?></td>
 			</tr>
 		</table>
-		<input type="hidden" name="act" value="insert">
+		<input type="hidden" name="act" value="upload">
 		<input type="submit" value="登録" />
 	</form>
 </div>

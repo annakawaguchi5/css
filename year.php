@@ -53,8 +53,11 @@ require_once('db_inc.php');  //データベース接続
 
 	//ユーザ登録
 	echo '<a href="importCsv.php?year='.$dispyear.'"><input type="image" src="./FSV001BT005_5/button05_touroku_05.jpg" alt="登録"></a>';
+	//変更
+	echo '<a href="data_change.php?year='.$dispyear.'"><input type="button" value="編集" src="./FSV001BT005_5/button05_touroku_05.jpg" alt="登録"></a>';
 	//ダウンロード
 	include('export_main.php');
+
 
 
 	//最新年のデータを表示
@@ -63,7 +66,7 @@ require_once('db_inc.php');  //データベース接続
 	if (!$rs) die ('エラー: ' . mysql_error());
 	$row = mysql_fetch_array($rs) ;
 
-	echo '<FORM method="POST" action="change_do.php" id="list">';
+	echo '<FORM method="POST" action="user_change.php" id="list" name="list" onsubmit="return list(this)">';
 	echo '<div class="table-responsive">';
 	echo '<table border=0 class="table table-striped table-hover table-bordered">';
 	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th>
@@ -71,7 +74,7 @@ require_once('db_inc.php');  //データベース接続
 	<th>後期修得単位数</th><th>後期GPA</th></tr>';
 	while($row){
 		echo '<tr>';
-		echo '<td>' . '<input type="checkbox" name="students[]" value="'.$row['uid'].'">' . '</td>';
+		echo '<td><input type="checkbox" name="students[]" value="'.$row['uid'].'"></td>';
 		echo '<td>' . $row['uid'] . '</td>';
 		echo '<td>' . $row['uname'] . '</td>';
 		echo '<td>' . $row['halfgp'] . '</td>';

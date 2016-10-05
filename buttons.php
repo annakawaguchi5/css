@@ -30,74 +30,26 @@
 </style>
 
 <script type="text/javascript">
-$(function(){
-
-    // jQuery UI ダイアログの設定
-    $('#dialog').dialog({
-        autoOpen: false,
-        width: 400,
-        modal: true,
-        resizable: true,
-        buttons: {
-            "送信する": function() {
-                //送信を実行
-                document.form.submit();
-            },
-            "キャンセル": function() {
-                //ダイアログを閉じる
-                $(this).dialog("close");
-            }
-        }
-    });
-
-    //送信ボタンが押されたときに呼び出される
-
-    $('page-back').submit(function(e){
-        e.preventDefault();
-        var noneStr = '未入力';
-
-        //各項目を取得してダイアログ内に追加
-        if ( $("input#student").val() != "" ){
-            $("span#student").html( $("input#student").val() );
-        }
-        else{
-            $("span#student").html(noneStr);
-        }
-/*
-        if ( $("input#email").val() != "" ){
-            $("span#email").html( $("input#email").val() );
-        }
-        else{
-            $("span#email").html(noneStr);
-        }
-
-        if ( $("textarea").val() != "" ){
-            $("span#comment").html( $("textarea").val() );
-        }
-        else{
-            $("span#comment").html(noneStr);
-        }*/
-
-        //ダイアログを開く
-        $('#dialog').dialog('open');
-    });
-
-
-});
+function list(change){
+    if(change.elements["uid"].value==""){
+        alert("チェックされていません。");
+        /* FALSEを返してフォームは送信しない */
+        return false;
+    }else{
+        /* TRUEを返してフォーム送信 */
+        return true;
+    }
+}
+function deleteaccount(){
+	document.getElementById('list').action = 'user_delete_check.php';
+	}
 </script>
 
 
 
 <div id="body-inner">
 	<div class="page-back">
-	<input type="image" src="./FSV001BT005_5/button05_seikyu_05.jpg" name="delete" value="delete" alt="削除">
-	<input type="image" src="./FSV001BT005_5/button05_koudoku_05.jpg" name="change" value="change" alt="変更">
+	<input type="submit" src="./FSV001BT005_5/button05_koudoku_05.jpg" value="change" alt="変更">
+	<input type="submit" src="./FSV001BT005_5/button05_seikyu_05.jpg" value="delete" alt="削除" onclick="deleteaccount();">
 	</div>
 </div>
-
-<!--▼ ui-dialog ▼-->
-<div id="dialog" title="送信内容の確認">
-	<p class="item">ユーザID</p>
-	<span id="uid"></span>
-</div>
-<!--▲ ui-dialog ▲-->

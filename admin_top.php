@@ -10,7 +10,7 @@ $year = date('Y');
 
 	<!-- 更新情報 -->
 	<!-- 7グリッドを割り当て -->
-	<div class="col-sm-7 bg-danger">
+	<div class="col-sm-6 bg-danger">
 	<?php
 	include('receive_info.php');
 	?>
@@ -22,7 +22,7 @@ $year = date('Y');
 
 	<!-- 通知作成 -->
 	<!-- 5グリッドを割り当て -->
-	<div class="col-sm-5">
+	<div class="col-sm-6">
 	<?php include("make_info.php");?>
 	</div>
 </div>
