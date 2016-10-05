@@ -22,10 +22,16 @@ $gpa = $row['gpa'];
 
 
 echo "<h1>コース決定一覧</h1>";
+?>
+<style>
+.button_wall {
+	text-align: right;
+}
+</style>
 
 
 
-
+<?php
 
 
 
@@ -55,6 +61,8 @@ AND cid=2";
 $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;
+
+
 echo '<table border=0 class="table table-striped table-hover table-bordered">';
 echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
 
@@ -123,7 +131,7 @@ $row_decide = mysql_fetch_array($rs_decide) ;
 
 
 	echo '<tr>';
-	echo '<td><input type="checkbox"></th>';
+	echo '<td><input type="checkbox" name=check[]></th>';
 	echo '<td>' . $row['uid'] . '</td>';
 	echo '<td>' . $row['uname']. '</td>';
 	echo '<td>' . $row['cname'] . '</td>';
@@ -240,7 +248,7 @@ $row_decide = mysql_fetch_array($rs_decide) ;
 
 
 	echo '<tr>';
-	echo '<td><input type="checkbox"></th>';
+	echo '<td><input type="checkbox" name=check[]></th>';
 	echo '<td>' . $row['uid'] . '</td>';
 	echo '<td>' . $row['uname']. '</td>';
 	echo '<td>' . $row['cname'] . '</td>';
@@ -350,7 +358,7 @@ $row_decide = mysql_fetch_array($rs_decide) ;
 
 
 	echo '<tr>';
-	echo '<td><input type="checkbox"></th>';
+	echo '<td><input type="checkbox" name=check[]></th>';
 	echo '<td>' . $row['uid'] . '</td>';
 	echo '<td>' . $row['uname']. '</td>';
 	echo '<td>' . "" . '</td>';
