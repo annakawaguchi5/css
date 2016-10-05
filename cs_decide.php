@@ -318,7 +318,7 @@ while($row){
 	if($row['allgp']>=$gp && $row['allgpa']>=$gpa){
 		$judge = "◯";
 	}else{
-		$judge = "?";
+		$judge = "✕";
 	}
 
 	//希望提出済みコース未決定の学生情報を検索
@@ -444,7 +444,7 @@ while ($row) {
 	if($row['allgp']>=$gp && $row['allgpa']>=$gpa){
 		$judge = "◯";
 	}else{
-		$judge = "?";
+		$judge = "✕";
 	}
 	//希望提出済みコース未決定の学生情報を検索
 
