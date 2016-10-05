@@ -19,7 +19,18 @@ $row = mysql_fetch_array($rs) ;
 $gp = $row['gp'];
 $gpa = $row['gpa'];
 //////////////////////////////////////////////
+
+
 echo "<h1>コース決定一覧</h1>";
+
+
+
+
+
+
+
+
+
 
 //総合コース/////////////////////////////////////////////////////////////////
 //コース名のみ
@@ -48,6 +59,21 @@ echo '<table border=0 class="table table-striped table-hover table-bordered">';
 echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
 
 
+
+//決定済み確認用////////////////////
+/*
+$sql_decide = "SELECT uid
+FROM tb_decide
+NATURAL JOIN tb_user
+WHERE YEAR ='$year'
+";
+$rs_decide = mysql_query($sql_decide, $conn);
+if (!$rs_decide) die ('エラー: ' . mysql_error());
+$row_decide = mysql_fetch_array($rs_decide) ;
+*/
+//////////////////////////////////////
+
+
 while($row){
 
 	//学生情報を検索
@@ -62,18 +88,40 @@ while($row){
 	//希望提出済みコース未決定の学生情報を検索
 	$class1 = "default";
 	$class2 = "default";
-	if($cid==1){
-		$class1 = "danger";
-		$class2 = "default";
-	}else if($cid == 2){
-		$class1 = "default";
-		$class2 = "primary";
+
+
+	//決定されてるかどうか判別
+$sql_decide = "SELECT uid,cid
+FROM tb_decide
+NATURAL JOIN tb_user
+WHERE YEAR ='$year'
+";
+$rs_decide = mysql_query($sql_decide, $conn);
+if (!$rs_decide) die ('エラー: ' . mysql_error());
+$row_decide = mysql_fetch_array($rs_decide) ;
+
+
+
+	while($row_decide){
+		$user=$row_decide['uid'];
+		$user_decide=$row_decide['cid'];
+		if($row['uid']==$user){
+			$act = 'update';    // すでに登録したため「再登録」とする
+			if($user_decide == 1){
+				$class1 = "danger";
+				$class2 = "default";
+			}else if($user_decide == 2){
+				$class1 = "default";
+				$class2 = "primary";
+			}
+
+		}
+
+	$row_decide = mysql_fetch_array($rs_decide) ;
 	}
-	if ($row) { // 現在登録しているコースのID
-		$act = 'update';    // すでに登録したため「再登録」とする
-	}else{
-		$act = 'insert';
-	}
+
+
+
 	echo '<tr>';
 	echo '<td><input type="checkbox"></th>';
 	echo '<td>' . $row['uid'] . '</td>';
@@ -135,6 +183,9 @@ echo '<table border=0 class="table table-striped table-hover table-bordered">';
 echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
 
 
+
+//////////////////////////////////////
+
 while($row){
 
 	//学生情報を検索
@@ -156,20 +207,36 @@ while($row){
 	$class2 = "default";
 
 
-	if($cid==1){
-		$class1 = "danger";
-		$class2 = "default";
-	}else if($cid == 2){
-		$class1 = "default";
-		$class2 = "primary";
+$sql_decide = "SELECT uid,cid
+FROM tb_decide
+NATURAL JOIN tb_user
+WHERE YEAR ='$year'
+";
+$rs_decide = mysql_query($sql_decide, $conn);
+if (!$rs_decide) die ('エラー: ' . mysql_error());
+$row_decide = mysql_fetch_array($rs_decide) ;
+
+
+
+	while($row_decide){
+		$user=$row_decide['uid'];
+		$user_decide=$row_decide['cid'];
+		if($row['uid']==$user){
+			$act = 'update';    // すでに登録したため「再登録」とする
+			if($user_decide == 1){
+				$class1 = "danger";
+				$class2 = "default";
+			}else if($user_decide == 2){
+				$class1 = "default";
+				$class2 = "primary";
+			}
+
+		}
+
+	$row_decide = mysql_fetch_array($rs_decide) ;
 	}
 
 
-	if ($row) { // 現在登録しているコースのID
-		$act = 'update';    // すでに登録したため「再登録」とする
-	}else{
-		$act = 'insert';
-	}
 
 
 	echo '<tr>';
@@ -215,14 +282,20 @@ SELECT uid
 FROM tb_entry
 )";
 
-
-
 $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;
 
 echo '<table border=0 class="table table-striped table-hover table-bordered">';
 echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
+
+
+//決定済み確認用////////////////////
+
+//////////////////////////////////////
+
+
+
 while ($row) {
 
 	$act = 'insert';  //初回登録?（insert: 初回登録; update: 再登録）;
@@ -235,6 +308,47 @@ while ($row) {
 
 	$class1 = "default";
 	$class2 = "default";
+
+
+
+
+
+
+
+//決定済み確認用////////////////////
+$sql_decide = "SELECT uid,cid
+FROM tb_decide
+NATURAL JOIN tb_user
+WHERE YEAR ='$year'
+";
+$rs_decide = mysql_query($sql_decide, $conn);
+if (!$rs_decide) die ('エラー: ' . mysql_error());
+$row_decide = mysql_fetch_array($rs_decide) ;
+
+
+
+	while($row_decide){
+		$user=$row_decide['uid'];
+		$user_decide=$row_decide['cid'];
+		if($row['uid']==$user){
+			$act = 'update';    // すでに登録したため「再登録」とする
+			if($user_decide == 1){
+				$class1 = "danger";
+				$class2 = "default";
+			}else if($user_decide == 2){
+				$class1 = "default";
+				$class2 = "primary";
+			}
+
+		}
+
+	$row_decide = mysql_fetch_array($rs_decide) ;
+	}
+
+
+
+
+
 	echo '<tr>';
 	echo '<td><input type="checkbox"></th>';
 	echo '<td>' . $row['uid'] . '</td>';
