@@ -1,6 +1,8 @@
 <?php
 include('page_header.php');  //画面出力開始
 require_once('db_inc.php');  //データベース接続
+
+
 ?>
 
 <!-- 新規登録画面 -->
@@ -20,8 +22,17 @@ require_once('db_inc.php');  //データベース接続
 				$now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 				$now = $now->format('Y/m/d H時i分s秒');
 				$y = date('Y');
+				$year=$y-1;
 
-				echo '<td><input type="text" id="year" name="year" value="'.$y.'" size="20"
+				$sql = "SELECT year,stime,ltime,cname,detail,gp,gpa
+				FROM tb_limit NATURAL JOIN tb_course WHERE year='$year'AND cid=2";
+				$rs = mysql_query($sql, $conn);
+				if (!$rs) die ('エラー: ' . mysql_error());
+				$row = mysql_fetch_array($rs);
+
+
+
+				echo '<td><input type="text" id="year" name="year" value="'.$row['year'].'" size="20"
 				maxlength="20">年度</td>';
 				?>
 			</tr>
@@ -29,9 +40,9 @@ require_once('db_inc.php');  //データベース接続
 				<td class="header info">調査開始時刻</td>
 				<td>
 					<div class='input-group date' id='stime'>
-						<span class="input-group-addon"> <span
+						<span class="input-group-addon"><span
 							class="glyphicon glyphicon-calendar"></span> </span> <input
-							type='text' class="form-control" name="stime" />
+							type='text' class="form-control" name="stime" value=" <?php echo $row['stime']?>"/>
 
 					</div>
 				</td>
@@ -42,7 +53,7 @@ require_once('db_inc.php');  //データベース接続
 					<div class='input-group date' id='ltime'>
 						<span class="input-group-addon"> <span
 							class="glyphicon glyphicon-calendar"></span> </span> <input
-							type='text' class="form-control" name="ltime" />
+							type='text' class="form-control" name="ltime" value=" <?php echo $row['ltime']?>"/>
 					</div>
 				</td>
 			</tr>
