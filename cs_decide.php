@@ -27,6 +27,9 @@ echo "<h1>コース決定一覧</h1>";
 .button_wall {
 	text-align: right;
 }
+input[type=checkbox] {
+  transform: scale(1.5);
+}
 </style>
 
 <script type="text/javascript">
@@ -235,12 +238,9 @@ WHERE YEAR ='$year'
 		echo '<td>' . $row['allgp'] . '</td>';
 		echo '<td>' . $row['allgpa'] . '</td>';
 		echo '<td style="color:red">' . $judge . '</td>';
-		if ( isset($_SESSION['urole']) and $_SESSION['urole']==2 ) {
-			//教員（権限なし）としてログインしているなら
-			$disabled = "disabled";
-		}else{
-			$disabled = "disabled";
-		}
+
+		$disabled = "disabled";
+
 		echo'<td>
 
 
@@ -381,12 +381,9 @@ WHERE YEAR ='$year'
 		echo '<td>' . $row['allgp'] . '</td>';
 		echo '<td>' . $row['allgpa'] . '</td>';
 		echo '<td style="color:red">' . $judge . '</td>';
-		if ( isset($_SESSION['urole']) and $_SESSION['urole']==2 ) {
-			//教員（権限なし）としてログインしているなら
+
 			$disabled = "disabled";
-		}else{
-			$disabled = "disabled";
-		}
+
 		echo'<td>
 		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
 		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
@@ -514,12 +511,9 @@ WHERE YEAR ='$year'
 		echo '<td>' . $row['allgp'] . '</td>';
 		echo '<td>' . $row['allgpa'] . '</td>';
 		echo '<td style="color:red">' . $judge . '</td>';
-		if ( isset($_SESSION['urole']) and $_SESSION['urole']==2 ) {
-			//教員（権限なし）としてログインしているなら
-			$disabled = "disabled";
-		}else{
-			$disabled = "disabled";
-		}
+
+		$disabled = "disabled";
+
 		echo'<td>
 		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
 		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
