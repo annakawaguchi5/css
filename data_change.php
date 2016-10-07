@@ -6,7 +6,7 @@ if(isset($_GET['year'])){
 	$year=$_GET['year'];
 }
 
-$sql = "SELECT * FROM tb_limit NATURAL JOIN tb_course WHERE year='$year'";
+$sql = "SELECT * FROM tb_limit WHERE year='$year'";
 $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;

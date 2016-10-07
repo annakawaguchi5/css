@@ -7,6 +7,9 @@ $now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 $now = $now->format('Y/m/d H時i分s秒');
 $year = date('Y');
 
+/**
+ * $yearをMAX()で取得
+ */
 //要件用gp,gpa取得//////////////////////////////
 $sql = "SELECT gp,gpa
 FROM tb_course
@@ -239,15 +242,15 @@ WHERE YEAR ='$year'
 		echo '<td>' . $row['allgpa'] . '</td>';
 		echo '<td style="color:red">' . $judge . '</td>';
 
-		$disabled = "disabled";
+		//$disabled = "disabled";
 
 		echo'<td>
 
 
 
 
-		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
-		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" $disabled>応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" $disabled>総合</button>
 		</td>';
 		echo '</tr>';
 
@@ -255,11 +258,17 @@ WHERE YEAR ='$year'
 		$row = mysql_fetch_array($rs) ;
 	}echo '</table>';
 
-	?>
-	<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1"
-	<?php $disabled ?>>応用</button>
-	<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2"
-	<?php $disabled ?>>総合</button>
+	 if ( isset($_SESSION['urole']) and $_SESSION['urole']==2 ) {
+   //教員（権限なし）としてログインしているなら
+   $disabled = "disabled";
+  }else{
+   $disabled = "";
+  }
+
+  echo '<button class="btn btn-danger" type="submit" name="cid" value="1"
+	 '.$disabled.'>応用</button>';
+	 echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
+	 '.$disabled.'>総合</button>';?>
 	<a href="javascript:void(0)"
 		onClick="checkbox_changer_sougo(true); return false;">全てチェック</a>| <a
 		href="javascript:void(0)"
@@ -382,22 +391,26 @@ WHERE YEAR ='$year'
 		echo '<td>' . $row['allgpa'] . '</td>';
 		echo '<td style="color:red">' . $judge . '</td>';
 
-			$disabled = "disabled";
-
 		echo'<td>
-		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
-		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" $disabled>応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" $disabled>総合</button>
 		</td>';
 		echo '</tr>';
 
 
 		$row = mysql_fetch_array($rs) ;
 	}echo '</table>';
-	?>
-<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1"
-<?php $disabled ?>>応用</button>
-<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2"
-<?php $disabled ?>>総合</button>
+	 if ( isset($_SESSION['urole']) and $_SESSION['urole']==2 ) {
+   //教員（権限なし）としてログインしているなら
+   $disabled = "disabled";
+  }else{
+   $disabled = "";
+  }
+
+  echo '<button class="btn btn-danger" type="submit" name="cid" value="1"
+	 '.$disabled.'>応用</button>';
+	 echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
+	 '.$disabled.'>総合</button>';?>
 <a href="javascript:void(0)"
 	onClick="checkbox_changer_ouyo(true); return false;">全てチェック</a>
 |
@@ -512,21 +525,26 @@ WHERE YEAR ='$year'
 		echo '<td>' . $row['allgpa'] . '</td>';
 		echo '<td style="color:red">' . $judge . '</td>';
 
-		$disabled = "disabled";
-
 		echo'<td>
-		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" '.$disabled.'>応用</button>
-		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" '.$disabled.'>総合</button>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" $disabled>応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" $disabled>総合</button>
 		</td>';
 		echo '</tr>';
 		$row = mysql_fetch_array($rs) ;
 	}
 	echo '</table>';
-	?>
-<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1"
-<?php $disabled ?>>応用</button>
-<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2"
-<?php $disabled ?>>総合</button>
+
+	 if ( isset($_SESSION['urole']) and $_SESSION['urole']==2 ) {
+   //教員（権限なし）としてログインしているなら
+   $disabled = "disabled";
+  }else{
+   $disabled = "";
+  }
+
+  echo '<button class="btn btn-danger" type="submit" name="cid" value="1"
+	 '.$disabled.'>応用</button>';
+	 echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
+	 '.$disabled.'>総合</button>';?>
 <a href="javascript:void(0)"
 	onClick="checkbox_changer_mitei(true); return false;">全てチェック</a>
 |
