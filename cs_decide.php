@@ -5,11 +5,15 @@ require_once('db_inc.php');  //データベース接続
 $now = new DateTime();
 $now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 $now = $now->format('Y/m/d H時i分s秒');
-$year = date('Y');
 
-/**
- * $yearをMAX()で取得
- */
+
+		//最新年を検索 MAX(year)
+		$sql = "SELECT MAX(year) FROM tb_limit";
+		$rs = mysql_query($sql, $conn);
+		if (!$rs) die ('エラー: ' . mysql_error());
+		$row = mysql_fetch_array($rs) ;
+		$year = $row['MAX(year)'];
+
 //要件用gp,gpa取得//////////////////////////////
 $sql = "SELECT gp,gpa
 FROM tb_course
@@ -25,6 +29,8 @@ $gpa = $row['gpa'];
 
 
 echo "<h1>コース決定一覧</h1>";
+echo "<p align='right'><strong style='color:red;'>".$now."</strong>
+<strong> 現在</strong></p>";
 ?>
 <style>
 .button_wall {
