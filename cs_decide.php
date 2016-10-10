@@ -16,6 +16,7 @@ FROM tb_course
 WHERE YEAR ='$year'
 AND cid=2";
 $rs = mysql_query($sql, $conn);
+
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;
 
@@ -249,8 +250,8 @@ WHERE YEAR ='$year'
 
 
 
-		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" $disabled>応用</button>
-		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" $disabled>総合</button>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" disabled>応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" disabled>総合</button>
 		</td>';
 		echo '</tr>';
 
@@ -392,8 +393,8 @@ WHERE YEAR ='$year'
 		echo '<td style="color:red">' . $judge . '</td>';
 
 		echo'<td>
-		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" $disabled>応用</button>
-		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" $disabled>総合</button>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" disabled>応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" disabled>総合</button>
 		</td>';
 		echo '</tr>';
 
@@ -526,8 +527,8 @@ WHERE YEAR ='$year'
 		echo '<td style="color:red">' . $judge . '</td>';
 
 		echo'<td>
-		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" $disabled>応用</button>
-		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" $disabled>総合</button>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" disabled>応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" disabled>総合</button>
 		</td>';
 		echo '</tr>';
 		$row = mysql_fetch_array($rs) ;
