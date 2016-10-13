@@ -28,7 +28,8 @@ sprintf("%.1f",$row['gpa']);
 		<a href="http://www2.is.kyusan-u.ac.jp/student/21-20newstudent/sogocourse-youken/2014">総合コース登録要件</a>
 	</div>
 		<div class="col-md-6">
-		<img src="http://www2.is.kyusan-u.ac.jp/files/uploads/modelcourses__large.png" alt="pic1">
+		<!--<img src="./image_view.php?id=1" />-->
+		<img src="http://www2.is.kyusan-u.ac.jp/files/uploads/modelcourses__large.png" />
 		</div>
 </div>
 <?php
@@ -51,4 +52,6 @@ while ($row){
 	echo'</div>';
 }	echo '</div>';
 
+
+include('page_footer.php');
 ?>

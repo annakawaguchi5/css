@@ -22,5 +22,7 @@
 </form>
 
 
+<h4 class="col-xs-offset-1 col-xs-6"><a href="passwd_info.php">パスワードを忘れてしまったら</a></h4>
+
 
 <?php include('page_footer.php'); ?>

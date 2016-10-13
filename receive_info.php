@@ -12,10 +12,10 @@
 <div id="detail" title="コメントの投稿ありがとうございます" style="display: none;">
 <p>コメントを受け付けました。<br />コメントは管理人の承認後、表示されます。</p>
 </div>
-
+<!--
 <div id="check" name="check">
 <button>あいうえお</button>
-</div>
+</div> -->
 <?php
 if(isset($_SESSION['urole'])){
 	$urole=$_SESSION['urole'];
@@ -33,9 +33,9 @@ if(isset($_SESSION['urole'])){
 	$row = mysql_fetch_array($rs);
 	if($row!=null){
 		while($row){
-			echo '<div id="detail" title="more-info"><a>';
+			echo '<div id="detail" title="more-info">';
 			echo $row['time']." ".$row['title'].'<br>';
-			echo '</a></div>';
+			echo '</div>';
 			$row = mysql_fetch_array($rs);
 		}
 	}else{
