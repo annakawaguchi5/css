@@ -1,0 +1,18 @@
+#countdown span{
+	color:#FF0000;
+}
+
+#countdownDate{
+	text-align:center;
+	font-size:15px;
+	margin-bottom:80px;
+}
+
+#contents{
+	width:300px;
+	height:200px;
+	background-position: center top;
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-image:url("../../../img/countdown.png");
+	}

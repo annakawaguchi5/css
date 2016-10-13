@@ -13,17 +13,17 @@ if($_SESSION['urole']==9){
 	}else{
 		$halfgp = $_POST['halfgp'];
 	}
-	if($_POST['halfgpa']==0){
+	if($_POST['halfgpa']==""){
 		$halfgpa = "NULL";
 	}else{
 		$halfgpa = $_POST['halfgpa'];
 	}
-	if($_POST['allgp']==0){
+	if($_POST['allgp']==""){
 		$allgp = "NULL";
 	}else{
 		$allgp = $_POST['allgp'];
 	}
-	if($_POST['allgpa']==0){
+	if($_POST['allgpa']==""){
 		$allgpa = "NULL";
 	}else{
 		$allgpa = $_POST['allgpa'];
