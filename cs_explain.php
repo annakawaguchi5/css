@@ -52,4 +52,6 @@ while ($row){
 	echo'</div>';
 }	echo '</div>';
 
+
+include('page_footer.php');
 ?>

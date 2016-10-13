@@ -17,8 +17,9 @@ echo '<div class="col-sm-offset-1">';
 			echo '<div class="form-group">';
 
 					while($row){
-					echo '<div class="col-xs-10">';
-					echo '<label class="checkbox" ><input type="checkbox" name="year[]" value="'.$row['year'].'">'.$row['year'].'年度</label>';
+					echo '<div class="col-xs-1"></div>';
+					echo '<div class="col-xs-3">';
+					echo '<label class="checkbox" ><input type="checkbox" name="year[]" value="'.$row['year'].'">'.$row['year'].'年度<br></label>';
 					echo '</div>';
 					$row = mysql_fetch_array($rs) ;
 					}
@@ -53,7 +54,7 @@ echo '</div>';
 							<input type="hidden" name="urole[]" value="'.$urole.'">
 							<input type="checkbox" disabled checked>'.$rolename.'</label>';
 					}else{
-						echo '<label class="checkbox-inline"><input type="checkbox" name="urole[]" value="'.$urole.'">'.$rolename.'</label>';
+						echo '<label class="checkbox-inline"><input type="checkbox"  name="urole[]" value="'.$urole.'">'.$rolename.'</label>';
 					}
 				}
 				//iyearは後に指定
