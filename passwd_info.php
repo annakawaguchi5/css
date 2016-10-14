@@ -10,26 +10,17 @@ include('page_header.php');
 
 ■学籍番号<INPUT type="text" name="gakuseki">
 ■名前<INPUT type="text" name="name">
-<TABLE>
 
 
-   <TD bgcolor="" height="">■メッセージ</TD>
-   <TR>
-      <TD width="1" height="1">
-         <TEXTAREA name="body" cols="60" rows="10"></TEXTAREA>
-      </TD>
-  </TR>
-  <TR>
-<TD colspan="30" align="right" width="30">
 
 
-<input type="submit"  value="　メール送信　">
+
+
+
+<input type="submit"  value="　送信　" >
 </form>
 
-</TD>
-          </TR>
 
-</TABLE>
 </Form>
 
 

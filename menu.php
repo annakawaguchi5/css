@@ -66,7 +66,8 @@
   'パスワード変更'  => 'user_passwd.php',
   */
 '年度一覧' => 'year.php',
-'問合せボックス' => 'goikenbox.php'
+'問合せボックス' => 'goikenbox.php',
+'パスワード変更届'=>'passwd_box.php'
  )
  );
 
