@@ -121,6 +121,7 @@ require_once('db_inc.php');  //データベース接続
 			echo '</tr>';
 			$row = mysql_fetch_array($rs);
 		}
+
 		include ('buttons.php');	//右下固定ボタン(削除、変更)
 		echo '</form>';
 		?>
