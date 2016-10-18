@@ -43,13 +43,17 @@ function list(change){
 function deleteaccount(){
 	document.getElementById('list').action = 'user_delete_check.php';
 	}
+
 </script>
-
-
 
 <div id="body-inner">
 	<div class="page-back">
-	<input type="submit" src="./FSV001BT005_5/button05_koudoku_05.jpg" value="change" alt="変更">
-	<input type="submit" src="./FSV001BT005_5/button05_seikyu_05.jpg" value="delete" alt="削除" onclick="deleteaccount();">
+	<?php
+	//ユーザ登録
+	//echo '<a href="importCsv.php?year='.$dispyear.'"><input type="image" src="./img/register.gif" alt="登録" onclick="register()"></a>';
+?>
+
+	<input type="image" src="./img/change.gif" value="change" alt="変更">
+	<input type="image" src="./img/delete.gif" value="delete" alt="削除" onclick="deleteaccount();">
 	</div>
 </div>
