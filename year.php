@@ -2,6 +2,20 @@
 include('page_header.php');  //画面出力開始
 require_once('db_inc.php');  //データベース接続
 ?>
+<!--
+<style>
+tbody{display:block;}
+tbody{height:100px; overflow-y:scroll;}
+td,th{table-layout:fixed;}
+.check{width:10px;}
+.uid{width:50px;}
+.uname{width:50px;}
+.halfgp{width:30px;}
+.halfgpa{width:30px;}
+.allgp{width:30px;}
+.allgpa{width:30px;}
+</style>
+-->
 <div
 	class="container">
 	<!-- 4グリッドを割り当て -->
@@ -62,6 +76,9 @@ require_once('db_inc.php');  //データベース接続
 	$row = mysql_fetch_array($rs) ;
 	?>
 		<div class="row">
+
+		<h3>設定</h3>
+
 			<!-- 左6グリッド 調査時刻-->
 			<div class="col-sm-6">
 				調査開始時刻：
@@ -104,24 +121,31 @@ require_once('db_inc.php');  //データベース接続
 		echo '<input type="image" src="./img/register.gif" alt="登録" onclick="window.open(\'importCsv.php?year='.$dispyear.'\', \'_blank\')">';
 
 		echo '<FORM method="POST" action="user_change.php" id="list" name="list" onsubmit="return list(this)">';
+		echo '<div style="height:100px; overflow-y:scroll;">';
 		echo '<div class="table-responsive">';
-		echo '<table border=0 class="table table-striped table-hover table-bordered">';
-		echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th>
-	<th>前期修得単位数</th><th>前期GPA</th>
-	<th>後期修得単位数</th><th>後期GPA</th></tr>';
+		echo '<table border=0 class="table table-headerfixed table-condensed table-striped table-hover table-bordered">';
+		echo '<thead><tr class="info"><th class="check"></th><th class="uid">ユーザID</th><th class="uname">氏名</th>
+	<th class="halfgp">前期修得単位数</th><th class="halfgpa">前期GPA</th>
+	<th class="allgp">後期修得単位数</th><th class="allgpa">後期GPA</th></tr></thead>';
+		echo '<tbody>';
 		while($row){
+
 			echo '<tr>';
-			echo '<td><input type="checkbox" name="students[]" value="'.$row['uid'].'"></td>';
-			echo '<td>' . $row['uid'] . '</td>';
-			echo '<td>' . $row['uname'] . '</td>';
-			echo '<td>' . $row['halfgp'] . '</td>';
-			echo '<td>' . $row['halfgpa'] . '</td>';
-			echo '<td>' . $row['allgp'] . '</td>';
-			echo '<td>' . $row['allgpa'] . '</td>';
+			echo '<td class="check"><input type="checkbox" name="students[]" value="'.$row['uid'].'"></td>';
+			echo '<td class="uid">' . $row['uid'] . '</td>';
+			echo '<td class="uname">' . $row['uname'] . '</td>';
+			echo '<td class="halfgp">' . $row['halfgp'] . '</td>';
+			echo '<td class="halfgpa">' . $row['halfgpa'] . '</td>';
+			echo '<td class="allgp">' . $row['allgp'] . '</td>';
+			echo '<td class="allgpa">' . $row['allgpa'] . '</td>';
 			echo '</tr>';
 			$row = mysql_fetch_array($rs);
+
 		}
-		include ('buttons.php');	//右下固定ボタン(削除、変更)
+		echo'</tbody>';
+	//	include ('buttons.php');	//右下固定ボタン(削除、変更)
+		echo '</table>';
+		echo '</div></div>';
 		echo '</form>';
 		?>
 		<!-- 8グリッド終わり -->
