@@ -16,33 +16,21 @@ if($uid=="" || $uname==""){
 	echo '<h4><a href="passwd_info.php">戻る</a></h4>';
 }else{
 
-
-	if($uid==$row['uid']){
-		$sql ="UPDATE passwd_info SET  uname='$uname',  timestamp=now() WHERE uid='$uid'";
-		$res = mysql_query( $sql, $conn );
-		if (!$res) {
-			echo "送信に失敗しました。";
-			die('エラー: ' . mysql_error());
-		}else{
-			echo "送信しました。";
-		}
-	}else {
-
-		$sql ="insert into passwd_info(uid, uname, timestamp) values ('$uid','$uname',now())";
-		$res = mysql_query( $sql, $conn );
-		if (!$res) {
-			echo "送信に失敗しました。";
-			die('エラー: ' . mysql_error());
-		}else{
-			echo "送信しました。";
-		}
-
+	$sql ="insert into passwd_info(uid, uname, timestamp, reset) values ('$uid','$uname',now(), 0)";
+	$res = mysql_query( $sql, $conn );
+	if (!$res) {
+		echo "送信に失敗しました。";
+		die('エラー: ' . mysql_error());
+	}else{
+		echo "送信しました。";
 	}
 
 
 
 
-echo '<h4><a href="login.php">戻る</a></h4>';
+
+
+	echo '<h4><a href="login.php">戻る</a></h4>';
 }
 
 

@@ -2,24 +2,32 @@
 include('page_header.php');  //画面出力開始
 require_once('db_inc.php');  //データベース接続
 ?>
-<!--
+
 <style>
-tbody{display:block;}
-tbody{height:100px; overflow-y:scroll;}
-td,th{table-layout:fixed;}
-.check{width:10px;}
-.uid{width:50px;}
-.uname{width:50px;}
-.halfgp{width:30px;}
-.halfgpa{width:30px;}
-.allgp{width:30px;}
-.allgpa{width:30px;}
+#data {
+	font-size:1.3em;
+    border: 2px solid #da4033;
+    border-radius: 4px;
+    margin: 2em 0;
+    padding: 2em;
+    position: relative;
+}
+#data::before {
+    background-color: #fff;
+    color: #da4033;
+    content: "基本設定";
+    font-weight: bolder;
+    left: 1em;
+    padding: 0 .5em;
+    position: absolute;
+    top: -1em;
+}
 </style>
--->
+
 <div
 	class="container">
 	<!-- 4グリッドを割り当て -->
-	<div class="col-xs-4">
+	<div class="col-xs-3">
 
 		<!-- 年度の新規作成 -->
 
@@ -50,7 +58,7 @@ td,th{table-layout:fixed;}
 
 	<!-- 8グリッドを割り当て -->
 	<!-- 年度詳細 -->
-	<div class="col-xs-8">
+	<div class="col-xs-9">
 	<?php
 	if(isset($_GET['year'])){
 		$dispyear = $_GET['year'];
@@ -75,9 +83,7 @@ td,th{table-layout:fixed;}
 	if (!$rs) die ('エラー: ' . mysql_error());
 	$row = mysql_fetch_array($rs) ;
 	?>
-		<div class="row">
-
-		<h3>設定</h3>
+		<div class="row" id="data">
 
 			<!-- 左6グリッド 調査時刻-->
 			<div class="col-sm-6">
@@ -142,10 +148,15 @@ td,th{table-layout:fixed;}
 			$row = mysql_fetch_array($rs);
 
 		}
+
 		echo'</tbody>';
 	//	include ('buttons.php');	//右下固定ボタン(削除、変更)
 		echo '</table>';
 		echo '</div></div>';
+
+
+		include ('buttons.php');	//右下固定ボタン(削除、変更)
+
 		echo '</form>';
 		?>
 		<!-- 8グリッド終わり -->
