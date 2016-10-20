@@ -74,16 +74,26 @@ require_once('db_inc.php');  //データベース接続
 	echo '<h1>'.$dispyear.'年度</h1>';
 
 	//コース名、調査期間を表示
-	//変更
-	echo '<a href="data_change.php?year='.$dispyear.'">
-	<input type="image" value="編集" src="./FSV001BT005_5/button05_touroku_05.jpg" alt="編集"></a>';
+
 
 	$sql = "SELECT * FROM tb_limit WHERE year=".$dispyear;
 	$rs = mysql_query($sql, $conn);
 	if (!$rs) die ('エラー: ' . mysql_error());
 	$row = mysql_fetch_array($rs) ;
 	?>
+
 		<div class="row" id="data">
+
+<div class="row">
+
+		<h3>設定</h3>
+		<?php
+			//変更
+	echo '<a href="data_change.php?year='.$dispyear.'">';
+	//echo '<input type="image" value="編集" src="./FSV001BT005_5/button05_touroku_05.jpg" alt="編集"></a>';
+	echo '<button value="編集"  alt="編集">編集</button></a>';
+	?>
+
 
 			<!-- 左6グリッド 調査時刻-->
 			<div class="col-sm-6">
@@ -127,7 +137,7 @@ require_once('db_inc.php');  //データベース接続
 		echo '<input type="image" src="./img/register.gif" alt="登録" onclick="window.open(\'importCsv.php?year='.$dispyear.'\', \'_blank\')">';
 
 		echo '<FORM method="POST" action="user_change.php" id="list" name="list" onsubmit="return list(this)">';
-		echo '<div style="height:100px; overflow-y:scroll;">';
+		echo '<div style="height:1000px; overflow-y:scroll;">';
 		echo '<div class="table-responsive">';
 		echo '<table border=0 class="table table-headerfixed table-condensed table-striped table-hover table-bordered">';
 		echo '<thead><tr class="info"><th class="check"></th><th class="uid">ユーザID</th><th class="uname">氏名</th>
@@ -149,11 +159,12 @@ require_once('db_inc.php');  //データベース接続
 
 		}
 
+		include ('buttons.php');	//右下固定ボタン(削除、変更)
+
 		echo'</tbody>';
 	//	include ('buttons.php');	//右下固定ボタン(削除、変更)
 		echo '</table>';
 		echo '</div></div>';
-
 
 		include ('buttons.php');	//右下固定ボタン(削除、変更)
 
