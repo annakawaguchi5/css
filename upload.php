@@ -15,11 +15,10 @@ if(isset($_POST['act'])){
 
 	if($act=="insert"){	//新規作成
 		//年度がないか確認
-		$sql = "SELECT * FROM tb_limit WHERE year=".$year;
+		$sql = "SELECT * FROM tb_limit WHERE year='$year'";
 		$rs = mysql_query($sql, $conn);
 		if (!$rs) die ('エラー: ' . mysql_error());
 		$row = mysql_fetch_array($rs);
-
 		if(!$row){	//同じ年度が存在しないとき
 			//tb_limitにデータを追加
 			$sql = "INSERT INTO tb_limit VALUES ('$year', '$stime','$ltime',now())";
@@ -30,37 +29,54 @@ if(isset($_POST['act'])){
 			echo '再度、新規作成する際は<a href="new_year.php">こちら</a>へ<br>';
 			echo '年度一覧へは<a href="year.php">こちら</a>へ';
 		}
+	}
 
 
 		/**
 		 * コース名を決定
 		 */
-		$course=$_POST['コース名'];
-		$gp=$_POST['単位数'];
-		$gpa=$_POST['GPA'];
-		$detail=$_POST['コース説明'];
-		$cid=$_POST['cid'];
-		if($act=="insert"){
-			$sql ="INSERT INTO tb_course VALUES ('$year', '$cid', '$course', '$detail', '$gp', '$gpa')" ;
-			$res = mysql_query( $sql, $conn );
-		}else{
-			$sql ="UPDATE tb_course SET year='$year', cid='$cid', cname='$course', detail='$detail', gp='$gp', gpa='$gpa' WHERE year='$year' AND cid='$cid'" ;
-			$res = mysql_query( $sql, $conn );
+		if(isset($_POST['list6_0_0'])){
+			echo $act;
+			echo $course=$_POST['list6_0_0'];
+			echo $gp=$_POST['list6_1_0'];
+			echo $gpa=$_POST['list6_2_0'];
+			echo $detail=$_POST['list6_3_0'];
+			if($gp==0||$gp=="" && $gpa==0 ||$gpa==""){
+				$cid=1;
+			}else{
+				$cid=2;
+			}
+
+			if($act=="insert"){
+				$sql ="INSERT INTO tb_course VALUES ('$year', '$cid', '$course', '$detail', '$gp', '$gpa')" ;
+				$res = mysql_query( $sql, $conn );
+				if (!$res) die ('エラー: ' . mysql_error());
+			}else{
+				$sql ="UPDATE tb_course SET year='$year', cid='$cid', cname='$course', detail='$detail', gp='$gp', gpa='$gpa' WHERE year='$year' AND cid='$cid'" ;
+				$res = mysql_query( $sql, $conn );
+				if (!$res) die ('エラー: ' . mysql_error());
+			}
 		}
 
-		if(isset($_POST['コース名1'])){
-			$course1=$_POST['コース名1'];
-			$gp1=$_POST['単位数1'];
-			$gpa1=$_POST['GPA1'];
-			$detail1=$_POST['コース説明1'];
-			$cid1=$_POST['cid1'];
+		if(isset($_POST['list6_0_1'])){
+			echo $course1=$_POST['list6_0_1'];
+			echo $gp1=$_POST['list6_1_1'];
+			echo $gpa1=$_POST['list6_2_1'];
+			echo $detail1=$_POST['list6_3_1'];
+			if($gp1==0||$gp1=="" && $gpa1==0 ||$gpa1==""){
+				$cid1=1;
+			}else{
+				$cid1=2;
+			}
 
 			if($act=="insert"){
 				$sql ="INSERT INTO tb_course VALUES ('$year', '$cid1', '$course1', '$detail1', '$gp1', '$gpa1')" ;
 				$res = mysql_query( $sql, $conn );
+				if (!$res) die ('エラー: ' . mysql_error());
 			}else{
 				$sql ="UPDATE tb_course SET year='$year', cid='$cid1', cname='$course1', detail='$detail1', gp='$gp1', gpa='$gpa1' WHERE year='$year' AND cid='$cid1'";
 				$res = mysql_query( $sql, $conn );
+				if (!$res) die ('エラー: ' . mysql_error());
 			}
 		}
 
@@ -102,7 +118,7 @@ if(isset($_POST['act'])){
 
 
 	<?php
-}
+
 
 include('page_footer.php');
 ?>

@@ -14,7 +14,12 @@ if(isset($_POST['list6_0_0'])){
 	$gp=$_POST['list6_1_0'];
 	$gpa=$_POST['list6_2_0'];
 	$detail=$_POST['list6_3_0'];
-	$cid=1;
+	if($gp==0||$gp=="" && $gpa==0 ||$gpa==""){
+		$cid=1;
+	}else{
+		$cid=2;
+	}
+
 }else{
 	echo "記入されていません";
 }
@@ -23,7 +28,11 @@ if(isset($_POST['list6_0_1'])){
 	$gp1=$_POST['list6_1_1'];
 	$gpa1=$_POST['list6_2_1'];
 	$detail1=$_POST['list6_3_1'];
-	$cid1=2;
+if($gp1==0||$gp1=="" && $gpa1==0 ||$gpa1==""){
+		$cid1=1;
+	}else{
+		$cid1=2;
+	}
 }
 
 ?>
@@ -41,12 +50,12 @@ if(isset($_POST['list6_0_1'])){
 	<?php
 
 
-	echo '<input type="hidden" name="year" value="'.$year.'">';
-	echo '<input type="hidden" name="stime" value="'.$stime.'">';
-	echo '<input type="hidden" name="ltime" value="'.$ltime.'">';
+	//echo '<input type="hidden" name="year" value="'.$year.'">';
+	//echo '<input type="hidden" name="stime" value="'.$stime.'">';
+	//echo '<input type="hidden" name="ltime" value="'.$ltime.'">';
 
-	echo '<input type="hidden" name="cid" value="'.$cid.'">';
-	echo '<input type="hidden" name="cid1" value="'.$cid1.'">';
+	//echo '<input type="hidden" name="cid" value="'.$cid.'">';
+	//echo '<input type="hidden" name="cid1" value="'.$cid1.'">';
 
 	echo '<input type="hidden" name="act" value="'.$act.'">';
 	?>
@@ -79,7 +88,8 @@ if(isset($_POST['list6_0_1'])){
 
 		<h3>コース情報</h3>
 		<?php
-		if(isset($_POST['list6_0_0'])){ ?>
+		if(isset($_POST['list6_0_0'])){
+		echo '<input type="hidden" name="cid" value="'.$cid.'">'; ?>
 		<table class="table table-bordered" width="100%">
 			<thead>
 				<tr class="active success">
@@ -92,30 +102,31 @@ if(isset($_POST['list6_0_1'])){
 					<td>コース名</td>
 					<td><?php echo $course; ?></td>
 				</tr>
-				<input type="hidden" name="コース名" value="<?php echo $course; ?>">
+				<input type="hidden" name="list6_0_0" value="<?php echo $course; ?>">
 
 				<tr>
 					<td>単位数</td>
 					<td><?php echo $gp; ?></td>
 				</tr>
-				<input type="hidden" name="単位数" value="<?php echo $gp; ?>">
+				<input type="hidden" name="list6_1_0" value="<?php echo $gp; ?>">
 
 				<tr>
 					<td>GPA</td>
 					<td><?php echo $gpa; ?></td>
 				</tr>
-				<input type="hidden" name="GPA" value="<?php echo $gpa; ?>">
+				<input type="hidden" name="list6_2_0" value="<?php echo $gpa; ?>">
 
 				<tr>
 					<td>コース説明</td>
 					<td><?php echo $detail; ?></td>
 				</tr>
-				<input type="hidden" name="コース説明" value="<?php echo $detail; ?>">
+				<input type="hidden" name="list6_3_0" value="<?php echo $detail; ?>">
 			</tbody>
 		</table>
 
 		<?php }?>
-		<?php if(isset($_POST['list6_0_1'])){?>
+		<?php if(isset($_POST['list6_0_1'])){
+		echo '<input type="hidden" name="cid1" value="'.$cid1.'">'; ?>
 		<table class="table table-bordered" width="100%">
 			<thead>
 				<tr class="active success">
@@ -128,25 +139,25 @@ if(isset($_POST['list6_0_1'])){
 					<td>コース名</td>
 					<td><?php echo $course1; ?></td>
 				</tr>
-				<input type="hidden" name="コース名1" value="<?php echo $course1; ?>">
+				<input type="hidden" name="list6_0_1" value="<?php echo $course1; ?>">
 
 				<tr>
 					<td>単位数</td>
 					<td><?php echo $gp1; ?></td>
 				</tr>
-				<input type="hidden" name="単位数1" value="<?php echo $gp1; ?>">
+				<input type="hidden" name="list6_1_1" value="<?php echo $gp1; ?>">
 
 				<tr>
 					<td>GPA</td>
 					<td><?php echo $gpa1; ?></td>
 				</tr>
-				<input type="hidden" name="GPA1" value="<?php echo $gpa1; ?>">
+				<input type="hidden" name="list6_2_1" value="<?php echo $gpa1; ?>">
 
 				<tr>
 					<td>コース説明</td>
 					<td><?php echo $detail1; ?></td>
 				</tr>
-				<input type="hidden" name="コース説明1" value="<?php echo $detail1; ?>">
+				<input type="hidden" name="list6_3_1" value="<?php echo $detail1; ?>">
 			</tbody>
 		</table>
 		<?php }?>
