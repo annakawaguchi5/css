@@ -158,10 +158,12 @@ $(function () {
 
 <!--
 function check(time){
-	if(time.elements['year'].value!="" || time.elements['stime'].value!="" || time.elements['ltime'].value!=""){
+	if(time.elements['year'].value!="" || time.elements['stime'].value!="" || time.elements['ltime'].value!="" || time.elements['list6_0_0'].value!="" || time.elements['list6_0_1'].value!=""){
 		var year = time.elements['year'].value;
 		var stime = time.elements['stime'].value;
 		var ltime = time.elements['ltime'].value;
+		var cname = time.elements['list6_0_0'].value;
+		var cname1 = time.elements['list6_0_1'].value;
 		if(year.match(/^\d{4}$/) && stime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && ltime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/)){
 			return true;
 		}else if(year==""){
@@ -172,6 +174,12 @@ function check(time){
 			return false;
 		}else if(ltime==""){
 			alert('終了時刻を入力して下さい。');
+			return false;
+		}else if(cname=="" || cname==null){
+			alert('コース名を入力して下さい。');
+			return false;
+		}else if(cname1==""){
+			alert('コース名1を入力して下さい。');
 			return false;
 		}
 	}else{

@@ -14,7 +14,7 @@ $(function () {
 
 <div id="list6">
 	<div class="list6_var">
-		コース名<input type="text" name="list6_0_0"> 単位数<input type="text"
+		コース名<input type="text" name="list6_0_0">単位数<input type="text"
 			name="list6_1_0"> GPA<input type="text" name="list6_2_0"><br>
 		コース説明<br><textarea name="list6_3_0" cols="100" rows="2"></textarea>
 		<button type="button" class="list6_del" style="display: inline-block;">削除</button>

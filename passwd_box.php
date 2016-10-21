@@ -4,7 +4,7 @@ require_once('db_inc.php');  //データベース接続
 ?>
 
 <div class="container">
-	<h1>パスワード変更届</h1>
+	<h1>パスワード変更希望ボックス</h1>
 	<?php
 	//問い合わせを検索
 	$sql = "SELECT * FROM passwd_info WHERE reset=0 ORDER BY timestamp DESC";

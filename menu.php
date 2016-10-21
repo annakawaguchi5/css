@@ -66,7 +66,7 @@
 	 */
 '年度一覧' => 'year.php',
 '問合せボックス' => 'goikenbox.php',
-'パスワード変更届'=>'passwd_box.php'
+'パスワード変更希望ボックス'=>'passwd_box.php'
 	)
 	);
 

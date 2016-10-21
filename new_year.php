@@ -7,7 +7,7 @@ require_once('db_inc.php');  //データベース接続
 
 <!-- 新規登録画面 -->
 <!-- コース名、要件 -->
-
+<h3></h3>
 <div class="container" id="newyear" title="新規作成">
 	<form class="form-horizontal" action="coursechange_do.php"
 		method="post" onSubmit="return check(this)"
@@ -42,7 +42,7 @@ require_once('db_inc.php');  //データベース接続
 					<div class='input-group date' id='stime'>
 						<span class="input-group-addon"><span
 							class="glyphicon glyphicon-calendar"></span> </span> <input
-							type='text' class="form-control" name="stime" value=" <?php echo $row['stime']?>"/>
+							type='text' class="form-control" name="stime" value="<?php echo $row['stime']?>"/>
 
 					</div>
 				</td>
@@ -53,7 +53,7 @@ require_once('db_inc.php');  //データベース接続
 					<div class='input-group date' id='ltime'>
 						<span class="input-group-addon"> <span
 							class="glyphicon glyphicon-calendar"></span> </span> <input
-							type='text' class="form-control" name="ltime" value=" <?php echo $row['ltime']?>"/>
+							type='text' class="form-control" name="ltime" value="<?php echo $row['ltime']?>"/>
 					</div>
 				</td>
 			</tr>
