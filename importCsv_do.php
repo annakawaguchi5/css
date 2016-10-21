@@ -125,7 +125,7 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 						$rs = mysql_query($sql, $conn);
 						//echo $uid.$sql."<br>";
 					}
-					echo "前期のデータが登録されました";
+					//echo "前期のデータが登録されました";
 				}else if($state==1){
 					if($row){//更新else　error
 						$sql="UPDATE tb_gp SET year='$year' , allgp='$gp', allgpa='$gpa' WHERE uid='$uid'";
@@ -134,7 +134,7 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 						$sql="UPDATE tb_user SET year='$year' ,uname='$uname' WHERE uid='$uid'";
 						$rs = mysql_query($sql, $conn);
 						//echo $uid.$sql."<br>";
-						echo "年間のデータが更新されました";
+						//echo "年間のデータが更新されました";
 					}else{
 						echo "ERROR  前期のデータが入っていません";
 					}

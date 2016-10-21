@@ -19,7 +19,7 @@ $year=$_GET['year'];
 		<span style="color: red">※CSVファイルのみ対応</span><br> <br> <label
 			class="radio-inline"> <input type="radio" name="data" value="0"
 			checked>前期 </label> <label class="radio-inline"> <input type="radio"
-			name="data" half="1">年間(前期＋後期) </label> <input type="file"
+			name="data" value="1">年間 </label> <input type="file"
 			name="csvfile" size="30" /> <br> <input type="submit" value="登録" />
 		</form>
 	</div>

@@ -207,7 +207,7 @@ $(function() {
 				echo '<table border=0 class="table table-headerfixed table-condensed table-striped table-hover table-bordered">';
 				echo '<thead><tr class="info"><th class="check"></th><th class="uid">ユーザID</th><th class="uname">氏名</th>
 	<th class="halfgp">前期修得単位数</th><th class="halfgpa">前期GPA</th>
-	<th class="allgp">後期修得単位数</th><th class="allgpa">後期GPA</th></tr></thead>';
+	<th class="allgp">年間修得単位数</th><th class="allgpa">年間GPA</th></tr></thead>';
 				echo '<tbody>';
 				while($row){
 

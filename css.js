@@ -179,7 +179,7 @@ function check(time){
 			alert('コース名を入力して下さい。');
 			return false;
 		}else if(time.elements['list6_0_1'].value==""){
-			alert('aaaaaa。');
+			alert('コース名を入力して下さい。');
 			return false;
 
 		}
