@@ -166,28 +166,30 @@ function check(time){
 
 		if(year.match(/^\d{4}$/) && stime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && ltime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && cname.match("コース")){
 			return true;
-		}else if(year==""){
+		}else if(!year.match(/^\d{4}$/)){
 			alert('年度を入力して下さい。');
 			return false;
-		}else if(stime==""){
+		}else if(!stime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/)){
 			alert('開始時刻を入力して下さい。');
 			return false;
-		}else if(ltime==""){
+		}else if(!ltime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/)){
 			alert('終了時刻を入力して下さい。');
 			return false;
-		}else if(cname==""){
+		}else if(!cname.match(/^[^\s　]+$/)){
 			alert('コース名を入力して下さい。');
 			return false;
 		}else if(time.elements['list6_0_1'].value==""){
+<<<<<<< HEAD
 			alert('コース名を入力して下さい。');
+=======
+			alert('コース名を入力するかコースを削除して下さい。');
+>>>>>>> 14089ecc652583781080a506c9c24546c4b6faf6
 			return false;
-
 		}
 	}else{
 		alert('項目を正確に埋めてください。');
 		return false;
 	}
 }
-
 //-->
 </script>
