@@ -164,7 +164,7 @@ function check(time){
 		var ltime = time.elements['ltime'].value;
 		var cname = time.elements['list6_0_0'].value;
 
-		if(year.match(/^\d{4}$/) && stime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && ltime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && cname.match(/^[^\s　]+$/)){
+		if(year.match(/^\d{4}$/) && stime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && ltime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && cname.match("コース")){
 			return true;
 		}else if(!year.match(/^\d{4}$/)){
 			alert('年度を入力して下さい。');
@@ -178,12 +178,14 @@ function check(time){
 		}else if(!cname.match(/^[^\s　]+$/)){
 			alert('コース名を入力して下さい。');
 			return false;
+		}else if(time.elements['list6_0_1'].value==""){
+			alert('コース名を入力するかコースを削除して下さい。');
+			return false;
 		}
 	}else{
 		alert('項目を正確に埋めてください。');
 		return false;
 	}
 }
-
 //-->
 </script>
