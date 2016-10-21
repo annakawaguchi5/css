@@ -158,13 +158,13 @@ $(function () {
 
 <!--
 function check(time){
-	if(time.elements['year'].value!="" || time.elements['stime'].value!="" || time.elements['ltime'].value!="" || time.elements['list6_0_0'].value!="" || time.elements['list6_0_1'].value!=""){
+	if(time.elements['year'].value!="" || time.elements['stime'].value!="" || time.elements['ltime'].value!="" || time.elements['list6_0_0'].value!="" ){
 		var year = time.elements['year'].value;
 		var stime = time.elements['stime'].value;
 		var ltime = time.elements['ltime'].value;
 		var cname = time.elements['list6_0_0'].value;
-		var cname1 = time.elements['list6_0_1'].value;
-		if(year.match(/^\d{4}$/) && stime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && ltime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/)){
+
+		if(year.match(/^\d{4}$/) && stime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && ltime.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/) && cname.match("コース")){
 			return true;
 		}else if(year==""){
 			alert('年度を入力して下さい。');
@@ -175,12 +175,13 @@ function check(time){
 		}else if(ltime==""){
 			alert('終了時刻を入力して下さい。');
 			return false;
-		}else if(cname=="" || cname==null){
+		}else if(cname==""){
 			alert('コース名を入力して下さい。');
 			return false;
-		}else if(cname1==""){
-			alert('コース名1を入力して下さい。');
+		}else if(time.elements['list6_0_1'].value==""){
+			alert('aaaaaa。');
 			return false;
+
 		}
 	}else{
 		alert('項目を正確に埋めてください。');
