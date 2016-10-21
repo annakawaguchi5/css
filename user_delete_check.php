@@ -12,7 +12,9 @@ if (isset($_POST['students'])){
 
 	echo '<p>を本当に削除しますか?</p>';
 	echo '<button type="submit" class="btn btn-danger">削除</button>';
+	echo '</form>';
 	echo '<a href="year.php"><button class="btn btn-default">戻る</button></a>';
+
 }else{
 	echo '<h2>削除するユーザIDが与えられていません</h2>';
 	echo '<a href="year.php">戻る</a>';
