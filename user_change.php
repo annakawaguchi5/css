@@ -55,23 +55,14 @@ if (isset($_POST['students'])){
 		$row = mysql_fetch_array($rs) ;
 
 		echo '<table class="table table-bordered">';
-		echo '<input type="checkbox" name="change[]" value="'.$u.'" checked="checked">'.$u;
-		echo '<tr ><th class="col-xs-4 info">学籍番号</th><th>'.$row['uid'].'</th></tr>';
+		echo '<input type="hidden" name="uid[]" value="'.$u.'" checked="checked">';
+		echo '<tr ><th class="col-xs-4 info">学籍番号</th><th>'.$u.'</th></tr>';
 		echo '<tr><th class="info">名前</th><td><input type="text" name="uname[]" value="'.$row['uname'].'"></td></tr>';
 		echo '<tr><th class="info">パスワード</th><td><input type="text" name="upass[]" value="'.$row['upass'].'"></td></tr>';
 		echo '<tr><th class="info">前期修得単位数</th><td><input type="text" name="halfgp[]" value="'.$row['halfgp'].'"></td></tr>';
 		echo '<tr><th class="info">前期GPA</th><td><input type="text" name="halfgpa[]" value="'.$row['halfgpa'].'"></td></tr>';
 		echo '<tr><th class="info">年間修得単位数</th><td><input type="text" name="allgp[]" value="'.$row['allgp'].'"></td></tr>';
 		echo '<tr><th class="info">年間GPA</th><td><input type="text" name="allgpa[]" value="'.$row['allgpa'].'"></td></tr>';
-
-
-/*
-		echo '<input type="hidden" name="uname[]" value="">';
-		echo '<input type="hidden" name="upass[]" value="">';
-		echo '<input type="hidden" name="halfgp[]" value="">';
-		echo '<input type="hidden" name="halfgpa[]" value="">';
-		echo '<input type="hidden" name="allgp[]" value="">';
-		echo '<input type="hidden" name="allgpa[]" value="">';*/
 		echo '</table>';
 
 

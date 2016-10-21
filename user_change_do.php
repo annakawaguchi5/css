@@ -2,9 +2,9 @@
 include('page_header.php');
 include ('db_inc.php');
 
-if (isset($_POST['change'])){
+if (isset($_POST['uid'])){
 
-	$uid = $_POST['change'];
+	$uid = $_POST['uid'];
 	$uname = $_POST['uname'];
 	$upass = $_POST['upass'];
 	$halfgp = $_POST['halfgp'];
@@ -39,8 +39,8 @@ if (isset($_POST['change'])){
 		$allgpa = "NULL";
 	}
 
-		echo $sql = "UPDATE tb_user NATURAL JOIN tb_gp SET uname='$uname',upass='$upass',halfgp=$halfgp,halfgpa=$halfgpa,allgp=$allgp,allgpa=$allgpa WHERE uid='$uid'";
-		echo $sql;
+		$sql = "UPDATE tb_user NATURAL JOIN tb_gp SET uname='$uname',upass='$upass',halfgp=$halfgp,halfgpa=$halfgpa,allgp=$allgp,allgpa=$allgpa WHERE uid='$uid'";
+		//echo $sql;
 		$rs = mysql_query($sql, $conn);
 		if (!$rs) die ('エラー: ' . mysql_error());
 

@@ -2,7 +2,7 @@
 .page-back {
 	position: fixed;
 	bottom: 10px;
-	right: 10px;
+	right: 100px;
 }
 
 /* IE6用ハック */
