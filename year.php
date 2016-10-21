@@ -4,6 +4,10 @@ require_once('db_inc.php');  //データベース接続
 ?>
 
 <style>
+.indent{
+margin-left: -40px
+}
+
 #tab li {
 	float: left;
 	padding: 10px;
@@ -22,9 +26,11 @@ require_once('db_inc.php');  //データベース接続
 }
 
 .content_wrap {
-	padding:1em;
-	clear: left;
+	padding: 1em;
+	margin-left: 40px; clear : left;
 	color: #000000;
+	background-color: #ffff7f;
+	clear: left;
 }
 
 #data {
@@ -129,105 +135,107 @@ $(function() {
 
 	echo '<h1>'.$dispyear.'年度</h1>';
 	?>
-		<ul id="tab">
-			<li class="select">基本設定</li>
-			<li>ユーザ情報</li>
-		</ul>
-		<div class="content_wrap">
-		<?php
-		//コース名、調査期間を表示
-		$sql = "SELECT * FROM tb_limit WHERE year=".$dispyear;
-		$rs = mysql_query($sql, $conn);
-		if (!$rs) die ('エラー: ' . mysql_error());
-		$row = mysql_fetch_array($rs) ;
-		?>
-
-			<div id="data">
-				<div class="row">
-
-					<!-- 左6グリッド 調査時刻-->
-					<div class="col-sm-6">
-						調査開始時刻：
-						<?php echo $row['stime'];?>
-						<br> 調査終了時刻：
-						<?php echo $row['ltime'];?>
-					</div>
-					<!-- 右6グリッド コース-->
-					<div class="col-sm-6">
-					<?php
-					$sql = "SELECT * FROM tb_course WHERE year=".$dispyear;
-					$rs = mysql_query($sql, $conn);
-					if (!$rs) die ('エラー: ' . mysql_error());
-					$row = mysql_fetch_array($rs) ;
-					echo '<ul>';
-					while($row){
-						echo '<li>'.$row['cname'].'</li>';
-						$row = mysql_fetch_array($rs) ;
-					}
-					echo '</ul>';
-					?>
-					</div>
-					<?php
-					//変更
-					echo '<a href="data_change.php?year='.$dispyear.'">';
-					//echo '<input type="image" value="編集" src="./FSV001BT005_5/button05_touroku_05.jpg" alt="編集"></a>';
-					echo '<button value="編集"  alt="編集">編集</button></a>';
-					?>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="content_wrap disnon">
-			<!-- ユーザリスト -->
-			<div id="user">
+		<div class="indent">
+			<ul id="tab">
+				<li class="select">基本設定</li>
+				<li>ユーザ情報</li>
+			</ul>
+			<div class="content_wrap">
 			<?php
-			//ダウンロード
-			include('export_main.php');
-
-
-			//学生のデータを表示
-			$sql = "SELECT * FROM tb_user NATURAL JOIN tb_gp WHERE year=".$dispyear;
+			//コース名、調査期間を表示
+			$sql = "SELECT * FROM tb_limit WHERE year=".$dispyear;
 			$rs = mysql_query($sql, $conn);
 			if (!$rs) die ('エラー: ' . mysql_error());
 			$row = mysql_fetch_array($rs) ;
+			?>
 
-			echo '<input type="submit" src="./img/register.gif" alt="登録" onclick="window.open(\'importCsv.php?year='.$dispyear.'\', \'_blank\')">';
+				<div id="data">
+					<div class="row">
 
-			echo '<FORM method="POST" action="user_change.php" id="list" name="list" onsubmit="return list(this)">';
-			echo '<div style="height:200px; overflow-y:scroll;">';
-			echo '<div class="table-responsive">';
-			echo '<table border=0 class="table table-headerfixed table-condensed table-striped table-hover table-bordered">';
-			echo '<thead><tr class="info"><th class="check"></th><th class="uid">ユーザID</th><th class="uname">氏名</th>
+						<!-- 左6グリッド 調査時刻-->
+						<div class="col-sm-6">
+							調査開始時刻：
+							<?php echo $row['stime'];?>
+							<br> 調査終了時刻：
+							<?php echo $row['ltime'];?>
+						</div>
+						<!-- 右6グリッド コース-->
+						<div class="col-sm-6">
+						<?php
+						$sql = "SELECT * FROM tb_course WHERE year=".$dispyear;
+						$rs = mysql_query($sql, $conn);
+						if (!$rs) die ('エラー: ' . mysql_error());
+						$row = mysql_fetch_array($rs) ;
+						echo '<ul>';
+						while($row){
+							echo '<li>'.$row['cname'].'</li>';
+							$row = mysql_fetch_array($rs) ;
+						}
+						echo '</ul>';
+						?>
+						</div>
+						<?php
+						//変更
+						echo '<a href="data_change.php?year='.$dispyear.'">';
+						//echo '<input type="image" value="編集" src="./FSV001BT005_5/button05_touroku_05.jpg" alt="編集"></a>';
+						echo '<button value="編集"  alt="編集">編集</button></a>';
+						?>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="content_wrap disnon">
+				<!-- ユーザリスト -->
+				<div id="user">
+				<?php
+				//ダウンロード
+				include('export_main.php');
+
+
+				//学生のデータを表示
+				$sql = "SELECT * FROM tb_user NATURAL JOIN tb_gp WHERE year=".$dispyear;
+				$rs = mysql_query($sql, $conn);
+				if (!$rs) die ('エラー: ' . mysql_error());
+				$row = mysql_fetch_array($rs) ;
+
+				echo '<input type="button" src="./img/register.gif" alt="登録" value="ユーザ登録" onclick="window.open(\'importCsv.php?year='.$dispyear.'\', \'_blank\')">';
+
+				echo '<FORM method="POST" action="user_change.php" id="list" name="list" onsubmit="return list(this)">';
+				echo '<div style="height:200px; overflow-y:scroll;">';
+				echo '<div class="table-responsive">';
+				echo '<table border=0 class="table table-headerfixed table-condensed table-striped table-hover table-bordered">';
+				echo '<thead><tr class="info"><th class="check"></th><th class="uid">ユーザID</th><th class="uname">氏名</th>
 	<th class="halfgp">前期修得単位数</th><th class="halfgpa">前期GPA</th>
 	<th class="allgp">後期修得単位数</th><th class="allgpa">後期GPA</th></tr></thead>';
-			echo '<tbody>';
-			while($row){
+				echo '<tbody>';
+				while($row){
 
-				echo '<tr>';
-				echo '<td class="check"><input type="checkbox" name="students[]" value="'.$row['uid'].'"></td>';
-				echo '<td class="uid">' . $row['uid'] . '</td>';
-				echo '<td class="uname">' . $row['uname'] . '</td>';
-				echo '<td class="halfgp">' . $row['halfgp'] . '</td>';
-				echo '<td class="halfgpa">' . $row['halfgpa'] . '</td>';
-				echo '<td class="allgp">' . $row['allgp'] . '</td>';
-				echo '<td class="allgpa">' . $row['allgpa'] . '</td>';
-				echo '</tr>';
-				$row = mysql_fetch_array($rs);
+					echo '<tr>';
+					echo '<td class="check"><input type="checkbox" name="students[]" value="'.$row['uid'].'"></td>';
+					echo '<td class="uid">' . $row['uid'] . '</td>';
+					echo '<td class="uname">' . $row['uname'] . '</td>';
+					echo '<td class="halfgp">' . $row['halfgp'] . '</td>';
+					echo '<td class="halfgpa">' . $row['halfgpa'] . '</td>';
+					echo '<td class="allgp">' . $row['allgp'] . '</td>';
+					echo '<td class="allgpa">' . $row['allgpa'] . '</td>';
+					echo '</tr>';
+					$row = mysql_fetch_array($rs);
 
-			}
+				}
 
-			include ('buttons.php');	//右下固定ボタン(削除、変更)
+				include ('buttons.php');	//右下固定ボタン(削除、変更)
 
-			echo'</tbody>';
-			include ('buttons.php');	//右下固定ボタン(削除、変更)
-			echo '</table>';
-			echo '</div></div>';
+				echo'</tbody>';
+				include ('buttons.php');	//右下固定ボタン(削除、変更)
+				echo '</table>';
+				echo '</div></div>';
 
-			include ('buttons.php');	//右下固定ボタン(削除、変更)
+				include ('buttons.php');	//右下固定ボタン(削除、変更)
 
-			echo '</form>';
-			?>
+				echo '</form>';
+				?>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -235,6 +243,6 @@ $(function() {
 
 <!-- 9グリッド終わり -->
 
-			<?php
+<?php
 			include('page_footer.php');
 			?>
