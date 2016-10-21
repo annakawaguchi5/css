@@ -1,3 +1,20 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @shouichiK
+ Watch 1
+  Star 0
+ Fork 1 annakawaguchi5/css
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
+Tree: 14089ecc65 Find file Copy pathcss/css.js
+14089ec  7 minutes ago
+@annakawaguchi5 annakawaguchi5 10/21
+2 contributors @annakawaguchi5 @shouichiK
+RawBlameHistory
+191 lines (168 sloc)  4.66 KB
 <script type="text/javascript">
 /**
  * ポップアップ
@@ -179,11 +196,7 @@ function check(time){
 			alert('コース名を入力して下さい。');
 			return false;
 		}else if(time.elements['list6_0_1'].value==""){
-<<<<<<< HEAD
-			alert('コース名を入力して下さい。');
-=======
 			alert('コース名を入力するかコースを削除して下さい。');
->>>>>>> 14089ecc652583781080a506c9c24546c4b6faf6
 			return false;
 		}
 	}else{
@@ -193,3 +206,5 @@ function check(time){
 }
 //-->
 </script>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help
