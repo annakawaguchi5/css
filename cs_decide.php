@@ -388,7 +388,7 @@ WHERE YEAR ='$year'
 	<input type="hidden" name="act[]" value="<?php echo $act;?>">
 	<td><input type="checkbox" name="chk_ouyo[]"
 		value="<?php echo $uid; ?>"></td>
-</form>
+
 		<?php
 		echo '<td>' . $row['uid'] . '</td>';
 		echo '<td>' . $row['uname']. '</td>';
@@ -466,7 +466,10 @@ $row = mysql_fetch_array($rs) ;
 	while ($row) {
 
 		$act = 'insert';  //初回登録?（insert: 初回登録; update: 再登録）;
-		if($row['allgp']>=$gp && $row['allgpa']>=$gpa){
+		if($gp=="" || $gpa=="" || $gp==null || $gpa == null){
+			$judge = "?";
+		}
+		else if($row['allgp']>=$gp && $row['allgpa']>=$gpa){
 			$judge = "◯";
 		}else{
 			$judge = "✕";
@@ -514,15 +517,19 @@ WHERE YEAR ='$year'
 
 
 
-		$act;
-		$uid=$row['uid'];
+
+
+		echo $uid=$row['uid'];
 		$uname=$row['uname'];
+		echo $act;
 		echo '<tr>'?>
 
-	<input type="hidden" name="act[]" value="<?php echo $act;?>">
+
 	<td><input type="checkbox" name="chk_mitei[]"
-		value="<?php echo $uid; ?>"></td>
-</form>
+		value="<?php echo $uid; ?>">
+		</td>
+
+
 		<?php
 		echo '<td>' . $row['uid'] . '</td>';
 		echo '<td>' . $row['uname']. '</td>';

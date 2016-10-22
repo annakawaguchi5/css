@@ -123,17 +123,23 @@ if ( !isset($_SESSION['urole']) || $_SESSION['urole']!=3 ) {
 	}else
 	#########################################
 
+
 	//未提出者用///////////////////////////////////////////////
 	if(isset($_POST['chk_mitei'])){
 		$chk_sougo=$_POST['chk_mitei'];
 		$act_decide=$_POST['act'];
 
+
 		foreach( $chk_sougo as $c=>$a  ) {
 			$output[] = array($chk_sougo[$c], $act_decide[$c]);
 		}
+
 		foreach($output as $k=>$f){
 			echo $uid=$f[0];
 			echo $act=$f[1];
+
+
+
 
 
 

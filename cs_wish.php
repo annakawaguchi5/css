@@ -11,7 +11,7 @@ if ( isset($_SESSION['urole']) and $_SESSION['urole']==1 ) {
 }
 
 //開始・締め切り時刻をチェック
-$sql = "select * from tb_limit where ".$year;
+$sql = "select * from tb_limit where year='$year'";
 $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;

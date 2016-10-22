@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,11 +10,9 @@ session_start();
 <link rel="stylesheet" type="text/css" media="screen"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link href="css/smoke.min.css" rel="stylesheet">
-
 <!-- CSS -->
 <link rel="stylesheet" href="../common/css/common.css">
 <link rel="stylesheet" href="css/style.css">
-
 <!-- JS -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script
@@ -34,18 +30,14 @@ session_start();
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/cupertino/jquery-ui.css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datetimepicker-ja.min.js"></script>
-
 <!-- datetimepicker -->
 <link rel="stylesheet"
 	href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/v4.0.0/build/css/bootstrap-datetimepicker.css">
-
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
 <script src="moment-ja.js"></script>
 <script
 	src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/v4.0.0/src/js/bootstrap-datetimepicker.js"></script>
-
-
 <?php
 include('stylesheet.css');	//CSSを読み込む
 include('css.js');	//JavaScriptを読み込む

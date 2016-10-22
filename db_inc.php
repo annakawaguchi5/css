@@ -9,7 +9,7 @@
 //css用
 if (isset($env) and $env==="run"){
 	$conn = mysql_connect("localhost","k14jk032","joho2016");
-	mysql_select_db("css", $conn);
+	mysql_select_db("wp2016a", $conn);
 }
 ////////////////////////////////////////////////
 else{

@@ -1,8 +1,9 @@
-<!-- 戻るのUI変更 戻る画面はホームか同じ場所か -->
 <?php
 include('page_header.php');
 require_once ('db_inc.php');  // データベース接続
-
+?>
+<!-- 戻るのUI変更 戻る画面はホームか同じ場所か -->
+<?php
 if (isset($_GET['uid'])){
   $uid = $_GET['uid'];
   $pass = $_POST['pass'];	//パスワード
