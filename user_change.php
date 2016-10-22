@@ -70,11 +70,11 @@ if (isset($_POST['students'])){
 
 	echo '上記のデータに変更しますか?</p>';
 	echo '<button type="submit" class="btn btn-danger">変更</button>';
-	echo '<a href="year.php"><button class="btn btn-default">戻る</button></a></form>';
+	echo '</form>';
 }else{
 	echo '<h2>変更するユーザIDが与えられていません</h2>';
-	echo '<a href="year.php">戻る</a>';
 }
+echo '<a href="year.php"><button class="btn btn-default">戻る</button></a>';
 ?>
 </div>
 <?php

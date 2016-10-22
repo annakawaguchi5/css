@@ -28,7 +28,7 @@ include('page_header.php');
 <TD colspan="30" align="right" width="30">
 
 
-<input type="submit"  value="　メール送信　">
+<input type="submit">
 </form>
 
 </TD>
