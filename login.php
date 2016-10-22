@@ -2,7 +2,7 @@
 <style>
 .button_wall { text-align : right ; }
 </style>
-<form class="form-horizontal container bg-info" action="check.php" method="post">
+<form class="form-horizontal bg-info" action="check.php" method="post">
   <div class="form-group">
     <label for="uid" class="control-label col-sm-2">ユーザID:</label>
     <div class="col-sm-10">

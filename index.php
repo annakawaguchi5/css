@@ -18,7 +18,6 @@ if ( isset($_SESSION['urole'])) {
 			include('admin_top.php');
 			break;
 	}
-
 }else{
 	include('unlogin.php');
 }

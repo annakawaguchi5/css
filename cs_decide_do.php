@@ -10,186 +10,217 @@ if ( !isset($_SESSION['urole']) || $_SESSION['urole']!=3 ) {
 	//総合コース用/////////////////////////////////////
 	if(isset($_POST['chk_sougo'])){
 		$chk_sougo=$_POST['chk_sougo'];
-		$act_decide=$_POST['act'];
+		//$act_decide=$_POST['act'];
+		$cid  = $_POST['cid'] ;
+		$year = $_POST['year'];
 
-		foreach( $chk_sougo as $c=>$a  ) {
-			$output[] = array($chk_sougo[$c], $act_decide[$c]);
-		}
-		foreach($output as $k=>$f){
-			echo $uid=$f[0];
-			echo $act=$f[1];
+		//cid,yearからコース情報を調べる
+		$sql = "SELECT cname FROM tb_course WHERE cid='$cid' AND year=$year";
+		//echo $sql;
+		$rs = mysql_query($sql, $conn);
+		if (!$rs) die ('エラー: ' . mysql_error());
+		$row = mysql_fetch_array($rs) ;
+		$cname=$row['cname'];
 
+		foreach( $chk_sougo as $c  ) {
+			$uid=$c;
 
-
-
-
-
-			//echo $act  = $_POST['act'] ;
-			$cid  = $_POST['cid'] ;
-
-			$sql = "SELECT uname FROM tb_user WHERE uid='$uid'";
+			//uidからユーザ情報を調べる
+			$sql = "SELECT uname FROM tb_user WHERE uid='$uid' AND year=$year";
+			//echo $sql;
 			$rs = mysql_query($sql, $conn);
 			if (!$rs) die ('エラー: ' . mysql_error());
 			$row = mysql_fetch_array($rs) ;
 
-			while($row){
-				$uname=$row['uname'];
+			$uname=$row['uname'];
 
-				if ($act == 'insert'){//新規登録の場合
-					$sql = "INSERT INTO tb_decide VALUES('$uid','$uname','$cid')";
-					echo "<h2>総合コース：登録しました</h2>";
-				}else{//再登録の場合
-					$sql = "UPDATE tb_decide SET uid='$uid', uname='$uname', cid='$cid' WHERE uid='$uid'";
-					echo "<h2>総合コース：更新しました</h2>";
-				}
-				$rs_sougo = mysql_query($sql, $conn); //SQL文を実行
+			//決定済み確認用////////////////////
+			/*決定済み1, 未決定0*/
+			$sql = "SELECT EXISTS(SELECT uid,cid
+FROM tb_decide
+NATURAL JOIN tb_user
+WHERE uid='$uid')";
+			//echo $sql;
+			$rs = mysql_query($sql, $conn);
+			if (!$rs) die ('エラー: ' . mysql_error());
+			$row = mysql_fetch_array($rs) ;
 
-				if (!$rs){
-					echo "<h2>総合コース：登録が失敗しました</h2>";
+			//追加 or 更新
+			if($row[0]==1){
+				$act='update';
+				$sql="UPDATE tb_decide SET uid='$uid', uname='$uname', cid=$cid WHERE uid='$uid'";
+				//echo $sql;
+			}else{
+				$act='insert';
+				$sql="INSERT INTO tb_decide VALUES ('$uid', '$uname', $cid)";
+				//echo $sql;
+			}
+			//実行
+			$rs = mysql_query($sql, $conn);
+			if (!$rs) die ('エラー: ' . mysql_error());
 
-					echo mysql_error();
-				}
 
 
-
-
-				$row = mysql_fetch_array($rs) ;
+			if ($act == 'insert'){//新規登録の場合
+				echo "<h2>".$uname."を".$cname."に登録しました</h2>";
+			}else{//再登録の場合
+				echo "<h2>".$uname."を".$cname."に更新しました</h2>";
 			}
 
-
-
+			if (!$rs){
+				echo "<h2>登録が失敗しました</h2>";
+				echo mysql_error();
+			}
 		}
-
 		echo '<p><a href="cs_decide.php">戻る</a>';
+	}else{ //エラーを表示
+		//echo '<h2>エラー：希望コースまたは決定するユーザIDが選択されていません</h2>';
+	}
 
-	}else
+
 
 	//応用コース用/////////////////////////////////////////
 	if(isset($_POST['chk_ouyo'])){
-		$chk_sougo=$_POST['chk_ouyo'];
-		$act_decide=$_POST['act'];
+		$chk_ouyo=$_POST['chk_ouyo'];
+		//$act_decide=$_POST['act'];
+		$cid  = $_POST['cid'] ;
+		$year = $_POST['year'];
 
-		foreach( $chk_sougo as $c=>$a  ) {
-			$output[] = array($chk_sougo[$c], $act_decide[$c]);
-		}
-		foreach($output as $k=>$f){
-			echo $uid=$f[0];
-			echo $act=$f[1];
+		//cid,yearからコース情報を調べる
+		$sql = "SELECT cname FROM tb_course WHERE cid='$cid' AND year=$year";
+		//echo $sql;
+		$rs = mysql_query($sql, $conn);
+		if (!$rs) die ('エラー: ' . mysql_error());
+		$row = mysql_fetch_array($rs) ;
+		$cname=$row['cname'];
 
+		foreach( $chk_ouyo as $c  ) {
+			$uid=$c;
 
-
-
-
-
-			//echo $act  = $_POST['act'] ;
-			$cid  = $_POST['cid'] ;
-
-			$sql = "SELECT uname FROM tb_user WHERE uid='$uid'";
+			//uidからユーザ情報を調べる
+			$sql = "SELECT uname FROM tb_user WHERE uid='$uid' AND year=$year";
+			//echo $sql;
 			$rs = mysql_query($sql, $conn);
 			if (!$rs) die ('エラー: ' . mysql_error());
 			$row = mysql_fetch_array($rs) ;
 
-			while($row){
-				$uname=$row['uname'];
+			$uname=$row['uname'];
 
-				if ($act == 'insert'){//新規登録の場合
-					$sql = "INSERT INTO tb_decide VALUES('$uid','$uname','$cid')";
-					echo "<h2>総合コース：登録しました</h2>";
-				}else{//再登録の場合
-					$sql = "UPDATE tb_decide SET uid='$uid', uname='$uname', cid='$cid' WHERE uid='$uid'";
-					echo "<h2>総合コース：更新しました</h2>";
-				}
-				$rs_sougo = mysql_query($sql, $conn); //SQL文を実行
+			//決定済み確認用////////////////////
+			/*決定済み1, 未決定0*/
+			$sql = "SELECT EXISTS(SELECT uid,cid
+FROM tb_decide
+NATURAL JOIN tb_user
+WHERE uid='$uid')";
+			//echo $sql;
+			$rs = mysql_query($sql, $conn);
+			if (!$rs) die ('エラー: ' . mysql_error());
+			$row = mysql_fetch_array($rs) ;
 
-				if (!$rs){
-					echo "<h2>総合コース：登録が失敗しました</h2>";
+			//追加 or 更新
+			if($row[0]==1){
+				$act='update';
+				$sql="UPDATE tb_decide SET uid='$uid', uname='$uname', cid=$cid WHERE uid='$uid'";
+				//echo $sql;
+			}else{
+				$act='insert';
+				$sql="INSERT INTO tb_decide VALUES ('$uid', '$uname', $cid)";
+				//echo $sql;
+			}
+			//実行
+			$rs = mysql_query($sql, $conn);
+			if (!$rs) die ('エラー: ' . mysql_error());
 
-					echo mysql_error();
-				}
 
 
-
-
-				$row = mysql_fetch_array($rs) ;
+			if ($act == 'insert'){//新規登録の場合
+				echo "<h2>".$uname."を".$cname."に登録しました</h2>";
+			}else{//再登録の場合
+				echo "<h2>".$uname."を".$cname."に更新しました</h2>";
 			}
 
+			if (!$rs){
+				echo "<h2>登録が失敗しました</h2>";
+				echo mysql_error();
+			}
+		}echo '<p><a href="cs_decide.php">戻る</a>';
+	}else{ //エラーを表示
+		//echo '<h2>エラー：希望コースまたは決定するユーザIDが選択されていません</h2>';
+	}
 
-
-		}
-
-		echo '<p><a href="cs_decide.php">戻る</a>';
-
-
-	}else
 	#########################################
 
 
 	//未提出者用///////////////////////////////////////////////
 	if(isset($_POST['chk_mitei'])){
-		$chk_sougo=$_POST['chk_mitei'];
-		$act_decide=$_POST['act'];
+		$chk_mitei=$_POST['chk_mitei'];
+		//$act_decide=$_POST['act'];
+		$cid  = $_POST['cid'] ;
+		$year = $_POST['year'];
 
+		//cid,yearからコース情報を調べる
+		$sql = "SELECT cname FROM tb_course WHERE cid='$cid' AND year=$year";
+		//echo $sql;
+		$rs = mysql_query($sql, $conn);
+		if (!$rs) die ('エラー: ' . mysql_error());
+		$row = mysql_fetch_array($rs) ;
+		$cname=$row['cname'];
 
-		foreach( $chk_sougo as $c=>$a  ) {
-			$output[] = array($chk_sougo[$c], $act_decide[$c]);
-		}
+		foreach( $chk_mitei as $c  ) {
+			$uid=$c;
 
-		foreach($output as $k=>$f){
-			echo $uid=$f[0];
-			echo $act=$f[1];
-
-
-
-
-
-
-
-
-
-			//echo $act  = $_POST['act'] ;
-			$cid  = $_POST['cid'] ;
-
-			$sql = "SELECT uname FROM tb_user WHERE uid='$uid'";
+			//uidからユーザ情報を調べる
+			$sql = "SELECT uname FROM tb_user WHERE uid='$uid' AND year=$year";
+			//echo $sql;
 			$rs = mysql_query($sql, $conn);
 			if (!$rs) die ('エラー: ' . mysql_error());
 			$row = mysql_fetch_array($rs) ;
 
-			while($row){
-				$uname=$row['uname'];
+			$uname=$row['uname'];
 
-				if ($act == 'insert'){//新規登録の場合
-					$sql = "INSERT INTO tb_decide VALUES('$uid','$uname','$cid')";
-					echo "<h2>総合コース：登録しました</h2>";
-				}else{//再登録の場合
-					$sql = "UPDATE tb_decide SET uid='$uid', uname='$uname', cid='$cid' WHERE uid='$uid'";
-					echo "<h2>総合コース：更新しました</h2>";
-				}
-				$rs_sougo = mysql_query($sql, $conn); //SQL文を実行
+			//決定済み確認用////////////////////
+			/*決定済み1, 未決定0*/
+			$sql = "SELECT EXISTS(SELECT uid,cid
+FROM tb_decide
+NATURAL JOIN tb_user
+WHERE uid='$uid')";
+			//echo $sql;
+			$rs = mysql_query($sql, $conn);
+			if (!$rs) die ('エラー: ' . mysql_error());
+			$row = mysql_fetch_array($rs) ;
 
-				if (!$rs){
-					echo "<h2>総合コース：登録が失敗しました</h2>";
+			//追加 or 更新
+			if($row[0]==1){
+				$act='update';
+				$sql="UPDATE tb_decide SET uid='$uid', uname='$uname', cid=$cid WHERE uid='$uid'";
+				//echo $sql;
+			}else{
+				$act='insert';
+				$sql="INSERT INTO tb_decide VALUES ('$uid', '$uname', $cid)";
+				//echo $sql;
+			}
+			//実行
+			$rs = mysql_query($sql, $conn);
+			if (!$rs) die ('エラー: ' . mysql_error());
 
-					echo mysql_error();
-				}
 
 
-
-
-				$row = mysql_fetch_array($rs) ;
+			if ($act == 'insert'){//新規登録の場合
+				echo "<h2>".$uname."を".$cname."に登録しました</h2>";
+			}else{//再登録の場合
+				echo "<h2>".$uname."を".$cname."に更新しました</h2>";
 			}
 
+			if (!$rs){
+				echo "<h2>登録が失敗しました</h2>";
 
-
-		}
-
-		echo '<p><a href="cs_decide.php">戻る</a>';
-
-
-
+				echo mysql_error();
+			}
+		}echo '<p><a href="cs_decide.php">戻る</a>';
 	}else{ //エラーを表示
-		echo '<h2>エラー：希望コースまたは決定するユーザIDが選択されていません</h2>';
-		echo '<p><a href="cs_decide.php">戻る</a>';
+		//echo '<h2>エラー：希望コースまたは決定するユーザIDが選択されていません</h2>';
 	}
+
 
 }
 

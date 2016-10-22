@@ -2,7 +2,7 @@
 include('page_header.php');
 require_once ('db_inc.php');  // データベース接続
 
-if ( isset($_SESSION['year'])) {	//uidを取得
+if ( isset($_SESSION['year']) && $_SESSION['year']!=0) {	//uidを取得
 	$year = $_SESSION['year'];
 }else{
 	//最新年を検索
@@ -13,7 +13,7 @@ if ( isset($_SESSION['year'])) {	//uidを取得
 	$year = $row['MAX(year)'];
 }
 
-$sql = "SELECT gp, gpa FROM tb_course where cid=2 AND year='$year'";
+$sql = "SELECT * FROM tb_course where cid=2 AND year='$year'";
 $rs = mysql_query($sql, $conn);
 $row = mysql_fetch_array($rs) ;
 $cname=$row['cname'];
@@ -45,7 +45,7 @@ $gpa=$row['gpa'];
 
 $class=array(1=>'danger', 2=>'info');
 
-$sql = "SELECT cid, cname, detail FROM tb_course ORDER BY cid";
+$sql = "SELECT cid, cname, detail FROM tb_course WHERE year=$year ORDER BY cid";
 $rs = mysql_query($sql, $conn);
 $row = mysql_fetch_array($rs) ;
 echo '<div class="container">';
