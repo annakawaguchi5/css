@@ -1,20 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @shouichiK
- Watch 1
-  Star 0
- Fork 1 annakawaguchi5/css
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Tree: 14089ecc65 Find file Copy pathcss/css.js
-14089ec  7 minutes ago
-@annakawaguchi5 annakawaguchi5 10/21
-2 contributors @annakawaguchi5 @shouichiK
-RawBlameHistory
-191 lines (168 sloc)  4.66 KB
 <script type="text/javascript">
 /**
  * ポップアップ
@@ -206,5 +189,3 @@ function check(time){
 }
 //-->
 </script>
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
