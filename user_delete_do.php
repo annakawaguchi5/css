@@ -15,8 +15,9 @@ WHERE tb_user.uid='$user'";
 		if (!$rs) die ('エラー: ' . mysql_error());
 		$deleteid = "";
 		$deleteid=$deleteid.$user.'<br>';
-	}
 	echo '<h2>' . $deleteid . 'を削除しました</h2>';
+	}
+
 	echo '<a href="year.php">戻る</a>';
 }else{
 	echo '<h2>削除するユーザIDが与えられていません</h2>';

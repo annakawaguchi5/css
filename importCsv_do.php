@@ -184,5 +184,6 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 		}
 	}
 }
+echo '<p><a href="year.php">戻る</a>';
 
 include('page_footer.php');?>
