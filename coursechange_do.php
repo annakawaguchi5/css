@@ -106,13 +106,13 @@ if($gp1==0||$gp1=="" && $gpa1==0 ||$gpa1==""){
 
 				<tr>
 					<td>単位数</td>
-					<td><?php echo $gp; ?></td>
+					<td><?php echo $gp; ?>以上</td>
 				</tr>
 				<input type="hidden" name="list6_1_0" value="<?php echo $gp; ?>">
 
 				<tr>
 					<td>GPA</td>
-					<td><?php echo $gpa; ?></td>
+					<td><?php echo $gpa; ?>以上</td>
 				</tr>
 				<input type="hidden" name="list6_2_0" value="<?php echo $gpa; ?>">
 

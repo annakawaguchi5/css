@@ -32,7 +32,7 @@ require_once('db_inc.php');  //データベース接続
 		}
 		echo '</table>';
 		?>
-		<input type="submit">
+		<input type="submit" value="パスワードリセット">
 </FORM>
 		</div>
 		<?php

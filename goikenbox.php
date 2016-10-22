@@ -55,6 +55,7 @@ if($cnt > 10){
 echo ceil($cnt/10)."ページの中の".($page_num+1)."ページ目を表示<br>" ;
 }
 
+
 //前の10件
 if($page_num !=0){
 	echo '<a href="goikenbox.php?page='.($page_num-1).'">前の10件</a>';
@@ -64,7 +65,29 @@ if($page_num !=0){
 if(($page_num+1)*10<$cnt){
 	echo '<a href="goikenbox.php?page='.($page_num+1).'">次の10件 </a>';
 }
+?>
 
+<nav>
+	<ul class="pagination">
+		<li>
+			<a href="#" aria-label="前のページへ">
+				<span aria-hidden="true">«</span>
+			</a>
+		</li>
+		<li><a href="#">1</a></li>
+		<li class="active"><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li>
+			<a href="#" aria-label="次のページへ">
+				<span aria-hidden="true">»</span>
+			</a>
+		</li>
+	</ul>
+</nav>
+
+<?php
 //結果セットの開放
 mysql_free_result ($rs) ;
 ?>
