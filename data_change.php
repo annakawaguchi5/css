@@ -15,9 +15,9 @@ $ltime=$row['ltime'];
 ?>
 
 <div class="container" id="datachange" title="データ編集">
-	<form class="form-horizontal" action="upload.php"
-		method="post" onSubmit="return check(this)"
-		enctype="multipart/form-data" name="datachange">
+	<form class="form-horizontal" action="upload.php" method="post"
+		onSubmit="return check(this)" enctype="multipart/form-data"
+		name="datachange">
 		<table id="form1" class="table table-bordered">
 			<tr>
 				<td class="header info">年度</td>
@@ -52,13 +52,10 @@ $ltime=$row['ltime'];
 				<td><?php include('coursechange.php');?></td>
 			</tr>
 		</table>
-		<input type="hidden" name="act" value="upload">
-		<input type="submit" value="登録" />
+		<input type="hidden" name="act" value="upload"> <input type="submit"
+			value="登録" />
 	</form>
 </div>
 
 
-
-</div>
-
-<?php include('page_footer.php');?>
+							<?php include('page_footer.php');?>

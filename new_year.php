@@ -6,15 +6,14 @@ require_once('db_inc.php');  //データベース接続
 ?>
 
 <!-- 新規登録画面 -->
-<!-- コース名、要件 -->
-<h3></h3>
-<div class="container" id="newyear" title="新規作成">
+<h3 style="color:red;">すべての項目を埋め、「登録」ボタンを押してください。</h3>
+<div id="newyear" title="新規作成">
 	<form class="form-horizontal" action="coursechange_do.php"
 		method="post" onSubmit="return check(this)"
 		enctype="multipart/form-data" name="newyear">
 		<table id="form1" class="table table-bordered">
 			<tr>
-				<td class="header info">年度</td>
+				<th class="header info">年度(西暦)</th>
 
 				<?php
 				// 今日の日付を取得
@@ -33,11 +32,11 @@ require_once('db_inc.php');  //データベース接続
 
 
 				echo '<td><input type="text" id="year" name="year" value="'.$row['year'].'" size="20"
-				maxlength="20">年度</td>';
+				maxlength="20">年度</t>';
 				?>
 			</tr>
 			<tr>
-				<td class="header info">調査開始時刻</td>
+				<th class="header info">調査開始時刻</th>
 				<td>
 					<div class='input-group date' id='stime'>
 						<span class="input-group-addon"><span
@@ -48,7 +47,7 @@ require_once('db_inc.php');  //データベース接続
 				</td>
 			</tr>
 			<tr>
-				<td class="header info">調査終了時刻</td>
+				<th class="header info">調査終了時刻</th>
 				<td>
 					<div class='input-group date' id='ltime'>
 						<span class="input-group-addon"> <span
@@ -58,12 +57,12 @@ require_once('db_inc.php');  //データベース接続
 				</td>
 			</tr>
 			<tr>
-				<td class="header info">コース</td>
+				<th class="header info">コース</th>
 				<td><?php include('coursechange.php');?></td>
 			</tr>
 		</table>
 		<input type="hidden" name="act" value="insert">
-		<input type="submit" value="登録" />
+		<button type="submit" class="center-block btn btn-primary btn-lg" style="width:300px; ">登録</button>
 	</form>
 </div>
 

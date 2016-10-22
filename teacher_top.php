@@ -5,7 +5,6 @@ if ( isset($_SESSION['uid'])) {	//uidを取得
 }
 ?>
 
-<div class="container">
 	<div class="col-sm-6">
 		<!-- お知らせ -->
 		<div class="row bg-danger">
@@ -15,8 +14,6 @@ if ( isset($_SESSION['uid'])) {	//uidを取得
 		</div>
 
 		<!-- 希望・未提出集計 -->
-
-
 		<?php include ('cs_summary.php');?>
 	</div>
 
@@ -24,4 +21,4 @@ if ( isset($_SESSION['uid'])) {	//uidを取得
 	<div class="col-sm-6">
 	<?php include ('make_info.php');?>
 	</div>
-</div>
+

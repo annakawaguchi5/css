@@ -38,6 +38,43 @@ jQuery(function($){
     });
 });
 </script>
+
+<script type="text/javascript">
+$(document).on('blur','td > input',function(){
+    var inputVal = $(this).val();
+    var backup = $(this).parent().data('backup');
+    if(inputVal===''){
+        inputVal = this.defaultValue;
+    };
+    $(this).html('<input type="text" value="'+inputVal+'" />');
+    $(this).parent().removeClass('on').text(inputVal);
+    if(backup !== inputVal){
+        $('#reset').removeAttr('disabled');
+    };
+    $(this).html('<input type="text" value="'+inputVal+'" />');
+});
+
+$('td').each(function(){
+    var backup = $(this).text();
+    $(this).data('backup',backup)
+        .click(function(){
+        if(!$(this).hasClass('on')){
+            $(this).addClass('on');
+            var txt = $(this).text();
+            $(this).html('<input type="text" value="'+txt+'" />');
+            $('td > input').focus()
+        };
+    });
+});
+$('#reset').attr('disabled','disabled')
+    .click(function(){;
+    $('td').each(function(){
+        var backup = $(this).data('backup');
+        $(this).text(backup);
+    });
+    $(this).attr('disabled','disabled');
+});
+</script>
 -->
 <div class="container">
 <?php
@@ -69,7 +106,7 @@ if (isset($_POST['students'])){
 	}
 
 	echo '上記のデータに変更しますか?</p>';
-	echo '<button type="submit" class="btn btn-danger">変更</button>';
+	echo '<button type="submit" id="submit" class="btn btn-danger">変更</button>';
 	echo '</form>';
 }else{
 	echo '<h2>変更するユーザIDが与えられていません</h2>';

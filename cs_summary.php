@@ -56,6 +56,4 @@ $total = $row['count(*)'];
 
 echo '<tr><td>未提出</td><td>'.$total.'</td></tr>';
 echo '</table>';
-
-include('page_footer.php');  //画面出力終了
 ?>
