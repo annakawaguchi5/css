@@ -1,5 +1,4 @@
-<div class="container">
-	<div class="row">
+<div class="row">
 		<a href="index.php"><img src="./img/Course Selection System-logo.png"
 			alt="title" align="left"> </a>
 		<!-- 現在時刻 -->

@@ -48,6 +48,7 @@ include('css.js');	//JavaScriptを読み込む
     <![endif]-->
 </head>
 <body>
+<div class="container">
 <?php
 /////////////////////////
 include('menu.php'); //メニューバーを読み込む

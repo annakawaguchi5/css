@@ -6,7 +6,7 @@ if ( isset($_SESSION['year']) && $_SESSION['year']!=0) {	//uidを取得
 	$year = $_SESSION['year'];
 }else{
 	//最新年を検索
-	$sql = "SELECT MAX(year) FROM tb_limit";
+	$sql = "SELECT MAX(year) FROM tb_course";
 	$rs = mysql_query($sql, $conn);
 	if (!$rs) die ('エラー: ' . mysql_error());
 	$row = mysql_fetch_array($rs) ;
@@ -24,14 +24,14 @@ $gpa=$row['gpa'];
 <!-- phpでDBから要件の値を取得する -->
 <div class="container">
 	<div class="col-md-6">
-		<strong><h1><?php echo $cname;?>要件</h1> </strong>
-		<h2>
+		<strong><h2><?php echo $year.'年度 '.$cname;?>要件</h2> </strong>
+		<h3>
 			<?php echo $cname ?>に登録するには、１年次終了までに、次の各号に掲げる要件を満たさなければならない。<br>
 			<ol>
 				<li>1年次に配当されている授業科目を<?php echo $gp ?>単位以上修得していること。</li>
 				<li>GPAが<?php echo $gpa; ?>以上であること。</li>
 			</ol>
-		</h2>
+		</h3>
 		詳細はこちら→ <a
 			href="http://www2.is.kyusan-u.ac.jp/student/21-20newstudent/sogocourse-youken/2014">コース登録要件</a>
 	</div>
