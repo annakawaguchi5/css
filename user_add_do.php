@@ -41,6 +41,8 @@ if($_SESSION['urole']==9){
 		$rs = mysql_query($sql, $conn);
 		if (!$rs)die ('エラー: ' . mysql_error());
 	}
+	echo "登録しました";
+	echo '<p><a href="year.php">戻る</a>';
 }else{
 	echo '<h1 style="color:red">警告：あなたの権限ではこの機能を使えません。</h1>';
 }
