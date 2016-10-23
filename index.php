@@ -1,8 +1,12 @@
 <?php
-if ( isset($_SESSION['urole'])) {
-	include ('page_header.php');
-	require_once('db_inc.php');  //データベース接続
+include ('page_header.php');
+require_once('db_inc.php');  //データベース接続
+
+	//echo $_SESSION['urole'];
+if (isset($_SESSION['urole'])) {
+
 	//ログインしているなら
+
 	$urole = $_SESSION['urole']; //認証済みの権限
 	switch($urole){
 		case 1:
