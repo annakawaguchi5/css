@@ -34,10 +34,11 @@ echo '</div>';
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="message" class="control-label col-xs-2">メッセージ:</label>
+				<!-- <label for="message" class="control-label col-xs-2">メッセージ:</label>
 				<div class="col-xs-10">
 					<textarea name="message" class="form-control" row="4" cols="30"></textarea>
-				</div>
+				</div> -->
+				<input type="hidden" name="message" class="form-control">
 			</div>
 			<div class="col-sm-offset-1">
 				<div class="form-group">

@@ -10,12 +10,6 @@
 
 		<!-- カウントダウン -->
 
-		<!-- お問い合わせフォーム -->
-		<a class="header-btn" href="./goikenbako.php"> <image
-				src="./FSV001BT005_5/button05_toiawase_05.jpg" alt="toiawase"
-				align="right">
-
-		</a>
 	</div>
 
 	<!-- ナビバー -->
@@ -33,6 +27,7 @@
 
 		<?php
 		$menu0 = array(  //共通メニュー:未ログイン
+		'お問合せ' => 'goikenbako.php',
  'ログイン'  => 'login.php',
 		);
 		$menu = array(
@@ -70,7 +65,7 @@
 	);
 
 	$menu4 = array(  //共通メニュー:ログイン中
- 'ホーム'  => 'index.php',
+	'お問合せ' => 'goikenbako.php',
  'ログアウト'  => 'logout.php'
  );
 

@@ -1,5 +1,5 @@
-<!-- UI要検討 -->
 <?php
+/*UI要検討*/
 include('page_header.php');
 require_once ('db_inc.php');  // データベース接続
 
