@@ -52,8 +52,11 @@ echo '<table class="table table-striped" >
 while($row){
 	echo '<tr><td>'.$row['timestamp'].'</td>
 	<td>'.$row['note'].'</td>
-	<td>'.$row['year'].'</td>
-	<td>'.$r[$row['urole']].'</td></tr>';
+	<td>'.$row['year'].'</td>';
+	if($row[urole]==''){
+		$row['urole']=1;
+	}
+	echo '<td>'.$r[$row['urole']].'</td></tr>';
 	$row = mysql_fetch_array($rs);
 }
 echo '</table>';

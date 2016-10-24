@@ -105,34 +105,30 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 				 }*/
 				//var_dump($values);
 				// sampleuser, sampleidテーブルの状況を検索する
-				$sql ="SELECT * FROM tb_user natural join tb_gp WHERE uid='$uid'; ";
+				$sql ="SELECT * FROM tb_student WHERE uid='$uid'; ";
 				$rs = mysql_query($sql, $conn);
 				$row= mysql_fetch_array($rs);
 				//前期　作成AND更新
 				if($state==0){
 					if(!$row){//新規作成
-						$sql = "INSERT INTO tb_gp( year,uid, halfgp, halfgpa,allgp,allgpa) VALUES ('$year','$uid','$gp','$gpa',NULL,NULL)";
+						$sql = "INSERT INTO tb_student( year,uid, uname, upass, halfgp, halfgpa,allgp,allgpa) VALUES ('$year','$uid','$uname','abcd','$gp','$gpa',NULL,NULL)";
 						$rs = mysql_query($sql, $conn);
-						//echo $sql."<br>";
-						$sql="INSERT INTO tb_user( year, uid, uname, upass, urole) VALUES ('$year','$uid','$uname','abcd',1)";
-						$rs = mysql_query($sql, $conn);
-						//echo $sql."<br>";
 					}else if($row){//更新
-						$sql="UPDATE tb_gp SET year='$year' , halfgp='$gp', halfgpa='$gpa' WHERE uid='$uid'";
+						$sql="UPDATE tb_student SET year='$year' , halfgp='$gp', halfgpa='$gpa' WHERE uid='$uid'";
 						$rs = mysql_query($sql, $conn);
 						//echo $uid.$sql."<br>";
-						$sql="UPDATE tb_user SET year='$year' ,uname='$uname' WHERE uid='$uid'";
-						$rs = mysql_query($sql, $conn);
+						//$sql="UPDATE tb_user SET year='$year' ,uname='$uname' WHERE uid='$uid'";
+						//$rs = mysql_query($sql, $conn);
 						//echo $uid.$sql."<br>";
 					}
 					//echo "前期のデータが登録されました";
 				}else if($state==1){
 					if($row){//更新else　error
-						$sql="UPDATE tb_gp SET year='$year' , allgp='$gp', allgpa='$gpa' WHERE uid='$uid'";
+						$sql="UPDATE tb_student SET year='$year' , allgp='$gp', allgpa='$gpa' WHERE uid='$uid'";
 						$rs = mysql_query($sql, $conn);
 						//echo $uid.$sql."<br>";
-						$sql="UPDATE tb_user SET year='$year' ,uname='$uname' WHERE uid='$uid'";
-						$rs = mysql_query($sql, $conn);
+						//$sql="UPDATE tb_student SET year='$year' ,uname='$uname' WHERE uid='$uid'";
+						//$rs = mysql_query($sql, $conn);
 						//echo $uid.$sql."<br>";
 						//echo "年間のデータが更新されました";
 					}else{

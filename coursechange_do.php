@@ -106,13 +106,15 @@ if($gp1==0||$gp1=="" && $gpa1==0 ||$gpa1==""){
 
 				<tr>
 					<td>単位数</td>
-					<td><?php echo $gp; ?>以上</td>
+					<td><?php echo $gp;
+					if($gp!=''){echo "以上";}else{echo "指定なし";}?></td>
 				</tr>
 				<input type="hidden" name="list6_1_0" value="<?php echo $gp; ?>">
 
 				<tr>
 					<td>GPA</td>
-					<td><?php echo $gpa; ?>以上</td>
+					<td><?php echo $gpa;
+					if($gpa!=''){echo "以上";}else{echo "指定なし";}?></td>
 				</tr>
 				<input type="hidden" name="list6_2_0" value="<?php echo $gpa; ?>">
 
@@ -143,13 +145,15 @@ if($gp1==0||$gp1=="" && $gpa1==0 ||$gpa1==""){
 
 				<tr>
 					<td>単位数</td>
-					<td><?php echo $gp1; ?></td>
+					<td><?php echo $gp1;
+					if($gp1!=''){echo "以上";}else{echo "指定なし";}?></td>
 				</tr>
 				<input type="hidden" name="list6_1_1" value="<?php echo $gp1; ?>">
 
 				<tr>
 					<td>GPA</td>
-					<td><?php echo $gpa1; ?></td>
+					<td><?php echo $gpa1;
+					if($gpa1!=''){echo "以上";}else{echo "指定なし";};?></td>
 				</tr>
 				<input type="hidden" name="list6_2_1" value="<?php echo $gpa1; ?>">
 

@@ -12,7 +12,7 @@ if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs) ;
 
 if($uid=="" || $uname==""){
-	echo "学籍番号、名前を記入してください。".'<br>';
+	echo "ユーザID、名前を記入してください。".'<br>';
 	echo '<h4><a href="passwd_info.php">戻る</a></h4>';
 }else{
 

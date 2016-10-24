@@ -36,11 +36,11 @@ if(isset($_POST['act'])){
 		 * コース名を決定
 		 */
 		if(isset($_POST['list6_0_0'])){
-			echo $act;
-			echo $course=$_POST['list6_0_0'];
-			echo $gp=$_POST['list6_1_0'];
-			echo $gpa=$_POST['list6_2_0'];
-			echo $detail=$_POST['list6_3_0'];
+			//echo $act;
+			$course=$_POST['list6_0_0'];
+			$gp=$_POST['list6_1_0'];
+			$gpa=$_POST['list6_2_0'];
+			$detail=$_POST['list6_3_0'];
 			if($gp==0||$gp=="" && $gpa==0 ||$gpa==""){
 				$cid=1;
 			}else{
@@ -59,10 +59,10 @@ if(isset($_POST['act'])){
 		}
 
 		if(isset($_POST['list6_0_1'])){
-			echo $course1=$_POST['list6_0_1'];
-			echo $gp1=$_POST['list6_1_1'];
-			echo $gpa1=$_POST['list6_2_1'];
-			echo $detail1=$_POST['list6_3_1'];
+			$course1=$_POST['list6_0_1'];
+			$gp1=$_POST['list6_1_1'];
+			$gpa1=$_POST['list6_2_1'];
+			$detail1=$_POST['list6_3_1'];
 			if($gp1==0||$gp1=="" && $gpa1==0 ||$gpa1==""){
 				$cid1=1;
 			}else{

@@ -4,8 +4,8 @@ require_once('db_inc.php');  //データベース接続
 ?>
 
 <style>
-.indent{
-margin-left: -40px
+.indent {
+	margin-left: -40px
 }
 
 #tab li {
@@ -27,7 +27,8 @@ margin-left: -40px
 
 .content_wrap {
 	padding: 1em;
-	margin-left: 40px; clear : left;
+	margin-left: 40px;
+	clear: left;
 	color: #000000;
 	background-color: #ffff7f;
 	clear: left;
@@ -194,7 +195,7 @@ $(function() {
 
 
 				//学生のデータを表示
-				$sql = "SELECT * FROM tb_user NATURAL JOIN tb_gp WHERE year=".$dispyear;
+				$sql = "SELECT * FROM tb_student WHERE year=".$dispyear;
 				$rs = mysql_query($sql, $conn);
 				if (!$rs) die ('エラー: ' . mysql_error());
 				$row = mysql_fetch_array($rs) ;
@@ -223,16 +224,10 @@ $(function() {
 					$row = mysql_fetch_array($rs);
 
 				}
-
-				include ('buttons.php');	//右下固定ボタン(削除、変更)
-
 				echo'</tbody>';
 				include ('buttons.php');	//右下固定ボタン(削除、変更)
 				echo '</table>';
 				echo '</div></div>';
-
-				include ('buttons.php');	//右下固定ボタン(削除、変更)
-
 				echo '</form>';
 				?>
 				</div>
@@ -243,6 +238,6 @@ $(function() {
 
 <!-- 9グリッド終わり -->
 
-<?php
-			include('page_footer.php');
-			?>
+				<?php
+				include('page_footer.php');
+				?>

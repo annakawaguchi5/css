@@ -17,7 +17,7 @@ require_once('db_inc.php');  //データベース接続
 		<tr class="info">
 		<th></th>
 			<th>時間</th>
-			<th>学籍番号</th>
+			<th>ユーザID</th>
 			<th>氏名</th>
 		</tr>
 		<?php

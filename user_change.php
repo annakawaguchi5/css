@@ -86,7 +86,7 @@ if (isset($_POST['students'])){
 	foreach($id as $u){
 
 		//学生のデータを表示
-		$sql = "SELECT * FROM tb_user NATURAL JOIN tb_gp WHERE uid='$u'";
+		$sql = "SELECT * FROM tb_student WHERE uid='$u'";
 		$rs = mysql_query($sql, $conn);
 		if (!$rs) die ('エラー: ' . mysql_error());
 		$row = mysql_fetch_array($rs) ;

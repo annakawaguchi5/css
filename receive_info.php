@@ -17,6 +17,11 @@
 <button>あいうえお</button>
 </div> -->
 <?php
+// 今日の日付を取得
+$now = new DateTime();
+$now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
+$now = $now->format('Y-m-d');
+
 if(isset($_SESSION['urole'])){
 	$urole=$_SESSION['urole'];
 	$year=$_SESSION['year'];
@@ -31,10 +36,15 @@ if(isset($_SESSION['urole'])){
 	$rs = mysql_query($sql, $conn);
 	if (!$rs) die ('エラー: ' . mysql_error());
 	$row = mysql_fetch_array($rs);
+
 	if($row!=null){
 		while($row){
 			echo '<div id="detail" title="more-info">';
 			echo $row['time']." ".$row['title'].'<br>';
+				/*echo $date = date('Y-m-d' ,$row['time']);
+				if(strtotime($date)==strtotime($now)){
+				echo '<img src="./img/new026/new026_01.gif">';
+			}*/
 			echo '</div>';
 			$row = mysql_fetch_array($rs);
 		}

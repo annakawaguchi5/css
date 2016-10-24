@@ -156,7 +156,7 @@ $(function () {
 	});
 });
 
-<!--
+
 function check(time){
 	if(time.elements['year'].value!="" || time.elements['stime'].value!="" || time.elements['ltime'].value!="" || time.elements['list6_0_0'].value!="" ){
 		var year = time.elements['year'].value;
@@ -178,7 +178,7 @@ function check(time){
 		}else if(!cname.match(/^[^\s　]+$/)){
 			alert('コース名を入力して下さい。');
 			return false;
-		}else if(time.elements['list6_0_1'].value==""){
+		}else if(time.elements['list6_0_1'].value=="" || time.elements['list6_0_1'].value==null){
 			alert('コース名を入力するかコースを削除して下さい。');
 			return false;
 		}
@@ -187,5 +187,5 @@ function check(time){
 		return false;
 	}
 }
-//-->
+
 </script>

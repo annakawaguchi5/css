@@ -39,7 +39,7 @@ if (isset($_POST['uid'])){
 		$allgpa = "NULL";
 	}
 
-		$sql = "UPDATE tb_user NATURAL JOIN tb_gp SET uname='$uname',upass='$upass',halfgp=$halfgp,halfgpa=$halfgpa,allgp=$allgp,allgpa=$allgpa WHERE uid='$uid'";
+		$sql = "UPDATE tb_student SET uname='$uname',upass='$upass',halfgp=$halfgp,halfgpa=$halfgpa,allgp=$allgp,allgpa=$allgpa WHERE uid='$uid'";
 		//echo $sql;
 		$rs = mysql_query($sql, $conn);
 		if (!$rs) die ('エラー: ' . mysql_error());
