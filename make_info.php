@@ -9,7 +9,7 @@
 			<label>項目を埋め、「送信」ボタンを押してください。<br> </label>
 			<?php
 			//学生のいる年度を検索
-			$sql="SELECT year FROM tb_user WHERE urole=1 GROUP BY year";
+			$sql="SELECT year FROM tb_user NATURAL JOIN tb_gp WHERE urole=1 GROUP BY year";
 			$rs = mysql_query($sql, $conn);
 			if (!$rs) die ('エラー: ' . mysql_error());
 			$row = mysql_fetch_array($rs) ;

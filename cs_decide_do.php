@@ -26,7 +26,7 @@ if ( !isset($_SESSION['urole']) || $_SESSION['urole']!=3 ) {
 			$uid=$c;
 
 			//uidからユーザ情報を調べる
-			$sql = "SELECT uname FROM tb_user WHERE uid='$uid' AND year=$year";
+			$sql = "SELECT uname FROM tb_user NATURAL JOIN tb_gp WHERE uid='$uid' AND year=$year";
 			//echo $sql;
 			$rs = mysql_query($sql, $conn);
 			if (!$rs) die ('エラー: ' . mysql_error());
@@ -73,10 +73,7 @@ WHERE uid='$uid')";
 			}
 		}
 		echo '<p><a href="cs_decide.php">戻る</a>';
-	}else{ //エラーを表示
-		//echo '<h2>エラー：希望コースまたは決定するユーザIDが選択されていません</h2>';
-	}
-
+	}else //エラーを表示
 
 
 	//応用コース用/////////////////////////////////////////
@@ -98,7 +95,7 @@ WHERE uid='$uid')";
 			$uid=$c;
 
 			//uidからユーザ情報を調べる
-			$sql = "SELECT uname FROM tb_user WHERE uid='$uid' AND year=$year";
+			$sql = "SELECT uname FROM tb_user NATURAL JOIN tb_gp WHERE uid='$uid' AND year=$year";
 			//echo $sql;
 			$rs = mysql_query($sql, $conn);
 			if (!$rs) die ('エラー: ' . mysql_error());
@@ -144,9 +141,8 @@ WHERE uid='$uid')";
 				echo mysql_error();
 			}
 		}echo '<p><a href="cs_decide.php">戻る</a>';
-	}else{ //エラーを表示
+	}else //エラーを表示
 		//echo '<h2>エラー：希望コースまたは決定するユーザIDが選択されていません</h2>';
-	}
 
 	#########################################
 
@@ -170,7 +166,7 @@ WHERE uid='$uid')";
 			$uid=$c;
 
 			//uidからユーザ情報を調べる
-			$sql = "SELECT uname FROM tb_user WHERE uid='$uid' AND year=$year";
+			$sql = "SELECT uname FROM tb_user NATURAL JOIN tb_gp WHERE uid='$uid' AND year=$year";
 			//echo $sql;
 			$rs = mysql_query($sql, $conn);
 			if (!$rs) die ('エラー: ' . mysql_error());
@@ -219,12 +215,12 @@ WHERE uid='$uid')";
 		}echo '<p><a href="cs_decide.php">戻る</a>';
 	}else{ //エラーを表示
 		//echo '<h2>エラー：希望コースまたは決定するユーザIDが選択されていません</h2>';
+		echo '<h2>コース決定するユーザIDが与えられていません</h2>';
+  echo '<a href="cs_decide.php"><button class="btn btn-default">戻る</button></a>';
 	}
 
 
 }
-
-
 
 include('page_footer.php');
 ?>

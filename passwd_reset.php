@@ -1,6 +1,7 @@
 <?php
-include('page_header.php');  //画面出力開始
+//include('page_header.php');  //画面出力開始
 require_once('db_inc.php');  //データベース接続
+session_start();
 
 if($_SESSION['urole']==9 && isset($_POST['pwchange'])){
 	$uid=$_POST['pwchange'];
@@ -21,6 +22,8 @@ if($_SESSION['urole']==9 && isset($_POST['pwchange'])){
 		$rs = mysql_query($sql, $conn);
 		if (!$rs) die ('エラー: ' . mysql_error());
 	}
+
+	header("Location:passwd_box.php");
 }
 include('page_footer.php');
 ?>

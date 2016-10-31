@@ -1,5 +1,7 @@
 <?php
 include_once('db_inc.php');
+
+
 //ファイル名：check.php
 $u = $_POST['uid'] ;  //ログイン画面より送信されたユーザID、例えば,'k12jk230';
 $p = $_POST['pass'];  //ログイン画面より送信されたパスワード、例えば,'ar37';
@@ -30,6 +32,14 @@ if ($row){ //問合せ結果がある場合、ログイン成功
 	 $url = 'http://www.is.kyusan-u.ac.jp/';       //転送先のURL(学部HP)
 	 header('Location:' . $url);   // 画面転送
 	 */
+	if($row['urole']==1){
+		$sql = "SELECT * FROM tb_gp NATURAL JOIN tb_user WHERE uid='$u'";
+		$rs = mysql_query($sql, $conn);//SQL文をサーバーに送信し実行
+		if (!$rs) {
+			die('エラー: ' . mysql_error());
+		}
+		$row= mysql_fetch_array($rs);
+	}else{}
 session_start();
 $_SESSION['year']   = $row['year'];
 $_SESSION['uid']   = $row['uid'];
@@ -46,5 +56,6 @@ header('Location:' . $url);   // 画面転送
 	echo '<h2>ユーザIDもしくはパスワードが間違いました！</h2>';
 	echo '<a href="login.php">戻る</a>';
 }
+
 include('page_footer.php');//ページフッタを出力
 ?>

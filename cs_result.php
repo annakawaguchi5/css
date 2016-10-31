@@ -14,20 +14,26 @@ $disp = $now->format('Y/m/d H:i:s');
 $now = $now->format('Y-m-d H:i:s');
 
 // ログイン中のユーザ($uid)の決定状況を検索する
-$sql = "SELECT * FROM tb_decide natural join tb_course NATURAL JOIN tb_limit WHERE uid = '$uid';";
+$sql = "SELECT * FROM tb_decide WHERE uid = '$uid';";
 //テーブル作成後、変更あるえる
 $rs = mysql_query($sql, $conn);
 $row = mysql_fetch_array($rs) ;
-$stime=$row['stime'];
-$ltime=$row['ltime'];
-
-$dispstime=date("Y/m/d H:i:s",strtotime($stime));
-$displtime=date("Y/m/d H:i:s",strtotime($ltime));
 
 if (!$rs){
 	echo 'データがありません。';
-	die ('エラー: ' . mysql_error());
+	echo ('エラー: ' . mysql_error());
 }else{
+	//コース名、締め切りを検索
+	$sql="SELECT * FROM tb_course NATURAL JOIN tb_limit WHERE year=$year";
+	$rs = mysql_query($sql, $conn);
+	if(!$rs)echo('エラー: ' . mysql_error());
+	$row = mysql_fetch_array($rs) ;
+
+	$stime=$row['stime'];
+	$ltime=$row['ltime'];
+	$dispstime=date("Y/m/d H:i:s",strtotime($stime));
+	$displtime=date("Y/m/d H:i:s",strtotime($ltime));
+
 	echo '<div class="row">
 <div class="bg-warning">';
 	echo '<h1>現在状況</h1>';

@@ -51,7 +51,7 @@ if(strtotime($stime)<strtotime($now) && strtotime($now)<strtotime($ltime)){ //�
 		echo '<input type="hidden" name="act" value="'.  $act .'">'; //非表示送信
 
 		//コース情報を取得
-		$sql = "select * from tb_course where ".$year;
+		$sql = "select * from tb_course where year=".$year;
 		$rs = mysql_query($sql, $conn);
 		if (!$rs) die ('エラー: ' . mysql_error());
 		$row = mysql_fetch_array($rs) ;
@@ -76,8 +76,7 @@ if(strtotime($stime)<strtotime($now) && strtotime($now)<strtotime($ltime)){ //�
 		echo 'コースが決定しているため、この機能は利用できません。</h3>';
 	}
 }else { // 提出時間外
-	die('<h1 style="color:red;">提出期間外のため希望提出できません!</h1>');
+	echo '<h1 style="color:red;">提出期間外のため希望提出できません!</h1>';
 }
-
 include('page_footer.php');//画面出力終了
 ?>

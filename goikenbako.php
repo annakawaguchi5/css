@@ -15,11 +15,15 @@ include('page_header.php');
 
       <TD width="1" height="1">
       <?php
-      $year=$_SESSION['year'];
-      $urole=$_SESSION['urole'];
-      echo '<input type="hidden" name="year" value="'.$year.'">';
-      echo '<input type="hidden" name="urole" value="'.$urole.'">';
+      if(isset($_SESSION['urole'])){
+      	$year=$_SESSION['year'];
+      	$urole=$_SESSION['urole'];
+      	echo '<input type="hidden" name="urole" value="'.$urole.'">';
+      	echo '<input type="hidden" name="year" value="'.$year.'">';
+      }else {
 
+
+      }
       ?>
          <TEXTAREA name="body" cols="60" rows="10"></TEXTAREA>
       </TD>

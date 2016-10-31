@@ -3,6 +3,7 @@ require_once('db_inc.php');  //データベース接続
 if ( isset($_SESSION['uid'])) {	//uidを取得
 	$uid = $_SESSION['uid'];
 }
+
 ?>
 
 	<div class="col-sm-6">

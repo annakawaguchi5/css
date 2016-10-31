@@ -48,7 +48,7 @@ while ($row) {
  $row = mysql_fetch_array($rs) ;
 }
 //未提出者数
-$sql = "select count(*) from tb_user where urole='1' and year=".$dispyear." and uid not in(select uid from tb_entry)";
+$sql = "select count(*) from tb_user NATURAL JOIN tb_gp where urole='1' and year=".$dispyear." and uid not in(select uid from tb_entry)";
 $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 $row = mysql_fetch_array($rs);

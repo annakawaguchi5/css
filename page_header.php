@@ -1,4 +1,8 @@
-<?php session_start();?>
+<?php
+session_start();
+ini_set("session.bug_compat_42", 0);
+ini_set("session.bug_compat_warn", 0);
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>

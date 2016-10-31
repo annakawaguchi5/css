@@ -418,6 +418,7 @@ FROM tb_entry
 		$sql_decide = "SELECT uid,cid
 FROM tb_decide
 NATURAL JOIN tb_user
+NATURAL JOIN tb_gp
 WHERE YEAR ='$year' AND uid='$uid'
 ";
 		$rs_decide = mysql_query($sql_decide, $conn);
