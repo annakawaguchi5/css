@@ -1,6 +1,6 @@
 <?php
-include('page_header.php');
-include ('db_inc.php');
+//include('page_header.php');
+//include ('db_inc.php');
 ?>
 <link
 	rel="stylesheet"
@@ -15,7 +15,7 @@ include ('db_inc.php');
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <?php
-if($_SESSION['urole']==1){	//学生用year
+if(isset($_SESSION['urole']) && $_SESSION['urole']==1){	//学生用year
 	$year=$_SESSION['year'];
 }else{	//教員、管理者用
 	//最新年を検索 MAX(year)
@@ -44,22 +44,8 @@ $ltime=$row['ltime'];
 	</div>
 	<!-- inner -->
 </div>
+
 <!-- contents -->
 
-<script
-	type="text/javascript"
-	src="./jquery-yycountdown-master/js/jquery-1.10.2.min.js"></script>
-<script
-	type="text/javascript"
-	src="./jquery-yycountdown-master/js/jquery.yycountdown.min.js"></script>
-<script type="text/javascript">
-	$("#timer").yycountdown({
-		endDateTime   : '<?php echo $ltime;?>',
-			unit          : {d: '日', h: '時間', m: '分', s: '秒'},
-			complete : function(_this){
-	            _this.find('.yycountdown-box').text('調査期間外です');
-	        }
-	});
 
-</script>
-		<?php include('page_footer.php');?>
+		<?php //include('page_footer.php');?>

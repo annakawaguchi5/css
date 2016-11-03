@@ -1,40 +1,45 @@
+<?php include ('db_inc.php');?>
 <div class="row">
-		<a href="index.php"><img src="./img/Course Selection System-logo.png"
-			alt="title" align="left"> </a>
-		<!-- 現在時刻 -->
-		<!--
+<div class="col-xs-8">
+	<a href="index.php"><img src="./img/Course Selection System-logo.png"
+		alt="title" align="left"> </a>
+		</div>
+	<!-- 現在時刻 -->
+	<!--
 		<div align="right" width="30%" height="30%">
 		-->
-			<?php //include('clock.php');?>
-		<!-- </div> -->
+		<?php //include('clock.php');?>
+	<!-- </div> -->
 
-		<!-- カウントダウン -->
-
+	<!-- カウントダウン -->
+	<div class="col-xs-4" align="right">
+	<?php include('countdown.php');
+	//include('./jquery-yycountdown-master\sample.html');?>
 	</div>
+</div>
 
-	<!-- ナビバー -->
-	<nav class="navbar navbar-inverse">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbarEexample3">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-		</div>
-		<div class="collapse navbar-collapse" id="navbarEexample3">
+<!-- ナビバー -->
+<nav class="navbar navbar-inverse">
 
-		<?php
-		$menu0 = array(  //共通メニュー:未ログイン
+<div class="navbar-header">
+	<button type="button" class="navbar-toggle collapsed"
+		data-toggle="collapse" data-target="#navbarEexample3">
+		<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+		<span class="icon-bar"></span> <span class="icon-bar"></span>
+	</button>
+</div>
+<div class="collapse navbar-collapse" id="navbarEexample3">
+
+<?php
+$menu0 = array(  //共通メニュー:未ログイン
 		'お問合せ' => 'goikenbako.php',
  'ログイン'  => 'login.php',
-		);
-		$menu = array(
-		1 => array(  //学生メニュー
+);
+$menu = array(
+1 => array(  //学生メニュー
 	'コース説明'  => 'cs_explain.php',
  '希望提出'  => 'cs_wish.php' ,
-		//'メッセージ' => 'message.php',
+//'メッセージ' => 'message.php',
 	'パスワード変更' => 'user_passwd_change.php'
 	),
 	2 => array(  //教員メニュー
@@ -86,10 +91,9 @@
  	}
  	echo '</ul>';
  }
-
  ?>
 
-		</div>
-	</nav>
+</div>
+</nav>
 
 <br>

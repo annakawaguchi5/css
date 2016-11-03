@@ -34,8 +34,7 @@ if (!$rs){
 	$dispstime=date("Y/m/d H:i:s",strtotime($stime));
 	$displtime=date("Y/m/d H:i:s",strtotime($ltime));
 
-	echo '<div class="row">
-<div class="bg-warning">';
+	echo '<div class="bg-warning">';
 	echo '<h1>現在状況</h1>';
 	echo '<p ><strong style="color:red;">'.$disp.'</strong><strong> 現在</strong></p>';
 	echo '<h1 class="text-center">';
@@ -50,6 +49,6 @@ if (!$rs){
 			echo '調査は終了しました。<br><small>あなたは</small>コース未決定<small>です。<br>もうしばらくお待ち下さい。</small>';
 		}
 	}
-	echo '</h1></div></div>';
+	echo '</h1></div>';
 }
 ?>
