@@ -195,7 +195,7 @@ $(function() {
 
 
 				//学生のデータを表示
-				$sql = "SELECT * FROM tb_student WHERE year=".$dispyear;
+				$sql = "SELECT * FROM tb_gp WHERE year=".$dispyear;
 				$rs = mysql_query($sql, $conn);
 				if (!$rs) die ('エラー: ' . mysql_error());
 				$row = mysql_fetch_array($rs) ;

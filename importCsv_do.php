@@ -105,16 +105,16 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 				 }*/
 				//var_dump($values);
 				// sampleuser, sampleidテーブルの状況を検索する
-				$sql ="SELECT * FROM tb_student WHERE uid='$uid'; ";
+				$sql ="SELECT * FROM tb_gp WHERE uid='$uid'; ";
 				$rs = mysql_query($sql, $conn);
 				$row= mysql_fetch_array($rs);
 				//前期　作成AND更新
 				if($state==0){
 					if(!$row){//新規作成
-						$sql = "INSERT INTO tb_student( year,uid, uname, upass, halfgp, halfgpa,allgp,allgpa) VALUES ('$year','$uid','$uname','abcd','$gp','$gpa',NULL,NULL)";
+						$sql = "INSERT INTO tb_gp( year,uid, uname, upass, halfgp, halfgpa,allgp,allgpa) VALUES ('$year','$uid','$uname','abcd','$gp','$gpa',NULL,NULL)";
 						$rs = mysql_query($sql, $conn);
 					}else if($row){//更新
-						$sql="UPDATE tb_student SET year='$year' , halfgp='$gp', halfgpa='$gpa' WHERE uid='$uid'";
+						$sql="UPDATE tb_gp SET year='$year' , halfgp='$gp', halfgpa='$gpa' WHERE uid='$uid'";
 						$rs = mysql_query($sql, $conn);
 						//echo $uid.$sql."<br>";
 						//$sql="UPDATE tb_user SET year='$year' ,uname='$uname' WHERE uid='$uid'";
@@ -124,7 +124,7 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 					//echo "前期のデータが登録されました";
 				}else if($state==1){
 					if($row){//更新else　error
-						$sql="UPDATE tb_student SET year='$year' , allgp='$gp', allgpa='$gpa' WHERE uid='$uid'";
+						$sql="UPDATE tb_gp SET year='$year' , allgp='$gp', allgpa='$gpa' WHERE uid='$uid'";
 						$rs = mysql_query($sql, $conn);
 						//echo $uid.$sql."<br>";
 						//$sql="UPDATE tb_student SET year='$year' ,uname='$uname' WHERE uid='$uid'";
