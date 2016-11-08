@@ -47,5 +47,17 @@ $ltime=$row['ltime'];
 
 <!-- contents -->
 
+<script
+	type="text/javascript"
+	src="./jquery-yycountdown-master/js/jquery.yycountdown.min.js"></script>
+<script type="text/javascript">
+	$("#timer").yycountdown({
+		endDateTime   : '<?php echo $ltime;?>',
+			unit          : {d: '日', h: '時間', m: '分', s: '秒'},
+			complete : function(_this){
+	            _this.find('.yycountdown-box').text('調査期間外です');
+	        }
+	});
 
+</script>
 		<?php //include('page_footer.php');?>

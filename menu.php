@@ -1,6 +1,6 @@
 <?php include ('db_inc.php');?>
 <div class="row">
-<div class="col-xs-8">
+<div align="left">
 	<a href="index.php"><img src="./img/Course Selection System-logo.png"
 		alt="title" align="left"> </a>
 		</div>
@@ -12,7 +12,7 @@
 	<!-- </div> -->
 
 	<!-- カウントダウン -->
-	<div class="col-xs-4" align="right">
+	<div align="right">
 	<?php include('countdown.php');
 	//include('./jquery-yycountdown-master\sample.html');?>
 	</div>
