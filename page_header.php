@@ -52,7 +52,7 @@ include('css.js');	//JavaScriptを読み込む
     <![endif]-->
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 <?php
 /////////////////////////
 include('menu.php'); //メニューバーを読み込む

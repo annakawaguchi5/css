@@ -1,22 +1,27 @@
 <?php include ('db_inc.php');?>
 <div class="row">
-<div class="col-xs-8">
-	<a href="index.php"><img src="./img/Course Selection System-logo.png"
-		alt="title" align="left"> </a>
-		</div>
+	<div class="col-sm-8">
+		<a href="index.php"><img src="./img/Course Selection System-logo.png"
+			class="img-responsive" alt="title" align="left"> </a>
+	</div>
 	<!-- 現在時刻 -->
 	<!--
 		<div align="right" width="30%" height="30%">
 		-->
-		<?php //include('clock.php');?>
+	<?php //include('clock.php');?>
 	<!-- </div> -->
 
 	<!-- カウントダウン -->
-	<div class="col-xs-4" align="right">
-	<?php include('countdown.php');
-	//include('./jquery-yycountdown-master\sample.html');?>
+	<div class="col-sm-4">
+		<div class="clearfix">
+			<div class="pull-right">
+			<?php include('countdown.php');
+			//include('./jquery-yycountdown-master\sample.html');?>
+		</div>
 	</div>
 </div>
+</div>
+
 
 <!-- ナビバー -->
 <nav class="navbar navbar-inverse">

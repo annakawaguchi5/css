@@ -42,7 +42,7 @@ $gpa=$row['gpa'];
 <div class="col-md-6">
 	<!--<img src="./image_view.php?id=1" />-->
 	<img
-		src="http://www2.is.kyusan-u.ac.jp/files/uploads/modelcourses__large.png" />
+		src="http://www2.is.kyusan-u.ac.jp/files/uploads/modelcourses__large.png" class="img-responsive" />
 </div>
 
 	<?php
@@ -52,18 +52,18 @@ $gpa=$row['gpa'];
 	$sql = "SELECT cid, cname, detail FROM tb_course WHERE year=$year ORDER BY cid";
 	$rs = mysql_query($sql, $conn);
 	$row = mysql_fetch_array($rs) ;
-	echo '<div class="container">';
-	while ($row){
+
+		while ($row){
 
 		$cid = $row['cid'];
 		$myclass=$class[$cid];
-		echo '<div class="col-md-6">';
+		echo '<div class="col-sm-6 bg-'.$class.'">';
 		echo '<h3 class="bg-'.$myclass.'"
-	style="text-align: middle; width:450px; height:150px; border-radius: 30px;">
-	<strong>'.$row['cname'].'</strong><br>'. $row['detail'].'</h3>';
+	<strong>'.$row['cname'].'</strong><br>'. $row['detail'];
 		$row = mysql_fetch_array($rs) ;
-		echo'</div>';
-	}	echo '</div>';
+		echo '</div>';
+
+	}
 
 
 	include('page_footer.php');
