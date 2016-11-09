@@ -113,8 +113,14 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 					if(!$row){//新規作成
 						$sql = "INSERT INTO tb_gp( year,uid, uname, upass, halfgp, halfgpa,allgp,allgpa) VALUES ('$year','$uid','$uname','abcd','$gp','$gpa',NULL,NULL)";
 						$rs = mysql_query($sql, $conn);
+
+						$sql="INSERT INTO tb_user( uid, uname, upass, urole) VALUES ('$uid','$uname','abcd',1)";
+						$rs = mysql_query($sql, $conn);
 					}else if($row){//更新
 						$sql="UPDATE tb_gp SET year='$year' , halfgp='$gp', halfgpa='$gpa' WHERE uid='$uid'";
+						$rs = mysql_query($sql, $conn);
+
+						$sql="UPDATE tb_user SET uname='$uname' WHERE uid='$uid'";
 						$rs = mysql_query($sql, $conn);
 						//echo $uid.$sql."<br>";
 						//$sql="UPDATE tb_user SET year='$year' ,uname='$uname' WHERE uid='$uid'";
@@ -125,6 +131,9 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 				}else if($state==1){
 					if($row){//更新else　error
 						$sql="UPDATE tb_gp SET year='$year' , allgp='$gp', allgpa='$gpa' WHERE uid='$uid'";
+						$rs = mysql_query($sql, $conn);
+
+						$sql="UPDATE tb_user SET uname='$uname' WHERE uid='$uid'";
 						$rs = mysql_query($sql, $conn);
 						//echo $uid.$sql."<br>";
 						//$sql="UPDATE tb_student SET year='$year' ,uname='$uname' WHERE uid='$uid'";
