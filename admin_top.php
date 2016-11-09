@@ -6,23 +6,20 @@ $now = $now->format('Y/m/d H時i分s秒');
 $year = date('Y');
 ?>
 
-<div class="container">
-
-	<!-- 更新情報 -->
-	<!-- 7グリッドを割り当て -->
-	<div class="col-sm-6 bg-danger">
-	<?php
-	include('receive_info.php');
-	?>
-	</div>
+<!-- 更新情報 -->
+<!-- 7グリッドを割り当て -->
+<div class="col-sm-6 bg-danger">
+<?php
+include('receive_info.php');
+?>
+</div>
 
 
 
 
 
-	<!-- 通知作成 -->
-	<!-- 5グリッドを割り当て -->
-	<div class="col-sm-6">
-	<?php include("make_info.php");?>
-	</div>
+<!-- 通知作成 -->
+<!-- 5グリッドを割り当て -->
+<div class="col-sm-6">
+<?php include("make_info.php");?>
 </div>

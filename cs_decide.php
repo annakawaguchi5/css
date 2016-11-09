@@ -1,38 +1,40 @@
 <?php
 include('page_header.php');  //画面出力開始
 require_once('db_inc.php');  //データベース接続
-// 今日の日付を取得
-$now = new DateTime();
-$now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
-$now = $now->format('Y/m/d H時i分s秒');
+
+if(isset($_SESSION['urole']) && ($_SESSION['urole']==2 || $_SESSION['urole']==3)){
+	// 今日の日付を取得
+	$now = new DateTime();
+	$now->setTimeZone(new DateTimeZone('Asia/Tokyo'));
+	$now = $now->format('Y/m/d H時i分s秒');
 
 
-//最新年を検索 MAX(year)
-$sql = "SELECT MAX(year) FROM tb_limit";
-$rs = mysql_query($sql, $conn);
-if (!$rs) die ('エラー: ' . mysql_error());
-$row = mysql_fetch_array($rs) ;
-$year = $row['MAX(year)'];
+	//最新年を検索 MAX(year)
+	$sql = "SELECT MAX(year) FROM tb_limit";
+	$rs = mysql_query($sql, $conn);
+	if (!$rs) die ('エラー: ' . mysql_error());
+	$row = mysql_fetch_array($rs) ;
+	$year = $row['MAX(year)'];
 
-//要件用gp,gpa取得//////////////////////////////
-$sql = "SELECT gp,gpa
+	//要件用gp,gpa取得//////////////////////////////
+	$sql = "SELECT gp,gpa
 FROM tb_course
 WHERE YEAR ='$year'
 AND cid=2";
-$rs = mysql_query($sql, $conn);
+	$rs = mysql_query($sql, $conn);
 
-if (!$rs) die ('エラー: ' . mysql_error());
-$row = mysql_fetch_array($rs) ;
+	if (!$rs) die ('エラー: ' . mysql_error());
+	$row = mysql_fetch_array($rs) ;
 
-$gp = $row['gp'];
-$gpa = $row['gpa'];
-//////////////////////////////////////////////
+	$gp = $row['gp'];
+	$gpa = $row['gpa'];
+	//////////////////////////////////////////////
 
 
-echo "<h1>コース決定一覧</h1>";
-echo "<p align='right'><strong style='color:red;'>".$now."</strong>
+	echo "<h1>コース決定一覧</h1>";
+	echo "<p align='right'><strong style='color:red;'>".$now."</strong>
 <strong> 現在</strong></p>";
-?>
+	?>
 <style>
 .button_wall {
 	text-align: right;
@@ -123,14 +125,14 @@ input[type=checkbox] {
 
 
 
-<?php
+	<?php
 
 
 
 
 
-//総合コース/////////////////////////////////////////////////////////////////
-$sql = "SELECT cname
+	//総合コース/////////////////////////////////////////////////////////////////
+	$sql = "SELECT cname
 	FROM tb_course
 			WHERE YEAR ='$year'
 			AND cid=1";
@@ -201,7 +203,7 @@ WHERE YEAR ='$year' AND uid='$uid'
 			$class1 = "default";
 			$class2 = "primary";
 		}
-?>
+		?>
 
 	<tr>
 		<td><input type="checkbox" name="chk_sougo[]"
@@ -238,10 +240,11 @@ WHERE YEAR ='$year' AND uid='$uid'
 	 '.$disabled.'>応用</button>';
 	echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
 	 '.$disabled.'>総合</button>';?>
-	<a href="javascript:void(0)"
-		onClick="checkbox_changer_sougo(true); return false;">全てチェック</a>| <a
-		href="javascript:void(0)"
-		onClick="checkbox_changer_sougo(false); return false;">全てのチェックを外す</a><br />
+		<a href="javascript:void(0)"
+			onClick="checkbox_changer_sougo(true); return false;">全てチェック</a>|
+		<a href="javascript:void(0)"
+			onClick="checkbox_changer_sougo(false); return false;">全てのチェックを外す</a>
+		<br />
 
 </form>
 
@@ -320,7 +323,7 @@ WHERE YEAR ='$year' AND uid='$uid'
 			$class1 = "default";
 			$class2 = "primary";
 		}
-?>
+		?>
 
 	<tr>
 		<td><input type="checkbox" name="chk_ouyo[]"
@@ -480,7 +483,9 @@ WHERE YEAR ='$year' AND uid='$uid'
 
 </form>
 	<?php
+}else{
+	echo '閲覧できません。';
+}
 
-
-	include('page_footer.php');  //画面出力終了
+include('page_footer.php');  //画面出力終了
 	?>

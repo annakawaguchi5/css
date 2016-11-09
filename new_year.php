@@ -2,7 +2,9 @@
 include('page_header.php');  //画面出力開始
 require_once('db_inc.php');  //データベース接続
 
-
+if(!isset($_SESSION['urole']) || $_SESSION['urole']!=3){
+	echo '閲覧できません。';
+}else{
 ?>
 
 <!-- 新規登録画面 -->
@@ -67,5 +69,6 @@ require_once('db_inc.php');  //データベース接続
 </div>
 
 				<?php
+}
 				include('page_footer.php');
 				?>

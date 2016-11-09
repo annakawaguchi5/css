@@ -2,6 +2,7 @@
 include('page_header.php');
 require_once ('db_inc.php');  // データベース接続
 
+if(isset($_SESSION['urole']) && $_SESSION['urole']==1){
 if ( isset($_SESSION['year']) && $_SESSION['year']!=0) {	//uidを取得
 	$year = $_SESSION['year'];
 }else{
@@ -65,6 +66,8 @@ $gpa=$row['gpa'];
 		echo'</div>';
 	}	echo '</div>';
 
-
+}else{
+	echo '閲覧できません。';
+}
 	include('page_footer.php');
 	?>
