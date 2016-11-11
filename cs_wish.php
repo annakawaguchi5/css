@@ -1,8 +1,14 @@
 <?php
 include('page_header.php');
 require_once ('db_inc.php');  // データベース接続
+?>
 
+<style>
+table{text-align:center;}
+th{background-color:skyblue;}
+</style>
 
+<?php
 if ( isset($_SESSION['urole']) and $_SESSION['urole']==1 ) {
 	//学生としてログインしているなら
 	$uid   = $_SESSION['uid'];   // 認証済みのユーザID
@@ -26,6 +32,60 @@ $now = $now->format('Y-m-d H:i:s');
 if(strtotime($stime)<strtotime($now) && strtotime($now)<strtotime($ltime)){ //提出時間内
 	echo '<h2>コース希望登録</h2>';
 
+	/**
+	 * 要件
+	 */
+	$sql = "SELECT * FROM tb_course WHERE year=".$year;
+	$rs = mysql_query($sql, $conn);
+	if (!$rs) die ('エラー: ' . mysql_error());
+	$row = mysql_fetch_array($rs) ;
+
+	echo '<div>';
+	echo '<h3>登録要件</h3>';
+	echo '<table class="table-hover table-bordered">';
+	echo '<tr><th>コース名</th><th>修得単位数</th><th>GPA</th></tr>';
+	while($row){
+		if($row['gp']==""){
+			$row['gp']="なし";
+		}
+		if($row['gpa']==""){
+			$row['gpa']="なし";
+		}
+
+		echo '<tr><td>'.$row['cname'].'</td>';
+		echo '<td>'.$row['gp'].'</td>';
+		echo '<td>'.$row['gpa'].'</td></tr>';
+		$row = mysql_fetch_array($rs) ;
+	}
+	echo '</table></div>';
+
+	/**
+	 * 成績情報
+	 */
+	$sql = "SELECT * FROM tb_gp WHERE uid='$uid'";
+	$rs = mysql_query($sql, $conn);
+	if (!$rs) die ('エラー: ' . mysql_error());
+	$row = mysql_fetch_array($rs) ;
+
+	echo '<div>';
+	echo '<h3>成績情報</h3>';
+	if($row){
+		echo '<h5>あなたの成績は</h5>';
+		echo '<table class="table-hover table-bordered">';
+		echo '<tr><th></th><th>修得単位数</th><th>GPA</th></tr>';
+		echo '<tr><th>前期</th><td>'.$row['halfgp'].'</td><td>'.$row['halfgpa'].'</td></tr>';
+		echo '<tr><th>後期</th><td>'.$row['allgp'].'</td><td>'.$row['allgpa'].'</td></tr>';
+		echo '</table>';
+	}else{
+			echo '成績情報がありません。';
+		}
+	echo '</div>';
+	?>
+
+<?php
+	/**
+	 * フォーム
+	 */
 	//変数の初期化
 	$cid = 1;         //希望のコースID;
 	$act = 'insert';  //初回登録?（insert: 初回登録; update: 再登録）;
