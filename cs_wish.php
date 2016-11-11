@@ -70,7 +70,7 @@ if(strtotime($stime)<strtotime($now) && strtotime($now)<strtotime($ltime)){ //�
 		echo '<textarea class="form-control" name ="note"></textarea>';
 		echo '</div></h3>';
 
-		echo '<button type="submit" class="btn btn-default col-sm-offset-1">送信</button>';
+		echo '<button type="submit" class="btn btn-primary">送信</button>';
 		echo '</form>';
 	}else{
 		echo 'コースが決定しているため、この機能は利用できません。</h3>';

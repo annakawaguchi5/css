@@ -163,7 +163,7 @@ AND cid=2";
 	<?php
 	echo '<input type="hidden" name="year" value="'.$year.'">';
 	echo '<table border=0 class="table table-striped table-hover table-bordered">';
-	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
+	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>決定結果</th></tr>';//cssで決定ボタンを追加
 
 	while ($row) {
 		$uid=$row['uid'];
@@ -233,16 +233,19 @@ WHERE YEAR ='$year' AND uid='$uid'
 	}else{
 		$disabled = "";
 	}
+?>
 
-	echo '<button class="btn btn-danger" type="submit" name="cid" value="1"
-	 '.$disabled.'>応用</button>';
-	echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
-	 '.$disabled.'>総合</button>';?>
+
 	<a href="javascript:void(0)"
 		onClick="checkbox_changer_sougo(true); return false;">全てチェック</a>| <a
 		href="javascript:void(0)"
 		onClick="checkbox_changer_sougo(false); return false;">全てのチェックを外す</a><br />
 
+<?php
+	echo '<button class="btn btn-danger" type="submit" name="cid" value="1"
+	 '.$disabled.'>応用</button>';
+	echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
+	 '.$disabled.'>総合</button>';?>
 </form>
 
 	<?php
@@ -282,7 +285,7 @@ AND cid=1";
 	<?php
 	echo '<input type="hidden" name="year" value="'.$year.'">';
 	echo '<table border=0 class="table table-striped table-hover table-bordered">';
-	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
+	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>決定結果</th></tr>';//cssで決定ボタンを追加
 
 	while ($row) {
 		$uid=$row['uid'];
@@ -352,16 +355,18 @@ WHERE YEAR ='$year' AND uid='$uid'
 	}else{
 		$disabled = "";
 	}
-
-	echo '<button class="btn btn-danger" type="submit" name="cid" value="1"
-	 '.$disabled.'>応用</button>';
-	echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
-	 '.$disabled.'>総合</button>';?>
+?>
 		<a href="javascript:void(0)"
 			onClick="checkbox_changer_ouyo(true); return false;">全てチェック</a> |
 		<a href="javascript:void(0)"
 			onClick="checkbox_changer_ouyo(false); return false;">全てのチェックを外す</a>
 		<br />
+
+		<?php
+	echo '<button class="btn btn-danger" type="submit" name="cid" value="1"
+	 '.$disabled.'>応用</button>';
+	echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
+	 '.$disabled.'>総合</button>';?>
 
 </form>
 	<?php
@@ -394,7 +399,7 @@ FROM tb_entry
 	<?php
 	echo '<input type="hidden" name="year" value="'.$year.'">';
 	echo '<table border=0 class="table table-striped table-hover table-bordered">';
-	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
+	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>決定結果</th></tr>';//cssで決定ボタンを追加
 
 	while ($row) {
 		$uid=$row['uid'];
@@ -467,16 +472,18 @@ WHERE YEAR ='$year' AND uid='$uid'
 	}else{
 		$disabled = "";
 	}
-
-	echo '<button class="btn btn-danger" type="submit" name="cid" value="1"
-	 '.$disabled.'>応用</button>';
-	echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
-	 '.$disabled.'>総合</button>';?>
+?>
 		<a href="javascript:void(0)"
 			onClick="checkbox_changer_mitei(true); return false;">全てチェック</a> |
 		<a href="javascript:void(0)"
 			onClick="checkbox_changer_mitei(false); return false;">全てのチェックを外す</a>
 		<br />
+
+		<?php
+	echo '<button class="btn btn-danger" type="submit" name="cid" value="1"
+	 '.$disabled.'>応用</button>';
+	echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
+	 '.$disabled.'>総合</button>';?>
 
 </form>
 	<?php
