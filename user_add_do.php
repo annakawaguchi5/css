@@ -8,6 +8,7 @@ if($_SESSION['urole']==9){
 	$uname = $_POST['uname'];  //登録画面より送信されたユーザ名s
 	$upass = $_POST['upass'];	//パスワード
 	$urole = $_POST['urole'];	//種別
+	/*
 	if($_POST['halfgp']==""){
 		$halfgp = "NULL";
 	}else{
@@ -28,21 +29,43 @@ if($_SESSION['urole']==9){
 	}else{
 		$allgpa = $_POST['allgpa'];
 	}
-
-
-	$where = 'WHERE 1';
-	$sql = "INSERT INTO tb_user VALUES ($year, '$uid', '$uname', '$upass', $urole)";//検索条件を適用したSQL文を作成
+	*/
+	$sql = "SELECT uid FROM tb_user WHERE uid='$uid'";
 	//echo $sql;
 	$rs = mysql_query($sql, $conn);
 	if (!$rs)die ('エラー: ' . mysql_error());
+	$row= mysql_fetch_array($rs);
+	if($row || $uid==""){
+		echo "ユーザIDがすでに使われています。";
+	}else{
+	//$where = 'WHERE 1';
 	if($urole==1){
+		$sql = "INSERT INTO tb_user VALUES ('$uid', '$uname', '$upass', $urole)";//検索条件を適用したSQL文を作成
+		//echo $sql;
+		$rs = mysql_query($sql, $conn);
+		if (!$rs)die ('エラー: ' . mysql_error());
+
+		$sql = "INSERT INTO tb_gp(year,uid) VALUES ($year, '$uid')";//検索条件を適用したSQL文を作成
+		//echo $sql;
+		$rs = mysql_query($sql, $conn);
+		if (!$rs)die ('エラー: ' . mysql_error());
+	}else{
+		$sql = "INSERT INTO tb_user VALUES ('$uid', '$uname', '$upass', $urole)";//検索条件を適用したSQL文を作成
+		//echo $sql;
+		$rs = mysql_query($sql, $conn);
+		if (!$rs)die ('エラー: ' . mysql_error());
+	}
+	/*
+	 if($urole==1){
 		$sql = "INSERT INTO tb_gp VALUE ($year, '$uid', $halfgp, $halfgpa, $allgp, $allgpa)";
 		//echo $sql;
 		$rs = mysql_query($sql, $conn);
 		if (!$rs)die ('エラー: ' . mysql_error());
 	}
+	*/
 	echo "登録しました";
 	echo '<p><a href="year.php">戻る</a>';
+	}
 }else{
 	echo '<h1 style="color:red">警告：あなたの権限ではこの機能を使えません。</h1>';
 }

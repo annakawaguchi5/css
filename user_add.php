@@ -33,7 +33,7 @@
 			</select>
 		</div>
 	</div>
-
+<!--
 	<div class="form-group">
 		<label for="halfgp" class="control-label col-sm-3">前期修得単位数:</label>
 		<div class="col-sm-9">
@@ -58,7 +58,7 @@
 			<input type="allgpa" name="allgpa" class="form-control">
 		</div>
 	</div>
-
+-->
 	<button class="col-xs-offset-2 btn-lg" type="submit">登録</button>
 
 </form>
