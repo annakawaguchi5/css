@@ -10,13 +10,16 @@ ini_set("session.bug_compat_warn", 0);
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>コース希望</title>
+
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" media="screen"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link href="css/smoke.min.css" rel="stylesheet">
+
 <!-- CSS -->
 <link rel="stylesheet" href="../common/css/common.css">
 <link rel="stylesheet" href="css/style.css">
+
 <!-- JS -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script
@@ -27,6 +30,7 @@ ini_set("session.bug_compat_warn", 0);
 <!-- jQuery-UI -->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+
 <!-- jQuery-UI-datepicker -->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
@@ -34,6 +38,7 @@ ini_set("session.bug_compat_warn", 0);
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/cupertino/jquery-ui.css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datetimepicker-ja.min.js"></script>
+
 <!-- datetimepicker -->
 <link rel="stylesheet"
 	href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/v4.0.0/build/css/bootstrap-datetimepicker.css">
@@ -42,6 +47,11 @@ ini_set("session.bug_compat_warn", 0);
 <script src="moment-ja.js"></script>
 <script
 	src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/v4.0.0/src/js/bootstrap-datetimepicker.js"></script>
+
+<!-- smoke -->
+<link rel="stylesheet" href="./smoke-master/dist/css/smoke.min.css">
+<script src="./smoke-master/dist/js/smoke.min.js"></script>
+<script src="./smoke-master/dist/js/ja.js"></script>
 <?php
 include('stylesheet.css');	//CSSを読み込む
 include('css.js');	//JavaScriptを読み込む
