@@ -1,6 +1,7 @@
 <?php include ('db_inc.php');?>
-<div class="row">
-	<div class="col-sm-8">
+
+<div class="clearfix">
+	<div class="pull-left">
 		<a href="index.php"><img src="./img/Course Selection System-logo.png"
 			class="img-responsive" alt="title" align="left"> </a>
 	</div>
@@ -12,14 +13,12 @@
 	<!-- </div> -->
 
 	<!-- カウントダウン -->
-	<div class="col-sm-4">
-		<div class="clearfix">
-			<div class="pull-right">
-			<?php include('countdown.php');
-			//include('./jquery-yycountdown-master\sample.html');?>
-		</div>
+
+
+	<div class="pull-right">
+	<?php include('countdown.php');
+	//include('./jquery-yycountdown-master\sample.html');?>
 	</div>
-</div>
 </div>
 
 
@@ -38,7 +37,7 @@
 <?php
 $menu0 = array(  //共通メニュー:未ログイン
 		'お問合せ' => 'goikenbako.php',
- 'ログイン'  => 'login.php',
+		'ログイン'  => 'login.php',
 );
 $menu = array(
 1 => array(  //学生メニュー

@@ -1,0 +1,155 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{'NOTIFICATIONS' | translate}}</h1>
+    <p class="lead">{{'NOTIFICATIONS-DESC' | translate}}</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-3">
+      <div class="list-group" affix>
+          <ul class="nav">
+            <a href="" smooth-scroll target="alerts" offset="80" class="list-group-item">{{'ALERTS' | translate}}</a>
+            <a href="" smooth-scroll target="confirmation" offset="80" class="list-group-item">{{'CONFIRMATION' | translate}}</a>
+          </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+
+      <section id="alerts">
+
+        <h1>{{'ALERTS' | translate}}</h1><hr>
+        <p class="lead">{{'ALERTS-DESC' | translate}}</p>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p class="text-muted"><small>EXAMPLE</small></p>
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <a href="" class="btn btn-warning" ng-click="alertWarning()">Warning</a>
+                  <a href="" class="btn btn-success" ng-click="alertSuccess()">Success</a>
+                  <a href="" class="btn btn-danger" ng-click="alertDanger()">Danger 10 seconds</a>
+                  <a href="" class="btn btn-info" ng-click="alertInfo()">Info permanent</a>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="panel-footer">
+            <p class="text-muted"><small>CODE</small></p>
+              <gist id="3f20ce580bb6dda3d6d8"></gist>
+          </div>
+        </div>
+
+        <h3>{{'OPTIONS' | translate}}</h3>
+        <p>{{'ALERTS-TB.DESC' | translate}}</p>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>{{'OPTION' | translate}}</th>
+              <th>{{'TYPE' | translate}}</th>
+              <th>Default</th>
+              <th>{{'DESCRIPTION' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>text</code></td>
+              <td>String: {Text | HTML}</td>
+              <td>"Hello world"</td>
+              <td>{{'ALERTS-TB.DESCS.TEXT' | translate}}</td>
+            </tr>
+            <tr>
+              <td><code>type</code></td>
+              <td>String: {warning | success | danger | info}</td>
+              <td>"warning"</td>
+              <td>{{'ALERTS-TB.DESCS.TYPE' | translate}}</td>
+            </tr>
+            <tr>
+              <td><code>time</code></td>
+              <td>Number</td>
+              <td>5</td>
+              <td>{{'ALERTS-TB.DESCS.TIME' | translate}}</td>
+            </tr>
+            <tr>
+              <td><code>permanent</code></td>
+              <td>Boolean: {true | false}</td>
+              <td>false</td>
+              <td>{{'ALERTS-TB.DESCS.PERMANENT' | translate}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <iframe height='250' scrolling='no' src='//codepen.io/alfredobarron/embed/tpzrb/?height=250&theme-id=8624' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/alfredobarron/pen/tpzrb/'>Smoke Alerts</a> by Alfredo Barron (<a href='http://codepen.io/alfredobarron'>@alfredobarron</a>) on <a href='http://codepen.io'>CodePen</a>.
+        </iframe>
+
+      </section>
+
+      <section id="confirmation">
+
+        <h1>{{'CONFIRMATION' | translate}}</h1><hr>
+        <p class="lead">{{'CONFIRMATION-DESC' | translate}}</p>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p class="text-muted"><small>EXAMPLE</small></p>
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <a href="" class="btn btn-default" ng-click="confirm()">Confirmation</a>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="panel-footer">
+            <p class="text-muted"><small>CODE</small></p>
+            <gist id="0f5da6454e7023091cd4"></gist>
+          </div>
+        </div>
+
+        <h3>{{'OPTIONS' | translate}}</h3>
+        <p>{{'CONFIRMATION-TB.DESC' | translate}}</p>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>{{'OPTION' | translate}}</th>
+              <th>{{'TYPE' | translate}}</th>
+              <th>Default</th>
+              <th>{{'DESCRIPTION' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>text</code></td>
+              <td>String: {Text | HTML}</td>
+              <td>"Are you sure?"</td>
+              <td>{{'CONFIRMATION-TB.DESCS.TEXT' | translate}}</td>
+            </tr>
+            <tr>
+              <td><code>accept</code></td>
+              <td>String: {Text}</td>
+              <td>"Accept"</td>
+              <td>{{'CONFIRMATION-TB.DESCS.ACCEPT' | translate}}</td>
+            </tr>
+            <tr>
+              <td><code>cancel</code></td>
+              <td>String: {Text}</td>
+              <td>"Cancel"</td>
+              <td>{{'CONFIRMATION-TB.DESCS.CANCEL' | translate}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <iframe height='250' scrolling='no' src='//codepen.io/alfredobarron/embed/tbcdw/?height=250&theme-id=8624' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/alfredobarron/pen/tbcdw/'>Smoke Confirmation</a> by Alfredo Barron (<a href='http://codepen.io/alfredobarron'>@alfredobarron</a>) on <a href='http://codepen.io'>CodePen</a>.
+        </iframe>
+
+      </section>
+
+    </div><!--/.col-lg-9 -->
+  </div><!--/.row -->
+</div><!-- /.container -->

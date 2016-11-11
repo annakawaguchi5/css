@@ -11,9 +11,15 @@
 <link
 	rel="stylesheet"
 	href="./jquery-yycountdown-master/css/jquery.yycountdown.css">
-<!--[if lt IE 9]>
+<script
+	type="text/javascript"
+	src="./jquery-yycountdown-master/js/jquery.yycountdown.min.js"></script>
+
+	<!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+
+
 <?php
 if(isset($_SESSION['urole']) && $_SESSION['urole']==1){	//学生用year
 	$year=$_SESSION['year'];
@@ -34,6 +40,7 @@ $row = mysql_fetch_array($rs) ;
 $ltime=$row['ltime'];
 ?>
 
+
 <div id="contents">
 	<div class="inner">
 		<div id="countdownDate">
@@ -44,8 +51,17 @@ $ltime=$row['ltime'];
 	</div>
 	<!-- inner -->
 </div>
-
 <!-- contents -->
 
+<script type="text/javascript">
+	$("#timer").yycountdown({
+		endDateTime   : '<?php echo $ltime;?>',
+			unit          : {d: '日', h: '時間', m: '分', s: '秒'},
+			complete : function(_this){
+	            _this.find('.yycountdown-box').text('調査期間外です');
+	        }
+	});
+
+</script>
 
 		<?php //include('page_footer.php');?>

@@ -1,0 +1,76 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{'PANEL' | translate }}</h1>
+    <p class="lead">{{'PANEL-DESC' | translate }}</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-3">
+      <div class="list-group" affix>
+          <ul class="nav">
+            <a href="" smooth-scroll target="panel" offset="80" class="list-group-item">{{'PANEL' | translate }}</a>
+          </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+
+      <section id="panel">
+
+        <h1>{{'PANEL' | translate }}</h1><hr>
+        <p class="lead">{{'PANEL-DESC2' | translate }}</p>
+
+        <div class="panel panel-default" panel>
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel</h3>
+          </div>
+          <div class="panel-body">
+            <p class="text-muted"><small>EXAMPLE</small></p>
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <div class="col-sm-12">
+
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="panel-footer">
+            <p class="text-muted"><small>CODE</small></p>
+            <gist id="05113d7c82721c1a644b"></gist>
+          </div>
+        </div>
+
+        <h3>{{'OPTIONS' | translate }}</h3>
+        <p>{{'PANEL-TB.DESC' | translate }}</p>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>{{'OPTION' | translate}}</th>
+              <th>{{'TYPE' | translate}}</th>
+              <th>Default</th>
+              <th>{{'DESCRIPTION' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>hide</code></td>
+              <td>String: {min | remove | full}</td>
+              <td>N/A</td>
+              <td>{{'PANEL-TB.DESCS.HIDE' | translate }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <iframe height='250' scrolling='no' src='//codepen.io/alfredobarron/embed/KweKeY/?height=250&theme-id=8624' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/alfredobarron/pen/KweKeY/'>Smoke Panel</a> by Alfredo Barron (<a href='http://codepen.io/alfredobarron'>@alfredobarron</a>) on <a href='http://codepen.io'>CodePen</a>.
+        </iframe>
+
+      </section>
+
+
+    </div><!--/.col-lg-9 -->
+  </div><!--/.row -->
+</div><!-- /.container -->
