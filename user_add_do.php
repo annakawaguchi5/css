@@ -37,6 +37,7 @@ if($_SESSION['urole']==9){
 	$row= mysql_fetch_array($rs);
 	if($row || $uid==""){
 		echo "ユーザIDがすでに使われています。";
+		echo '<p><a href="importCsv.php">戻る</a>';
 	}else{
 	//$where = 'WHERE 1';
 	if($urole==1){
@@ -64,7 +65,7 @@ if($_SESSION['urole']==9){
 	}
 	*/
 	echo "登録しました";
-	echo '<p><a href="year.php">戻る</a>';
+	echo '<p><a href="importCsv.php">戻る</a>';
 	}
 }else{
 	echo '<h1 style="color:red">警告：あなたの権限ではこの機能を使えません。</h1>';
