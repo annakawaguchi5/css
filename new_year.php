@@ -6,7 +6,7 @@ require_once('db_inc.php');  //データベース接続
 ?>
 
 <!-- 新規登録画面 -->
-<h3 style="color:red;">すべての項目を埋め、「登録」ボタンを押してください。</h3>
+<h3 style="color: red;">すべての項目を埋め、「登録」ボタンを押してください。</h3>
 <div id="newyear" title="新規作成">
 	<form class="form-horizontal" action="coursechange_do.php"
 		method="post" onSubmit="return check(this)"
@@ -31,8 +31,9 @@ require_once('db_inc.php');  //データベース接続
 
 
 
-				echo '<td><input type="text" id="year" name="year" value="'.$row['year'].'" size="20"
-				maxlength="20">年度</t>';
+				echo '<td><div class="col-xs-10"><input type="text" class="form-control" id="year" name="year" value="'.$row['year'].'" size="20"
+				maxlength="20"></div>
+				<div class="col-xs-2"><label>年度</label></div></td>';
 				?>
 			</tr>
 			<tr>
@@ -41,7 +42,8 @@ require_once('db_inc.php');  //データベース接続
 					<div class='input-group date' id='stime'>
 						<span class="input-group-addon"><span
 							class="glyphicon glyphicon-calendar"></span> </span> <input
-							type='text' class="form-control" name="stime" value="<?php echo $row['stime']?>"/>
+							type='text' class="form-control" name="stime"
+							value="<?php echo $row['stime']?>" />
 
 					</div>
 				</td>
@@ -52,20 +54,36 @@ require_once('db_inc.php');  //データベース接続
 					<div class='input-group date' id='ltime'>
 						<span class="input-group-addon"> <span
 							class="glyphicon glyphicon-calendar"></span> </span> <input
-							type='text' class="form-control" name="ltime" value="<?php echo $row['ltime']?>"/>
+							type='text' class="form-control" name="ltime"
+							value="<?php echo $row['ltime']?>" />
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<th class="header info">コース</th>
-				<td><?php include('coursechange.php');?></td>
+				<td><?php //include('coursechange.php');//コース数変更?>
+					<div class="course1">
+					<div class="col-xs-2"><label>コース名</label></div>
+					<div class="col-xs-10"><input type="text" class="form-control" name="cname1"></div>><br>
+						単位数<input type="text" class="form-control" name="gp1">以上　 GPA<input type="text" class="form-control" name="gpa1">以上<br>
+						コース説明<br>
+						<textarea rows="2" class="form-control" name="explanation1"></textarea>
+					</div>
+					<div class="course2">
+						コース名<input type="text" class="form-control" name="cname2"><br>
+						単位数<input type="text" class="form-control" name="gp2">以上　 GPA<input type="text" class="form-control" name="gpa2">以上<br>
+						コース説明<br>
+						<textarea class="form-control" rows="2" name="explanation2"></textarea>
+					</div>
+				</td>
 			</tr>
 		</table>
 		<input type="hidden" name="act" value="insert">
-		<button type="submit" class="center-block btn btn-primary btn-lg" style="width:300px; ">登録</button>
+		<button type="submit" class="center-block btn btn-primary btn-lg"
+			style="width: 300px;">登録</button>
 	</form>
 </div>
 
-				<?php
+<?php
 				include('page_footer.php');
 				?>
