@@ -6,8 +6,8 @@ include_once('db_inc.php');
 if(isset($_GET['year'])){
 	$year=$_GET['year'];
 }
-if(isset($_POST['data'])){//urole
-	$urole=$_POST['data'];//学生1,教員(権限なし)2,教員(権限あり)3
+if(isset($_POST['data'])){
+	$state=$_POST['data'];//学生0,教員1
 }
 /////CSVファイルインポート/////
 $num=0;
@@ -60,6 +60,8 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 				$element = Array(
 				0 => '$uid',
 				1 => '$uname',
+				2 => '$gp',
+				3 => '$gpa'
 				/*
 				 $uid => 0,
 				 $uname => 1,
@@ -85,7 +87,8 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 				};
 				$uid=$element[0];
 				$uname=$element[1];
-
+				$gp=$element[2];
+				$gpa=$element[3];
 				//$uname = mb_convert_encoding( $uname, "utf-8", "sjis" );
 				//echo $uid;
 				//echo $uname;
@@ -102,24 +105,26 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 				 }*/
 				//var_dump($values);
 				// sampleuser, sampleidテーブルの状況を検索する
-				$sql ="SELECT * FROM tb_user WHERE uid='$uid'; ";
+				$sql ="SELECT * FROM tb_gp WHERE uid='$uid'; ";
 				$rs = mysql_query($sql, $conn);
 				$row= mysql_fetch_array($rs);
 				//前期　作成AND更新
-
-				if(!$row){//新規作成
-						$sql="INSERT INTO tb_user( uid, uname, upass, urole) VALUES ('$uid','$uname','abcd',$urole)";
+				if($state==0){
+					if(!$row){//新規作成
+						echo "ユーザID".'$uid'."が登録されていません。";
+					}else if($row){//更新
+						$sql="UPDATE tb_gp SET year='$year' , halfgp='$gp', halfgpa='$gpa' WHERE uid='$uid'";
 						$rs = mysql_query($sql, $conn);
-
-						if($urole==1){
-							$sql="INSERT INTO tb_gp(year,uid) VALUES ('$year','$uid')";
-							$rs = mysql_query($sql, $conn);
-						}
-				}else{
-					$sql="UPDATE tb_user SET uname='$uname' WHERE uid='$uid'";
-					$rs = mysql_query($sql, $conn);
+					}
+					//echo "前期のデータが登録されました";
+				}else if($state==1){
+				if(!$row){//新規作成
+						echo "ユーザID".'$uid'."が登録されていません。";
+					}else if($row){//更新
+						$sql="UPDATE tb_gp SET year='$year' , allgp='$gp', allgpa='$gpa' WHERE uid='$uid'";
+						$rs = mysql_query($sql, $conn);
+					}
 				}
-
 
 				if (!$rs) {
 					die('エラー: ' . mysql_error());
@@ -138,6 +143,6 @@ if (is_uploaded_file($_FILES["csvfile"]["tmp_name"])) {
 	}
 }
 echo "ファイルが選択されていません";
-echo '<p><a href="importCsv.php?year='.$year.'">戻る</a>';
+echo '<p><a href="student_gp_csv?year='.$year.'.php">戻る</a>';
 
 include('page_footer.php');?>
