@@ -163,7 +163,7 @@ AND cid=2";
 	<?php
 	echo '<input type="hidden" name="year" value="'.$year.'">';
 	echo '<table border=0 class="table table-striped table-hover table-bordered">';
-	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
+	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>決定結果</th></tr>';//cssで決定ボタンを追加
 
 	while ($row) {
 		$uid=$row['uid'];
@@ -282,7 +282,7 @@ AND cid=1";
 	<?php
 	echo '<input type="hidden" name="year" value="'.$year.'">';
 	echo '<table border=0 class="table table-striped table-hover table-bordered">';
-	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
+	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>決定結果</th></tr>';//cssで決定ボタンを追加
 
 	while ($row) {
 		$uid=$row['uid'];
@@ -394,7 +394,7 @@ FROM tb_entry
 	<?php
 	echo '<input type="hidden" name="year" value="'.$year.'">';
 	echo '<table border=0 class="table table-striped table-hover table-bordered">';
-	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>コース決定</th></tr>';//cssで決定ボタンを追加
+	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>決定結果</th></tr>';//cssで決定ボタンを追加
 
 	while ($row) {
 		$uid=$row['uid'];
