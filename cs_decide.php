@@ -24,11 +24,129 @@ if ( isset($_SESSION['urole']) and $_SESSION['urole']==2 ) {
 FROM tb_user
 NATURAL JOIN tb_gp
 NATURAL JOIN tb_course
+<<<<<<< HEAD
 NATURAL JOIN tb_entry
 LEFT OUTER JOIN tb_decide ON tb_entry.uid = tb_decide.uid
 WHERE YEAR =$year
 			UNION
 			SELECT tb_user.uid, tb_user.uname, 0 AS ecid, allgp, allgpa, cid AS dcid
+=======
+WHERE YEAR ='$year'
+AND cid=2";
+
+	$rs = mysql_query($sql, $conn);
+	if (!$rs) die ('エラー: ' . mysql_error());
+	$row = mysql_fetch_array($rs) ;
+
+	?>
+
+<form action="cs_decide_do.php" name="frmPeropero_sougo"
+	class="form-horizontal" method="POST">
+
+
+
+
+	<?php
+	echo '<input type="hidden" name="year" value="'.$year.'">';
+	echo '<table border=0 class="table table-striped table-hover table-bordered">';
+	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>決定結果</th></tr>';//cssで決定ボタンを追加
+
+	while ($row) {
+		$uid=$row['uid'];
+
+		//$act = 'insert';  //初回登録?（insert: 初回登録; update: 再登録）;
+		if($gp=="" || $gpa=="" || $gp==null || $gpa == null){
+			$judge = "?";
+		}
+		else if($row['allgp']>=$gp && $row['allgpa']>=$gpa){
+			$judge = "◯";
+		}else{
+			$judge = "✕";
+		}
+		//希望提出済みコース未決定の学生情報を検索
+
+		$class1 = "default";
+		$class2 = "default";
+
+
+		//決定済み確認用////////////////////
+		$sql_decide = "SELECT uid,cid
+FROM tb_decide
+NATURAL JOIN tb_user
+WHERE YEAR ='$year' AND uid='$uid'
+";
+		$rs_decide = mysql_query($sql_decide, $conn);
+		if (!$rs_decide) die ('エラー: ' . mysql_error());
+		$row_decide = mysql_fetch_array($rs_decide) ;
+
+		if($row_decide['cid'] == 1){
+			//$act='update';
+			$class1 = "danger";
+			$class2 = "default";
+		}else if($row_decide['cid']==2){
+			$class1 = "default";
+			$class2 = "primary";
+		}
+?>
+
+	<tr>
+		<td><input type="checkbox" name="chk_sougo[]"
+			value="<?php echo $uid; ?>">
+		</td>
+
+
+		<?php
+		echo '<td>' . $row['uid'] . '</td>';
+		echo '<td>' . $row['uname']. '</td>';
+		echo '<td>' . $row['cname']  . '</td>';
+		echo '<td>' . $row['note'] . '</td>';
+		echo '<td>' . $row['allgp'] . '</td>';
+		echo '<td>' . $row['allgpa'] . '</td>';
+		echo '<td style="color:red">' . $judge . '</td>';
+
+		echo'<td>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" disabled>応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" disabled>総合</button>
+		</td>';
+		echo '</tr>';
+		$row = mysql_fetch_array($rs) ;
+	}
+	echo '</table>';
+
+	if ( isset($_SESSION['urole']) and $_SESSION['urole']==2 ) {
+		//教員（権限なし）としてログインしているなら
+		$disabled = "disabled";
+	}else{
+		$disabled = "";
+	}
+
+	echo '<button class="btn btn-danger" type="submit" name="cid" value="1"
+	 '.$disabled.'>応用</button>';
+	echo '<button class="btn btn-primary" type="submit" name="cid" value="2"
+	 '.$disabled.'>総合</button>';?>
+	<a href="javascript:void(0)"
+		onClick="checkbox_changer_sougo(true); return false;">全てチェック</a>| <a
+		href="javascript:void(0)"
+		onClick="checkbox_changer_sougo(false); return false;">全てのチェックを外す</a><br />
+
+</form>
+
+	<?php
+	///////////////////////////////////////////////////////////////////////////
+
+	//応用コース
+	$sql = "SELECT cname
+	FROM tb_course
+			WHERE YEAR ='$year'
+			AND cid=1";
+	$rs = mysql_query($sql, $conn);
+	if (!$rs) die ('エラー: ' . mysql_error());
+	$row = mysql_fetch_array($rs) ;
+	$cname=$row['cname'];
+	echo "<h2>".$cname."</h2>";
+
+	$sql = "SELECT uid, cid,uname, cname, note, allgp, allgpa
+>>>>>>> 9cc6f8439ecb3912fb1dcc1247113be56d60f07e
 FROM tb_user
 NATURAL JOIN tb_gp
 LEFT OUTER JOIN tb_decide ON tb_user.uid = tb_decide.uid
@@ -50,6 +168,80 @@ GROUP BY uid
 	while($row){
 		echo $row['uid'];
 
+<<<<<<< HEAD
+=======
+	?>
+
+<form action="cs_decide_do.php" name="frmPeropero_ouyo"
+	class="form-horizontal" method="POST">
+
+
+
+
+	<?php
+	echo '<input type="hidden" name="year" value="'.$year.'">';
+	echo '<table border=0 class="table table-striped table-hover table-bordered">';
+	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>決定結果</th></tr>';//cssで決定ボタンを追加
+
+	while ($row) {
+		$uid=$row['uid'];
+
+		//$act = 'insert';  //初回登録?（insert: 初回登録; update: 再登録）;
+		if($gp=="" || $gpa=="" || $gp==null || $gpa == null){
+			$judge = "?";
+		}
+		else if($row['allgp']>=$gp && $row['allgpa']>=$gpa){
+			$judge = "◯";
+		}else{
+			$judge = "✕";
+		}
+		//希望提出済みコース未決定の学生情報を検索
+
+		$class1 = "default";
+		$class2 = "default";
+
+
+		//決定済み確認用////////////////////
+		$sql_decide = "SELECT uid,cid
+FROM tb_decide
+NATURAL JOIN tb_user
+WHERE YEAR ='$year' AND uid='$uid'
+";
+		$rs_decide = mysql_query($sql_decide, $conn);
+		if (!$rs_decide) die ('エラー: ' . mysql_error());
+		$row_decide = mysql_fetch_array($rs_decide) ;
+
+		if($row_decide['cid'] == 1){
+			//$act='update';
+			$class1 = "danger";
+			$class2 = "default";
+		}else if($row_decide['cid']==2){
+			$class1 = "default";
+			$class2 = "primary";
+		}
+?>
+
+	<tr>
+		<td><input type="checkbox" name="chk_ouyo[]"
+			value="<?php echo $uid; ?>">
+		</td>
+
+
+		<?php
+		echo '<td>' . $row['uid'] . '</td>';
+		echo '<td>' . $row['uname']. '</td>';
+		echo '<td>' . $row['cname']  . '</td>';
+		echo '<td>' . $row['note'] . '</td>';
+		echo '<td>' . $row['allgp'] . '</td>';
+		echo '<td>' . $row['allgpa'] . '</td>';
+		echo '<td style="color:red">' . $judge . '</td>';
+
+		echo'<td>
+		<button class="btn btn-'.$class1.'" type="submit" name="cid" value="1" disabled>応用</button>
+		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" disabled>総合</button>
+		</td>';
+		echo '</tr>';
+>>>>>>> 9cc6f8439ecb3912fb1dcc1247113be56d60f07e
 		$row = mysql_fetch_array($rs) ;
 	}
 	$sql = "DROP VIEW student_list";
@@ -87,10 +279,17 @@ GROUP BY uid
  text-align: right;
  }
 
+<<<<<<< HEAD
  input[type=checkbox] {
  transform: scale(1.5);
  }
  </style>
+=======
+	<?php
+	echo '<input type="hidden" name="year" value="'.$year.'">';
+	echo '<table border=0 class="table table-striped table-hover table-bordered">';
+	echo '<tr class="info"><th></th><th>ユーザID</th><th>氏名</th><th>希望コース</th><th>興味のある研究分野や自己アピール</th><th>修得単位数</th><th>GPA</th><th>総合要件</th><th>決定結果</th></tr>';//cssで決定ボタンを追加
+>>>>>>> 9cc6f8439ecb3912fb1dcc1247113be56d60f07e
 
  <script type="text/javascript">
 

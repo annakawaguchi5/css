@@ -138,8 +138,8 @@ $(function() {
 	?>
 		<div class="indent">
 			<ul id="tab">
-				<li class="select">基本設定</li>
-				<li>ユーザ情報</li>
+				<li class="select">コース設定</li>
+				<li>成績情報</li>
 			</ul>
 			<div class="content_wrap">
 			<?php
@@ -195,7 +195,7 @@ $(function() {
 
 
 				//学生のデータを表示
-				$sql = "SELECT * FROM tb_gp WHERE year=".$dispyear;
+				$sql = "SELECT * FROM tb_user NATURAL JOIN tb_gp WHERE year=".$dispyear;
 				$rs = mysql_query($sql, $conn);
 				if (!$rs) die ('エラー: ' . mysql_error());
 				$row = mysql_fetch_array($rs) ;
@@ -203,7 +203,7 @@ $(function() {
 				echo '<input type="button" src="./img/register.gif" alt="登録" value="ユーザ登録" onclick="window.open(\'importCsv.php?year='.$dispyear.'\', \'_blank\')">';
 
 				echo '<FORM method="POST" action="user_change.php" id="list" name="list" onsubmit="return list(this)">';
-				echo '<div style="height:200px; overflow-y:scroll;">';
+				//echo '<div style="height:200px; overflow-y:scroll;">';
 				echo '<div class="table-responsive">';
 				echo '<table border=0 class="table table-headerfixed table-condensed table-striped table-hover table-bordered">';
 				echo '<thead><tr class="info"><th class="check"></th><th class="uid">ユーザID</th><th class="uname">氏名</th>
