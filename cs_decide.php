@@ -24,13 +24,11 @@ if ( isset($_SESSION['urole']) and $_SESSION['urole']==2 ) {
 FROM tb_user
 NATURAL JOIN tb_gp
 NATURAL JOIN tb_course
-<<<<<<< HEAD
 NATURAL JOIN tb_entry
 LEFT OUTER JOIN tb_decide ON tb_entry.uid = tb_decide.uid
 WHERE YEAR =$year
 			UNION
 			SELECT tb_user.uid, tb_user.uname, 0 AS ecid, allgp, allgpa, cid AS dcid
-=======
 WHERE YEAR ='$year'
 AND cid=2";
 
@@ -146,7 +144,6 @@ WHERE YEAR ='$year' AND uid='$uid'
 	echo "<h2>".$cname."</h2>";
 
 	$sql = "SELECT uid, cid,uname, cname, note, allgp, allgpa
->>>>>>> 9cc6f8439ecb3912fb1dcc1247113be56d60f07e
 FROM tb_user
 NATURAL JOIN tb_gp
 LEFT OUTER JOIN tb_decide ON tb_user.uid = tb_decide.uid
@@ -167,9 +164,6 @@ GROUP BY uid
 	$row = mysql_fetch_array($rs) ;
 	while($row){
 		echo $row['uid'];
-
-<<<<<<< HEAD
-=======
 	?>
 
 <form action="cs_decide_do.php" name="frmPeropero_ouyo"
@@ -241,7 +235,6 @@ WHERE YEAR ='$year' AND uid='$uid'
 		<button class="btn btn-'.$class2.'" type="submit" name="cid" value="2" disabled>総合</button>
 		</td>';
 		echo '</tr>';
->>>>>>> 9cc6f8439ecb3912fb1dcc1247113be56d60f07e
 		$row = mysql_fetch_array($rs) ;
 	}
 	$sql = "DROP VIEW student_list";
