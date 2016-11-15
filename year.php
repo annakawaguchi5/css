@@ -104,16 +104,18 @@ $(function() {
 				$rs = mysql_query($sql, $conn);
 				if (!$rs) die ('エラー: ' . mysql_error());
 				$row = mysql_fetch_array($rs) ;
-				echo '<div class="panel panel-info">
-				<div class="panel-heading">
-					年度一覧
-				</div>
-				<div class="list-group">';
+				echo '<div class="dropdown">
+	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+		年度一覧
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">';
 				while($row){
-					echo '<a class="list-group-item" href="year.php?year='.$row['year'].'">'.$row['year'].'年度</a>';
+					echo '<li role="presentation"><a href="year.php?year='.$row['year'].'">'.$row['year'].'年度</a></li>';
 					$row = mysql_fetch_array($rs) ;
 				}
-				echo '</div></div>';
+				echo '</ul>
+</div>';
 				?>
 	</div>
 	<!-- 3グリッド終わり -->

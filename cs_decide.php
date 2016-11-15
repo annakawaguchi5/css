@@ -131,6 +131,7 @@ GROUP BY uid
 			$decide=$cname;
 		}
 
+		echo '<input type="hidden" name="uid[]" value="'.$row['uid'].'">';
 		echo '<td>' . $row['uid'] . '</td>';
 		echo '<td>' . $row['uname']. '</td>';
 		echo '<td>' . $course  . '</td>';
@@ -138,12 +139,12 @@ GROUP BY uid
 		echo '<td>' . $row['allgp'] . '</td>';
 		echo '<td>' . $row['allgpa'] . '</td>';
 		echo '<td>' . $judge. '</td>';
-		echo '<td><input name='.$row['uid'].' type="radio" value="1" '.$checked1.'>'.$cname1.'<input name='.$row['uid'].' type="radio" value="2" '.$checked.' >'.$cname.'</td>';
+		echo '<td><input name="'.$row['uid'].'" type="radio" value="1" '.$checked1.'>'.$cname1.'<input name="'.$row['uid'].'" type="radio" value="2" '.$checked.' >'.$cname.'</td>';
 		echo '</tr>';
 		$row = mysql_fetch_array($rs) ;
 	}
 	echo '</table>';
-	echo '<button class="btn btn-primary btn-block">決定</button>';
+	echo '<button type="submit" class="btn btn-primary btn-block">決定</button>';
 	echo'</form>';
 
 	$sql = "DROP VIEW `student_list`";
