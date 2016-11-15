@@ -67,13 +67,13 @@ require_once('db_inc.php');  //データベース接続
 					<div class="col-xs-10"><input type="text" class="form-control" name="cname1"></div>><br>
 						単位数<input type="text" class="form-control" name="gp1">以上　 GPA<input type="text" class="form-control" name="gpa1">以上<br>
 						コース説明<br>
-						<textarea rows="2" class="form-control" name="explanation1"></textarea>
+						<textarea rows="2" class="form-control" name="detail1"></textarea>
 					</div>
 					<div class="course2">
 						コース名<input type="text" class="form-control" name="cname2"><br>
 						単位数<input type="text" class="form-control" name="gp2">以上　 GPA<input type="text" class="form-control" name="gpa2">以上<br>
 						コース説明<br>
-						<textarea class="form-control" rows="2" name="explanation2"></textarea>
+						<textarea class="form-control" rows="2" name="detail2"></textarea>
 					</div>
 				</td>
 			</tr>

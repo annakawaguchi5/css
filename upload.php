@@ -35,6 +35,43 @@ if(isset($_POST['act'])){
 		/**
 		 * コース名を決定
 		 */
+		if(isset($_POST['course'])){
+			$cname1=$_POST['cname1'];
+			$gp1=$_POST['gp1'];
+			$gpa1=$_POST['gpa1'];
+			$detail1=$_POST['detail1'];
+			$cname2=$_POST['cname2'];
+			$gp2=$_POST['gp2'];
+			$gpa2=$_POST['gpa2'];
+			$detail2=$_POST['detail2'];
+
+		if($gp1==0||$gp1=="" && $gpa1==0 ||$gpa1==""){
+				$cid1=1;
+			}else{
+				$cid1=2;
+			}
+
+		if($gp2==0||$gp2=="" && $gpa2==0 ||$gpa2==""){
+				$cid2=1;
+			}else{
+				$cid2=2;
+			}
+
+		if($act=="insert"){
+				$sql ="INSERT INTO tb_course VALUES ($year, $cid1, '$cname1', '$detail1', $gp1, $gpa1)" ;
+				$res = mysql_query( $sql, $conn );
+				$sql ="INSERT INTO tb_course VALUES ('$year', '$cid2', '$cname2', '$detail2', $gp2, $gpa2)" ;
+				$res = mysql_query( $sql, $conn );
+				if (!$res) die ('エラー: ' . mysql_error());
+			}else{
+				$sql ="UPDATE tb_course SET year=$year, cid=$cid1, cname='$cname1', detail='$detail1', gp=$gp1, gpa=$gpa1 WHERE year=$year AND cid=$cid1";
+				$res = mysql_query( $sql, $conn );
+				$sql ="UPDATE tb_course SET year=$year, cid=$cid2, cname='$cname2', detail='$detail2', gp=$gp2, gpa=$gpa2 WHERE year=$year AND cid=$cid2";
+				$res = mysql_query( $sql, $conn );
+				if (!$res) die ('エラー: ' . mysql_error());
+			}
+		}
+	/*
 		if(isset($_POST['list6_0_0'])){
 			//echo $act;
 			$course=$_POST['list6_0_0'];
@@ -79,6 +116,7 @@ if(isset($_POST['act'])){
 				if (!$res) die ('エラー: ' . mysql_error());
 			}
 		}
+		*/
 
 		if (!$res) {
 			echo "決定に失敗しました。";
