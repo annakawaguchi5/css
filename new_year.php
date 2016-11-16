@@ -64,7 +64,7 @@ require_once('db_inc.php');  //データベース接続
 				<td><?php //include('coursechange.php');//コース数変更?>
 					<div class="course1">
 						<div>
-							<div class="col-xs-1">
+							<div class="col-xs-10">
 								<label>コース名</label>
 							</div>
 							<div class="col-xs-11">
@@ -72,39 +72,72 @@ require_once('db_inc.php');  //データベース接続
 							</div>
 						</div>
 
-						<div class="col-sm-6">
-							<div class="col-xs-2">
+						<div class="col-xs-12">
+							<div class="col-xs-10">
 								<label>単位数</label>
 							</div>
-							<div class="col-xs-8">
+							<div class="col-xs-7">
 								<input type="text" class="form-control" name="gp1">
 							</div>
 							<div class="col-xs-2">以上</div>
 						</div>
-						<div class="col-sm-6">
-							<div class="col-xs-2">
+
+						<div class="col-xs-12">
+							<div class="col-xs-10">
 								<label>GPA</label>
 							</div>
-							<div class="col-xs-8">
+							<div class="col-xs-7">
 								<input type="text" class="form-control" name="gpa1">
 							</div>
 							<div class="col-xs-2">以上</div>
 						</div>
+
+						<div class="col-xs-12">
+
 						<label>コース説明</label>
 						<textarea rows="2" class="form-control" name="detail1"></textarea>
+
+						</div>
+
 					</div>
 					<br>
 
 					<div class="course2">
-						<div class="col-xs-2">
-							<label>コース名</label>
-						</div>
-						<div class="col-xs-10">
+							<div>
+							<div class="col-xs-10">
+								<label>コース名</label>
+							</div>
+							<div class="col-xs-11">
 							<input type="text" class="form-control" name="cname2">
+							</div>
 						</div>
-						<br> 単位数<input type="text" class="form-control" name="gp2">以上 GPA<input
-							type="text" class="form-control" name="gpa2">以上<br> コース説明<br>
-						<textarea class="form-control" rows="2" name="detail2"></textarea>
+
+						<div class="col-xs-12">
+							<div class="col-xs-10">
+								<label>単位数</label>
+							</div>
+							<div class="col-xs-7">
+								<input type="text" class="form-control" name="gp2">
+							</div>
+							<div class="col-xs-2">以上</div>
+						</div>
+
+						<div class="col-xs-12">
+							<div class="col-xs-10">
+								<label>GPA</label>
+							</div>
+							<div class="col-xs-7">
+								<input type="text" class="form-control" name="gpa2">
+							</div>
+							<div class="col-xs-2">以上</div>
+						</div>
+
+						<div class="col-xs-12">
+
+						<label>コース説明</label>
+						<textarea rows="2" class="form-control" name="detail2"></textarea>
+
+						</div>
 					</div>
 				</td>
 			</tr>
